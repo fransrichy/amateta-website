@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Our Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2563eb;
+            --light-blue: #3b82f6;
+            --dark-blue: #1d4ed8;
+            --text-blue: #1e40af;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-blue);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 5px 0;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-blue);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-toggle, .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-blue);
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .mobile-menu-toggle:hover, .theme-toggle:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            transform: translateX(0);
+        }
+
+        .close-mobile-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-blue);
+            cursor: pointer;
+        }
+
+        .mobile-nav-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link-mobile {
+            text-decoration: none;
+            color: var(--text-blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .nav-link-mobile:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .page-hero-section {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .page-hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+
+        /* Team Section Styles */
+        .team-section {
+            padding: 80px 20px;
+            background-color: var(--light-gray);
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .lg\:grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .team-member-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 5px solid var(--primary-blue);
+            text-align: center;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--light-blue);
+        }
+
+        .rounded-full {
+            border-radius: 9999px;
+        }
+
+        .w-32 {
+            width: 8rem;
+        }
+
+        .h-32 {
+            height: 8rem;
+        }
+
+        .object-cover {
+            object-fit: cover;
+        }
+
+        .text-primary-color {
+            color: var(--primary-blue);
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .text-md {
+            font-size: 1rem;
+        }
+
+        .mt-4 {
+            margin-top: 1rem;
+        }
+
+        .justify-center {
+            justify-content: center;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .social-icon {
+            background-color: rgba(37, 99, 235, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: var(--primary-blue);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+        }
+        
+        /* CTA Button override for dark background */
+        .cta-section .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--white);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        /* Footer - ENHANCED STYLES */
+        .footer-enhanced {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .footer-enhanced p, .footer-enhanced h4 {
+            color: var(--medium-gray);
+        }
+
+        .footer-enhanced h4 {
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr;
+            }
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: var(--light-blue);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            color: var(--primary-blue);
+        }
+
+        .footer-social-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .footer-social-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .footer-social-icon:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* New Footer Components */
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--text-blue);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--light-blue);
+        }
+
+        .help-box {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .help-box h5 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-box a {
+            color: var(--dark-blue);
+            display: inline-block;
+            background-color: #f1c40f;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .help-box a:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--medium-gray);
+        }
+        /* End Enhanced Footer Styles */
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .animate-slide-up-left {
+            animation: slideUpLeft 0.8s ease-out;
+        }
+
+        .animate-slide-up-right {
+            animation: slideUpRight 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUpLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px) translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        @keyframes slideUpRight {
+            from { 
+                opacity: 0;
+                transform: translateX(30px) translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle, .theme-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+            
+            .page-hero-section {
+                padding: 80px 20px;
+            }
+            
+            .team-section, .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            
+            .lg\:grid-cols-3 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-xl {
+                font-size: 1rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Dark Mode Styles (integrated for theme toggle) */
+        .dark-mode {
+            --primary-blue: #70a1ff;
+            --light-blue: #3b82f6;
+            --dark-blue: #141f4d;
+            --text-blue: #f8fafc;
+            --white: #2c2c4d;
+            --light-gray: #1a1a2e;
+            --medium-gray: #94a3b8;
+            --dark-gray: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-mode body {
+            background-color: var(--light-gray);
+            color: var(--text-blue);
+        }
+        .dark-mode .header {
+            background-color: var(--dark-blue);
+        }
+        .dark-mode .footer-enhanced {
+            background-color: var(--dark-blue);
+        }
+        .dark-mode .team-section {
+            background-color: var(--light-gray);
+        }
+        .dark-mode .team-member-card {
+            background-color: #1d2b4d;
+            border-top-color: var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .dark-mode .nav-link, .dark-mode .mobile-menu-toggle, .dark-mode .theme-toggle, .dark-mode .close-mobile-menu, .dark-mode .nav-link-mobile {
+            color: var(--text-blue);
+        }
+        .dark-mode .nav-link:hover, .dark-mode .mobile-menu-toggle:hover, .dark-mode .theme-toggle:hover {
+            color: var(--primary-blue);
+        }
+        .dark-mode .page-hero-section {
+            background: linear-gradient(135deg, #141f4d 0%, #1d4ed8 100%);
+        }
+        .dark-mode .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .dark-mode .btn-secondary {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        .dark-mode .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--dark-blue);
+        }
+        .dark-mode .footer-link {
+            color: var(--medium-gray);
+        }
+        .dark-mode .footer-link:hover {
+            color: var(--primary-blue);
+        }
+        .dark-mode .newsletter-form input[type="email"] {
+            background-color: #1a1a2e;
+            color: var(--text-blue);
+        }
+        .dark-mode .help-box a {
+            background-color: #e67e22;
+        }
+        .dark-mode .social-icon {
+            background-color: rgba(112, 161, 255, 0.2);
+            color: var(--primary-blue);
+        }
+        .dark-mode .social-icon:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="container flex justify-between items-center py-4">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-12 w-auto rounded-md">
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home mr-1"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle mr-1"></i> About</a></li>
+                    <li><a href="team.html" class="nav-link active"><i class="fas fa-users mr-1"></i> Our Team</a></li>
+                    <li><a href="services.html" class="nav-link"><i class="fas fa-cogs mr-1"></i> Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link"><i class="fas fa-briefcase mr-1"></i> Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope mr-1"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+            <button id="close-mobile-menu" class="close-mobile-menu">&times;</button>
+            <nav class="mobile-nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link-mobile"><i class="fas fa-home mr-2"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link-mobile"><i class="fas fa-info-circle mr-2"></i> About</a></li>
+                    <li><a href="team.html" class="nav-link-mobile"><i class="fas fa-users mr-2"></i> Our Team</a></li>
+                    <li><a href="services.html" class="nav-link-mobile"><i class="fas fa-cogs mr-2"></i> Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link-mobile"><i class="fas fa-briefcase mr-2"></i> Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link-mobile"><i class="fas fa-envelope mr-2"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero-section text-center py-20 px-4">
+            <div class="page-hero-bg"></div>
+            <div class="container animate-fade-in">
+                <h1 class="text-5xl font-bold mb-4 text-white">Meet Our Dedicated Team</h1>
+                <p class="text-xl max-w-2xl mx-auto text-white">
+                    The passionate individuals driving innovation and excellence at AMATETA Techs & Designs.
+                </p>
+            </div>
+        </section>
+
+        <section class="team-section py-16 px-4">
+            <div class="container">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <div class="team-member-card p-6 rounded-lg shadow-lg text-center animate-slide-up">
+                        <img src="images/SACHY.jpg" alt="Shikongo Sakaria" class="rounded-full w-32 h-32 object-cover mx-auto mb-4">
+                        <h3 class="text-2xl font-semibold">Shikongo Sakaria</h3>
+                        <p class="text-primary-color mb-2">IT Technician & Technical Manager</p>
+                        <p class="text-md mb-4">Ensures reliable IT support while overseeing technical operations and innovation.</p>
+                        <div class="social-icons mt-4 justify-center flex">
+                            <a href="#" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card p-6 rounded-lg shadow-lg text-center animate-slide-up">
+                        <img src="images/Teopo.jpg" alt="Shipanga Teopolina" class="rounded-full w-32 h-32 object-cover mx-auto mb-4">
+                        <h3 class="text-2xl font-semibold">Shipanga Teopolina</h3>
+                        <p class="text-primary-color mb-2">Sales Team</p>
+                        <p class="text-md mb-4">Bringing fresh perspectives and creative flair to all our projects.</p>
+                        <div class="social-icons mt-4 justify-center flex">
+                            <a href="#" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card p-6 rounded-lg shadow-lg text-center animate-slide-up">
+                        <img src="images/placeholder.jpg" alt="Network Engineer Collaborator" class="rounded-full w-32 h-32 object-cover mx-auto mb-4" style="background-color: #e0f2fe;">
+                        <h3 class="text-2xl font-semibold">Jane Doe</h3>
+                        <p class="text-primary-color mb-2">Network Engineer Collaborator</p>
+                        <p class="text-md mb-4">Specialist in designing, implementing, and maintaining secure and high-performing network infrastructures.</p>
+                        <div class="social-icons mt-4 justify-center flex">
+                            <a href="#" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="Twitter/X"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="team-member-card p-6 rounded-lg shadow-lg text-center animate-slide-up">
+                        <img src="images/placeholder.jpg" alt="Business Information System Intern" class="rounded-full w-32 h-32 object-cover mx-auto mb-4" style="background-color: #e0f2fe;">
+                        <h3 class="text-2xl font-semibold">John Smith</h3>
+                        <p class="text-primary-color mb-2">Business Information System Intern</p>
+                        <p class="text-md mb-4">Analyzing business processes and leveraging technology to optimize efficiency and strategic data management.</p>
+                        <div class="social-icons mt-4 justify-center flex">
+                            <a href="#" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section text-center py-20 px-4 animate-fade-in">
+            <div class="container">
+                <h2 class="text-4xl font-bold mb-4">Want to Join Our Dynamic Team?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                    We're always looking for talented individuals to grow with us.
+                </p>
+                <a href="contact.html" class="btn-secondary">Explore Career Opportunities</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-enhanced animate-slide-up">
+        <div class="container py-12">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Logo" class="footer-logo">
+                    <p style="margin-bottom: 1.5rem;">We are a technology company offering cutting-edge solutions in Digital Marketing, IT Support, Web Development, and more. Partner with us for innovation, reliability, and growth.</p>
+                    <div class="footer-social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank" class="footer-social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="footer-social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank" class="footer-social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/264853441248" target="_blank" class="footer-social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Services</a></li>
+                        <li><a href="about.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> About Us</a></li>
+                        <li><a href="portfolio.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Portfolio</a></li>
+                        <li><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Contact</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-bold mb-4">Contact Info</h4>
+                    <p style="margin-bottom: 1.5rem;"><i class="fas fa-map-marker-alt mr-2" style="color: var(--primary-blue);"></i> Windhoek, Namibia</p>
+                    <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone mr-2" style="color: var(--primary-blue);"></i> Call Us: <a href="tel:+264853441248" class="footer-link" style="display: inline;">+264 85 344 1248</a></p>
+                    <p style="margin-bottom: 1.5rem;"><i class="fas fa-envelope mr-2" style="color: var(--primary-blue);"></i> Email: <a href="mailto:info@amateta.com" class="footer-link" style="display: inline;">info@amateta.com</a></p>
+                    
+                    <div class="help-box">
+                        <h5>Need Immediate Help?</h5>
+                        <a href="contact.html" title="Start a Live Chat or Support Ticket"><i class="fas fa-headset mr-2"></i> Support Center</a>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4 class="font-bold mb-4">Newsletter & Updates</h4>
+                    <p style="margin-bottom: 1.5rem;">Subscribe to our newsletter to receive the latest news, updates, and exclusive offers.</p>
+                    <form class="newsletter-form" onsubmit="alert('Thank you for subscribing!'); return false;">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane mr-2"></i> Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 AMATETA Techs & Designs. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-up-left, .animate-slide-up-right, .animate-fade-in');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                // Only apply transform for slide-up animations, not fade-in
+                if (el.classList.contains('animate-slide-up')) {
+                    el.style.transform = 'translateY(30px)';
+                } else if (el.classList.contains('animate-slide-up-left')) {
+                    el.style.transform = 'translateX(-30px) translateY(30px)';
+                } else if (el.classList.contains('animate-slide-up-right')) {
+                    el.style.transform = 'translateX(30px) translateY(30px)';
+                }
+                
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>

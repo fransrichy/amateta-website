@@ -1,0 +1,1079 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2563eb;
+            --light-blue: #3b82f6;
+            --dark-blue: #1d4ed8;
+            --text-blue: #1e40af;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-blue);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 5px 0;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-blue);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-toggle, .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-blue);
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .mobile-menu-toggle:hover, .theme-toggle:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            transform: translateX(0);
+        }
+
+        .close-mobile-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-blue);
+            cursor: pointer;
+        }
+
+        .mobile-nav-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link-mobile {
+            text-decoration: none;
+            color: var(--text-blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link-mobile:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .page-hero-section {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        /* Portfolio Gallery Section */
+        .portfolio-gallery-section {
+            padding: 80px 20px;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .md\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .lg\:grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background-color: var(--white);
+            padding: 0;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 5px solid var(--primary-blue);
+            overflow: hidden;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lg);
+            border-top-color: var(--light-blue);
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .h-64 {
+            height: 16rem;
+        }
+
+        .object-cover {
+            object-fit: cover;
+        }
+
+        .p-6 {
+            padding: 1.5rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .font-semibold {
+            font-weight: 600;
+        }
+
+        .mb-2 {
+            margin-bottom: 0.5rem;
+        }
+
+        .text-md {
+            font-size: 1rem;
+        }
+
+        .text-primary-color {
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .text-primary-color:hover {
+            color: var(--dark-blue);
+            text-decoration: underline;
+        }
+
+        .ml-1 {
+            margin-left: 0.25rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+        }
+        
+        /* CTA Button override for dark background */
+        .cta-section .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--white);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        /* Footer - ENHANCED STYLES */
+        .footer-enhanced {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .footer-enhanced p, .footer-enhanced h4 {
+            color: var(--medium-gray);
+        }
+
+        .footer-enhanced h4 {
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr;
+            }
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: var(--light-blue);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            color: var(--primary-blue);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* New Footer Components */
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--text-blue);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--light-blue);
+        }
+
+        .help-box {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .help-box h5 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-box a {
+            color: var(--dark-blue);
+            display: inline-block;
+            background-color: #f1c40f;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .help-box a:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--medium-gray);
+        }
+        /* End Enhanced Footer Styles */
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .animate-slide-up-left {
+            animation: slideUpLeft 0.8s ease-out;
+        }
+
+        .animate-slide-up-right {
+            animation: slideUpRight 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUpLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px) translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        @keyframes slideUpRight {
+            from { 
+                opacity: 0;
+                transform: translateX(30px) translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle, .theme-toggle {
+                display: block;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+            
+            .page-hero-section {
+                padding: 80px 20px;
+            }
+            
+            .portfolio-gallery-section, .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .md\:grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+            
+            .lg\:grid-cols-3 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-xl {
+                font-size: 1rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Dark Mode Styles (integrated for theme toggle) */
+        .dark-mode {
+            --primary-blue: #70a1ff;
+            --light-blue: #3b82f6;
+            --dark-blue: #141f4d;
+            --text-blue: #f8fafc;
+            --white: #2c2c4d;
+            --light-gray: #1a1a2e;
+            --medium-gray: #94a3b8;
+            --dark-gray: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-mode body {
+            background-color: var(--light-gray);
+            color: var(--text-blue);
+        }
+        .dark-mode .header {
+            background-color: var(--dark-blue);
+        }
+        .dark-mode .footer-enhanced {
+            background-color: var(--dark-blue);
+        }
+        .dark-mode .portfolio-item {
+            background-color: #1d2b4d;
+            border-top-color: var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .dark-mode .nav-link, .dark-mode .mobile-menu-toggle, .dark-mode .theme-toggle, .dark-mode .close-mobile-menu, .dark-mode .nav-link-mobile {
+            color: var(--text-blue);
+        }
+        .dark-mode .nav-link:hover, .dark-mode .mobile-menu-toggle:hover, .dark-mode .theme-toggle:hover {
+            color: var(--primary-blue);
+        }
+        .dark-mode .page-hero-section {
+            background: linear-gradient(135deg, #141f4d 0%, #1d4ed8 100%);
+        }
+        .dark-mode .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .dark-mode .btn-secondary {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        .dark-mode .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--dark-blue);
+        }
+        .dark-mode .footer-link {
+            color: var(--medium-gray);
+        }
+        .dark-mode .footer-link:hover {
+            color: var(--primary-blue);
+        }
+        .dark-mode .newsletter-form input[type="email"] {
+            background-color: #1a1a2e;
+            color: var(--text-blue);
+        }
+        .dark-mode .help-box a {
+            background-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="container flex justify-between items-center py-4">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-12 w-auto rounded-md">
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home mr-1"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle mr-1"></i> About</a></li>
+                    <li><a href="team.html" class="nav-link"><i class="fas fa-users mr-1"></i> Our Team</a></li>
+                    <li><a href="services.html" class="nav-link"><i class="fas fa-cogs mr-1"></i> Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link active"><i class="fas fa-briefcase mr-1"></i> Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope mr-1"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+            <button id="close-mobile-menu" class="close-mobile-menu">&times;</button>
+            <nav class="mobile-nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link-mobile"><i class="fas fa-home mr-2"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link-mobile"><i class="fas fa-info-circle mr-2"></i> About</a></li>
+                    <li><a href="team.html" class="nav-link-mobile"><i class="fas fa-users mr-2"></i> Our Team</a></li>
+                    <li><a href="services.html" class="nav-link-mobile"><i class="fas fa-cogs mr-2"></i> Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link-mobile"><i class="fas fa-briefcase mr-2"></i> Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link-mobile"><i class="fas fa-envelope mr-2"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero-section text-center py-20 px-4">
+            <div class="hero-bg"></div>
+            <div class="container animate-fade-in hero-content">
+                <h1 class="text-5xl font-bold mb-4 text-white">Our Creative Portfolio</h1>
+                <p class="text-xl mb-8 max-w-2xl mx-auto text-white">
+                    Showcasing our best work in web development, graphic design, and marketing.
+                </p>
+            </div>
+        </section>
+
+        <section class="portfolio-gallery-section py-16 px-4 animate-slide-up">
+            <div class="container">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/ASTUTE.jpg" alt="Project ASTUTE" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">ASTUTE Technologies Website</h3>
+                            <p class="text-md mb-4">A modern and responsive website designed for ASTUTE Technologies.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Lavital.jpg" alt="Project LAVITAL" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">LAVITAL Graphic Design</h3>
+                            <p class="text-md mb-4">Creative graphic design solutions for Lavital Investments CC.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Screenshot (63).png" alt="Project Responsive Website" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Responsive Website Development</h3>
+                            <p class="text-md mb-4">Showcasing our expertise in responsive web development.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Ads.jpg" alt="Project Graphic Design Ads" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Graphic Design Ads Campaign</h3>
+                            <p class="text-md mb-4">Effective advertising posters and designs for various clients.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Display Stands.jpg" alt="Project Outdoor Display" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Outdoor Display Branding</h3>
+                            <p class="text-md mb-4">A-Frames and Pop-up banners for outdoor advertising.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Wall-Banner.jpg" alt="Project Wall Banner" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Custom Wall Banners</h3>
+                            <p class="text-md mb-4">Large format wall banners for impactful corporate branding.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Banner-sample1.webp" alt="Project Pull Up Banner" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">X-Frame & Pull-Up Banners</h3>
+                            <p class="text-md mb-4">Portable display solutions for events and promotions.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/business-card-2.jpg" alt="Business Cards Design" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Business Card Designs</h3>
+                            <p class="text-md mb-4">Professional and eye-catching business card designs.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/correx_estate_agent_sign_3_1.jpg" alt="Estate Boards" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Estate Board Signage</h3>
+                            <p class="text-md mb-4">Custom estate boards for property advertising.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Bealboard.jpg" alt="Billboards" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Billboard Advertisements</h3>
+                            <p class="text-md mb-4">Large-scale billboard designs for maximum exposure.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Profile 2.jpg" alt="Company Profiles" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Company Profile Creation</h3>
+                            <p class="text-md mb-4">Designing comprehensive and professional company profiles.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Softwares.png" alt="Graphic Design Training" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Graphic Design Training Materials</h3>
+                            <p class="text-md mb-4">Training course materials for aspiring graphic designers.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Unti.jpg" alt="Kaspersky Antivirus" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Kaspersky Antivirus Promotion</h3>
+                            <p class="text-md mb-4">Marketing materials for IT software supply.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
+                        <img src="images/Microsoft.jpg" alt="Microsoft Packages" class="w-full h-64 object-cover">
+                        <div class="p-6">
+                            <h3 class="text-2xl font-semibold mb-2">Microsoft Software Packages</h3>
+                            <p class="text-md mb-4">Promotional designs for various Microsoft software products.</p>
+                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section text-center py-16 px-4 animate-slide-up">
+            <div class="container">
+                <h2 class="text-4xl font-bold mb-4 text-white">Ready to Start Your Project?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto text-white">
+                    Let's work together to bring your vision to life with our creative solutions.
+                </p>
+                <a href="contact.html" class="btn-secondary inline-block">Get In Touch</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-enhanced">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="footer-logo">
+                    <p>AMATETA Techs & Designs is a leading provider of innovative technology solutions and creative design services. We help businesses grow through cutting-edge web development, graphic design, and digital marketing.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <a href="index.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Home</a>
+                    <a href="about.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>About Us</a>
+                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Services</a>
+                    <a href="portfolio.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Portfolio</a>
+                    <a href="contact.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Contact</a>
+                </div>
+                
+                <div class="footer-services">
+                    <h4 class="text-lg font-semibold mb-4">Our Services</h4>
+                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Web Development</a>
+                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Graphic Design</a>
+                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Digital Marketing</a>
+                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>IT Support</a>
+                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Software Supply</a>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
+                    <p class="mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Windhoek, Namibia</p>
+                    <p class="mb-4"><i class="fas fa-phone-alt mr-2"></i> +264 85 344 1248</p>
+                    <p class="mb-4"><i class="fas fa-envelope mr-2"></i> info@amatetatech.com</p>
+                    
+                    <div class="newsletter-form">
+                        <h5 class="mb-2">Subscribe to our newsletter</h5>
+                        <form action="#" method="post">
+                            <input type="email" name="email" placeholder="Your email address" required>
+                            <button type="submit">Subscribe</button>
+                        </form>
+                    </div>
+                    
+                    <div class="help-box">
+                        <h5>Need Help?</h5>
+                        <a href="contact.html">Get Support</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 AMATETA Techs & Designs. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+        
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavOverlay.classList.add('active');
+        });
+        
+        closeMobileMenu.addEventListener('click', () => {
+            mobileNavOverlay.classList.remove('active');
+        });
+        
+        // Theme Toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            
+            if (document.body.classList.contains('dark-mode')) {
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            } else {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Portfolio item animation on scroll
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        portfolioItems.forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

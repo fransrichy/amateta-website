@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Contact Us</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #2563eb;
+            --light-blue: #3b82f6;
+            --dark-blue: #1d4ed8;
+            --text-blue: #1e40af;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-blue);
+            background-color: var(--white);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .header.scrolled {
+            padding: 5px 0;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .justify-between {
+            justify-content: space-between;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .py-4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-blue);
+            font-weight: 600;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: var(--primary-blue);
+            background-color: rgba(37, 99, 235, 0.1);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-blue);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 80%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-blue);
+        }
+
+        .mobile-menu-toggle, .theme-toggle {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-blue);
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            margin-left: 1rem;
+        }
+
+        .mobile-menu-toggle:hover, .theme-toggle:hover {
+            color: var(--primary-blue);
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav-overlay.active {
+            transform: translateX(0);
+        }
+
+        .close-mobile-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-blue);
+            cursor: pointer;
+        }
+
+        .mobile-nav-menu ul {
+            list-style: none;
+            text-align: center;
+        }
+
+        .mobile-nav-menu li {
+            margin-bottom: 1.5rem;
+        }
+
+        .nav-link-mobile {
+            text-decoration: none;
+            color: var(--text-blue);
+            font-size: 1.5rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link-mobile:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .page-hero-section {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+            color: var(--white);
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .text-5xl {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+
+        .font-bold {
+            font-weight: 700;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .text-xl {
+            font-size: 1.25rem;
+        }
+
+        .mb-8 {
+            margin-bottom: 2rem;
+        }
+
+        .max-w-2xl {
+            max-width: 42rem;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-primary, .btn-secondary {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            padding: 80px 20px;
+        }
+
+        .grid {
+            display: grid;
+        }
+
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+
+        .lg\:grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .gap-12 {
+            gap: 3rem;
+        }
+
+        .gap-8 {
+            gap: 2rem;
+        }
+
+        .p-8 {
+            padding: 2rem;
+        }
+
+        .rounded-lg {
+            border-radius: 12px;
+        }
+
+        .shadow-md {
+            box-shadow: var(--shadow);
+        }
+
+        .text-3xl {
+            font-size: 1.875rem;
+        }
+
+        .text-2xl {
+            font-size: 1.5rem;
+        }
+
+        .text-lg {
+            font-size: 1.125rem;
+        }
+
+        .font-medium {
+            font-weight: 500;
+        }
+
+        .space-y-6 > * + * {
+            margin-top: 1.5rem;
+        }
+
+        .block {
+            display: block;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+
+        .p-3 {
+            padding: 0.75rem;
+        }
+
+        .border {
+            border-width: 1px;
+        }
+
+        .border-gray-300 {
+            border-color: #d1d5db;
+        }
+
+        .focus\:ring-primary-color:focus {
+            --tw-ring-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .focus\:border-primary-color:focus {
+            border-color: var(--primary-blue);
+        }
+
+        .py-3 {
+            padding-top: 0.75rem;
+            padding-bottom: 0.75rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .items-center {
+            align-items: center;
+        }
+
+        .mr-3 {
+            margin-right: 0.75rem;
+        }
+
+        .hover\:underline:hover {
+            text-decoration: underline;
+        }
+
+        .mt-8 {
+            margin-top: 2rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 1rem;
+        }
+
+        .overflow-hidden {
+            overflow: hidden;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background-color: var(--light-gray);
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+            background-color: var(--white);
+        }
+
+        .contact-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 50%;
+            font-size: 1.5rem;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-details h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: var(--dark-gray);
+        }
+
+        .contact-details a {
+            color: var(--text-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-details a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
+            color: var(--white);
+        }
+        
+        /* CTA Button override for dark background */
+        .cta-section .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border: 2px solid var(--white);
+        }
+
+        .cta-section .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        /* Footer - ENHANCED STYLES */
+        .footer-enhanced {
+            background-color: var(--dark-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .footer-enhanced p, .footer-enhanced h4 {
+            color: var(--medium-gray);
+        }
+
+        .footer-enhanced h4 {
+            color: var(--white);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr;
+            }
+        }
+
+        .footer-logo {
+            height: 50px;
+            width: auto;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .footer-link {
+            color: var(--medium-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link:hover {
+            color: var(--light-blue);
+            transform: translateX(5px);
+        }
+
+        .footer-link i {
+            color: var(--primary-blue);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .social-icon {
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon:hover {
+            background-color: var(--primary-blue);
+            transform: translateY(-3px) scale(1.05);
+        }
+
+        /* New Footer Components */
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--text-blue);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 10px;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--light-blue);
+        }
+
+        .help-box {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        .help-box h5 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-box a {
+            color: var(--dark-blue);
+            display: inline-block;
+            background-color: #f1c40f;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .help-box a:hover {
+            background-color: #e67e22;
+            transform: scale(1.05);
+        }
+
+        .footer-bottom {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--medium-gray);
+        }
+        /* End Enhanced Footer Styles */
+
+        /* WhatsApp Floating Button */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: var(--white);
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: var(--shadow-lg);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+            }
+        }
+
+        /* Animations */
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-slide-up {
+            animation: slideUp 0.8s ease-out;
+        }
+
+        .animate-slide-up-left {
+            animation: slideUpLeft 0.8s ease-out;
+        }
+
+        .animate-slide-up-right {
+            animation: slideUpRight 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideUpLeft {
+            from { 
+                opacity: 0;
+                transform: translateX(-30px) translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        @keyframes slideUpRight {
+            from { 
+                opacity: 0;
+                transform: translateX(30px) translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateX(0) translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .text-5xl {
+                font-size: 2.5rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+            
+            .mobile-menu-toggle, .theme-toggle {
+                display: block;
+            }
+            
+            .lg\:grid-cols-2 {
+                grid-template-columns: repeat(1, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .text-5xl {
+                font-size: 2rem;
+            }
+            
+            .text-4xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-3xl {
+                font-size: 1.5rem;
+            }
+            
+            .page-hero-section {
+                padding: 80px 20px;
+            }
+            
+            .contact-section, .cta-section {
+                padding: 60px 20px;
+            }
+            
+            .p-8 {
+                padding: 1.5rem;
+            }
+            
+            .contact-info-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .contact-icon {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .text-5xl {
+                font-size: 1.75rem;
+            }
+            
+            .text-xl {
+                font-size: 1rem;
+            }
+            
+            .btn-primary, .btn-secondary {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .whatsapp-float {
+                width: 50px;
+                height: 50px;
+                font-size: 25px;
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+
+        /* Dark Mode Styles (integrated for theme toggle) */
+        .dark-mode {
+            --primary-blue: #70a1ff;
+            --light-blue: #3b82f6;
+            --dark-blue: #141f4d;
+            --text-blue: #f8fafc;
+            --white: #2c2c4d;
+            --light-gray: #1a1a2e;
+            --medium-gray: #94a3b8;
+            --dark-gray: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
+        }
+
+        .dark-mode body {
+            background-color: var(--light-gray);
+            color: var(--text-blue);
+        }
+        .dark-mode .header {
+            background-color: var(--dark-blue);
+        }
+        .dark-mode .footer-enhanced {
+            background-color: var(--dark-blue);
+        }
+        .dark-mode .contact-form-container, .dark-mode .contact-info-container {
+            background-color: #1d2b4d;
+            border-top: 5px solid var(--primary-blue);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .dark-mode .nav-link, .dark-mode .mobile-menu-toggle, .dark-mode .theme-toggle, .dark-mode .close-mobile-menu, .dark-mode .nav-link-mobile {
+            color: var(--text-blue);
+        }
+        .dark-mode .nav-link:hover, .dark-mode .mobile-menu-toggle:hover, .dark-mode .theme-toggle:hover {
+            color: var(--primary-blue);
+        }
+        .dark-mode .page-hero-section {
+            background: linear-gradient(135deg, #141f4d 0%, #1d4ed8 100%);
+        }
+        .dark-mode .btn-primary {
+            background-color: var(--primary-blue);
+            color: var(--white);
+        }
+        .dark-mode .btn-secondary {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        .dark-mode .btn-secondary:hover {
+            background-color: var(--primary-blue);
+            color: var(--dark-blue);
+        }
+        .dark-mode .footer-link {
+            color: var(--medium-gray);
+        }
+        .dark-mode .footer-link:hover {
+            color: var(--primary-blue);
+        }
+        .dark-mode .newsletter-form input[type="email"] {
+            background-color: #1a1a2e;
+            color: var(--text-blue);
+        }
+        .dark-mode .help-box a {
+            background-color: #e67e22;
+        }
+        .dark-mode input, .dark-mode textarea {
+            background-color: #1a1a2e;
+            color: var(--text-blue);
+            border-color: #374151;
+        }
+        .dark-mode .contact-info-item {
+            background-color: #1a1a2e;
+        }
+        .dark-mode .contact-info-item:hover {
+            background-color: #1d2b4d;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <header class="header">
+        <div class="container flex justify-between items-center py-4">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-12 w-auto rounded-md">
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul class="flex space-x-8">
+                    <li><a href="index.html" class="nav-link"><i class="fas fa-home mr-1"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle mr-1"></i> About</a></li>
+                    <li><a href="team.html" class="nav-link"><i class="fas fa-users mr-1"></i> Our Team</a></li>
+                    <li><a href="services.html" class="nav-link"><i class="fas fa-cogs mr-1"></i> Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link"><i class="fas fa-briefcase mr-1"></i> Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope mr-1"></i> Contact</a></li>
+                </ul>
+            </nav>
+
+            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button id="theme-toggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+
+        <div id="mobile-nav-overlay" class="mobile-nav-overlay">
+            <button id="close-mobile-menu" class="close-mobile-menu">&times;</button>
+            <nav class="mobile-nav-menu">
+                <ul>
+                    <li><a href="index.html" class="nav-link-mobile"><i class="fas fa-home mr-2"></i> Home</a></li>
+                    <li><a href="about.html" class="nav-link-mobile"><i class="fas fa-info-circle mr-2"></i> About</a></li>
+                    <li><a href="team.html" class="nav-link-mobile"><i class="fas fa-users mr-2"></i> Our Team</a></li>
+                    <li><a href="services.html" class="nav-link-mobile"><i class="fas fa-cogs mr-2"></i> Services</a></li>
+                    <li><a href="portfolio.html" class="nav-link-mobile"><i class="fas fa-briefcase mr-2"></i> Portfolio</a></li>
+                    <li><a href="contact.html" class="nav-link-mobile"><i class="fas fa-envelope mr-2"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="page-hero-section text-center py-20 px-4">
+            <div class="hero-bg"></div>
+            <div class="container animate-fade-in hero-content">
+                <h1 class="text-5xl font-bold mb-4 text-white">Get in Touch</h1>
+                <p class="text-xl mb-8 max-w-2xl mx-auto text-white">
+                    We'd love to hear from you! Reach out to us through any of the methods below.
+                </p>
+            </div>
+        </section>
+
+        <section class="contact-section py-16 px-4 animate-slide-up">
+            <div class="container grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="contact-form-container p-8 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-6 text-center">Send Us a Message</h2>
+                    <form action="https://formspree.io/f/xrbaowob" method="POST" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-lg font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" name="name" required
+                                class="w-full p-3 rounded-md border border-gray-300 focus:ring-primary-color focus:border-primary-color">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-lg font-medium mb-2">Your Email</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full p-3 rounded-md border border-gray-300 focus:ring-primary-color focus:border-primary-color">
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-lg font-medium mb-2">Subject</label>
+                            <input type="text" id="subject" name="subject" required
+                                class="w-full p-3 rounded-md border border-gray-300 focus:ring-primary-color focus:border-primary-color">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-lg font-medium mb-2">Your Message</label>
+                            <textarea id="message" name="message" rows="6" required
+                                class="w-full p-3 rounded-md border border-gray-300 focus:ring-primary-color focus:border-primary-color"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary w-full py-3">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="contact-info-container p-8 rounded-lg shadow-md">
+                    <h2 class="text-3xl font-bold mb-6 text-center">Contact Information</h2>
+                    
+                    <div class="contact-info-item animate-slide-up">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p><a href="tel:+264813441248">+264 81 344 1248</a></p>
+                            <p><a href="tel:+264853441248">+264 85 344 1248</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item animate-slide-up">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p><a href="mailto:haufikufrans7@gmail.com">haufikufrans7@gmail.com</a></p>
+                            <p><a href="mailto:a.techs.graphics@gmail.com">a.techs.graphics@gmail.com</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item animate-slide-up">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>WhatsApp</h3>
+                            <p><a href="https://wa.me/264853441248" target="_blank">Chat with us on WhatsApp</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item animate-slide-up">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Address</h3>
+                            <p>123 Business Street, Windhoek, Namibia</p>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold mt-8 mb-4 text-center">Find Us on the Map</h3>
+                    <div class="map-container rounded-lg overflow-hidden shadow-md">
+                        <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14963.85694200782!2d17.07001475!3d-22.570000000000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1c0b1f1f1f1f1f1f%3A0x1f1f1f1f1f1f1f1f!2sWindhoek%2C%20Namibia!5e0!3m2!1sen!2sus!4v1678901234567!5m2!1sen!2sus"
+                            width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section text-center py-20 px-4 animate-fade-in">
+            <div class="container">
+                <h2 class="text-4xl font-bold mb-4">Have a Project in Mind?</h2>
+                <p class="text-xl mb-8 max-w-2xl mx-auto">
+                    Let's collaborate and bring your vision to life.
+                </p>
+                <a href="contact.html" class="btn-secondary">Discuss Your Project</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-enhanced animate-slide-up">
+        <div class="container py-12">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Logo" class="footer-logo">
+                    <p style="margin-bottom: 1.5rem;">We are a technology company offering cutting-edge solutions in Digital Marketing, IT Support, Web Development, and more. Partner with us for innovation, reliability, and growth.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/264853441248" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-contact">
+                    <h4 class="font-bold mb-4">Quick Links</h4>
+                    <ul>
+                        <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Services</a></li>
+                        <li><a href="about.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> About Us</a></li>
+                        <li><a href="portfolio.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Portfolio</a></li>
+                        <li><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Contact</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Privacy Policy</a></li>
+                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Terms of Service</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h4 class="font-bold mb-4">Contact Info</h4>
+                    <p style="margin-bottom: 1.5rem;"><i class="fas fa-map-marker-alt mr-2" style="color: var(--primary-blue);"></i> Windhoek, Namibia</p>
+                    <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone mr-2" style="color: var(--primary-blue);"></i> Call Us: <a href="tel:+264853441248" class="footer-link" style="display: inline;">+264 85 344 1248</a></p>
+                    <p style="margin-bottom: 1.5rem;"><i class="fas fa-envelope mr-2" style="color: var(--primary-blue);"></i> Email: <a href="mailto:info@amateta.com" class="footer-link" style="display: inline;">info@amateta.com</a></p>
+                    
+                    <div class="help-box">
+                        <h5>Need Immediate Help?</h5>
+                        <a href="contact.html" title="Start a Live Chat or Support Ticket"><i class="fas fa-headset mr-2"></i> Support Center</a>
+                    </div>
+                </div>
+
+                <div class="footer-social">
+                    <h4 class="font-bold mb-4">Newsletter & Updates</h4>
+                    <p style="margin-bottom: 1.5rem;">Subscribe to our newsletter to receive the latest news, updates, and exclusive offers.</p>
+                    <form class="newsletter-form" onsubmit="alert('Thank you for subscribing!'); return false;">
+                        <input type="email" placeholder="Enter your email address" required>
+                        <button type="submit"><i class="fas fa-paper-plane mr-2"></i> Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 AMATETA Techs & Designs. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+        mobileMenuToggle.addEventListener('click', () => {
+            mobileNavOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        closeMobileMenu.addEventListener('click', () => {
+            mobileNavOverlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile menu when clicking on a link
+        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNavOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('.header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+            const icon = themeToggle.querySelector('i');
+            if (document.body.classList.contains('dark-mode')) {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            } else {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            }
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0) translateX(0)'; /* Reset transform for all variants */
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements with animation classes
+        document.addEventListener('DOMContentLoaded', () => {
+            const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-up-left, .animate-slide-up-right, .animate-fade-in');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+                // Only apply transform for slide-up animations, not fade-in
+                if (el.classList.contains('animate-slide-up')) {
+                    el.style.transform = 'translateY(30px)';
+                } else if (el.classList.contains('animate-slide-up-left')) {
+                    el.style.transform = 'translateX(-30px) translateY(30px)';
+                } else if (el.classList.contains('animate-slide-up-right')) {
+                    el.style.transform = 'translateX(30px) translateY(30px)';
+                }
+                
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
