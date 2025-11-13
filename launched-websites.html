@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AMATETA Techs & Designs - Premium Technology Solutions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Launched Websites</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -82,12 +82,12 @@
         /* ---------------------------------
             Hero Section
             --------------------------------- */
-        .hero-section {
+        .page-hero-section {
             background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
             background-size: cover;
             color: var(--white);
             padding: 120px 0;
-            min-height: 80vh;
+            min-height: 40vh;
             display: flex;
             align-items: center;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
@@ -95,7 +95,7 @@
             overflow: hidden;
         }
 
-        .hero-section::before {
+        .page-hero-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -208,50 +208,124 @@
         }
         
         /* ---------------------------------
-            Service Cards
+            Portfolio/Website Cards
             --------------------------------- */
-        .service-card {
+        .portfolio-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .website-card {
             background-color: var(--white);
-            padding: 2.5rem 2rem;
             border-radius: 12px;
+            overflow: hidden;
             box-shadow: var(--shadow);
             transition: all 0.3s ease;
-            height: 100%;
-            border-top: 5px solid var(--light-blue);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 0;
-            background: linear-gradient(to bottom, var(--light-blue), transparent);
-            transition: height 0.3s ease;
-            z-index: 0;
-        }
-
-        .service-card:hover::before {
+            margin-bottom: 30px;
             height: 100%;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
+        .website-card:hover {
+            transform: translateY(-10px);
             box-shadow: var(--shadow-xl);
         }
 
-        .service-card-content {
+        .website-image {
+            height: 220px;
+            overflow: hidden;
             position: relative;
-            z-index: 1;
         }
 
-        .service-card i {
-            color: var(--light-blue);
-            font-size: 2.5rem;
+        .website-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .website-card:hover .website-image img {
+            transform: scale(1.05);
+        }
+
+        .website-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-live {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .status-development {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .website-content {
+            padding: 1.5rem;
+        }
+
+        .website-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .website-description {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .website-features {
+            list-style: none;
+            padding: 0;
             margin-bottom: 1.5rem;
+        }
+
+        .website-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .website-features li i {
+            color: var(--light-blue);
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .website-link {
+            display: block;
+            text-align: center;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .website-link:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .website-link.disabled {
+            background-color: var(--medium-gray);
+            cursor: not-allowed;
+        }
+
+        .website-link.disabled:hover {
+            background-color: var(--medium-gray);
         }
 
         /* ---------------------------------
@@ -405,36 +479,6 @@
         }
 
         /* ---------------------------------
-            Cookie Consent Banner
-            --------------------------------- */
-        .cookie-consent {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            padding: 15px 0;
-            z-index: 9999;
-            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
-            display: none;
-        }
-
-        .cookie-consent.show {
-            display: block;
-        }
-
-        .cookie-consent p {
-            margin-bottom: 0;
-            font-size: 0.9rem;
-        }
-
-        .cookie-consent a {
-            color: var(--light-blue);
-            text-decoration: underline;
-        }
-
-        /* ---------------------------------
             Mobile Responsiveness
             --------------------------------- */
         @media (max-width: 992px) {
@@ -446,16 +490,16 @@
                 max-height: 40px !important;
             }
             
-            .hero-section {
+            .page-hero-section {
                 padding: 80px 0;
-                min-height: 60vh;
+                min-height: 30vh;
             }
             
-            .hero-section h1 {
+            .page-hero-section h1 {
                 font-size: 2.2rem;
             }
             
-            .hero-section p.lead {
+            .page-hero-section p.lead {
                 font-size: 1.1rem;
             }
             
@@ -466,17 +510,13 @@
                 font-size: 1rem;
             }
             
-            .service-card {
-                margin-bottom: 20px;
-            }
-            
             .stats-grid .col-md-3 {
                 margin-bottom: 30px;
             }
         }
 
         @media (max-width: 768px) {
-            .hero-section h1 {
+            .page-hero-section h1 {
                 font-size: 1.8rem;
             }
             
@@ -488,23 +528,6 @@
     </style>
 </head>
 <body>
-
-    <!-- Cookie Consent Banner -->
-    <div class="cookie-consent" id="cookieConsent">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-md-8">
-                    <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies. 
-                    <a href="privacy-policy.html" target="_blank">Learn more</a></p>
-                </div>
-                <div class="col-md-4 text-md-end">
-                    <button class="btn cta-btn-primary btn-sm" id="acceptCookies">Accept</button>
-                    <button class="btn btn-outline-light btn-sm ms-2" id="declineCookies">Decline</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" id="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i> WhatsApp Us
     </a>
@@ -519,18 +542,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="servicesDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Services
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
-                            <li><a class="dropdown-item" href="services.html">All Services</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
                     <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="launched-websites.html">Launched Sites</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="launched-websites.html">Launched Sites</a></li>
                     <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                 </ul>
@@ -540,35 +556,13 @@
 
     <main>
         
-        <section class="hero-section">
+        <section class="page-hero-section">
             <div class="container text-center hero-content">
-                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Digital Innovation That Drives Business Growth</h1>
-                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">We deliver cutting-edge web solutions, powerful digital marketing, and reliable IT support to transform your business in the digital age.</p>
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Our Launched Websites</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Explore the digital solutions we've created for our clients. Each project showcases our expertise in web development, design, and digital strategy.</p>
                 <div data-aos="fade-up" data-aos-delay="200">
-                    <a href="services.html" class="btn cta-btn-primary btn-lg me-3">Explore Our Services</a>
-                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Get Free Consultation</a>
-                </div>
-                <div class="hero-features mt-5" data-aos="fade-up" data-aos-delay="300">
-                    <div class="row justify-content-center">
-                        <div class="col-md-4 col-sm-6 mb-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <i class="fas fa-check-circle text-light-blue me-2"></i>
-                                <span>Custom Web Development</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 mb-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <i class="fas fa-check-circle text-light-blue me-2"></i>
-                                <span>24/7 Technical Support</span>
-                            </div>
-                        </div>
-                        <div class="col-md-4 col-sm-6 mb-3">
-                            <div class="d-flex align-items-center justify-content-center">
-                                <i class="fas fa-check-circle text-light-blue me-2"></i>
-                                <span>Proven Digital Marketing</span>
-                            </div>
-                        </div>
-                    </div>
+                    <a href="#websites" class="btn cta-btn-primary btn-lg me-3">View Our Work</a>
+                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Start Your Project</a>
                 </div>
             </div>
         </section>
@@ -578,122 +572,247 @@
                 <div class="row stats-grid text-center">
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="150">0</div>
-                            <div class="stat-label">Projects Completed</div>
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Websites Launched</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="50">0</div>
+                            <div class="stat-number" data-count="12">0</div>
                             <div class="stat-label">Happy Clients</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="3">0</div>
-                            <div class="stat-label">Years Experience</div>
+                            <div class="stat-number" data-count="6">0</div>
+                            <div class="stat-label">Ongoing Projects</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-item">
-                            <div class="stat-number" data-count="24">0</div>
-                            <div class="stat-label">Support Availability</div>
+                            <div class="stat-number" data-count="100">0</div>
+                            <div class="stat-label">Satisfaction Rate</div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section class="py-5 bg-light">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 mb-5 mb-lg-0" data-aos="fade-right">
-                        <h2 class="section-title text-primary-color">Transforming Businesses Through Technology</h2>
-                        <p class="mb-4">At AMATETA Techs & Designs, we're passionate about leveraging cutting-edge technology to solve business challenges and drive growth. With expertise spanning web development, digital marketing, and IT support, we deliver comprehensive solutions tailored to your unique needs.</p>
-                        <p class="mb-4">Our team combines technical excellence with creative thinking to build digital experiences that engage customers, streamline operations, and generate measurable results.</p>
-                        <a href="about.html" class="btn cta-btn-primary">Learn More About Us</a>
-                    </div>
-                    <div class="col-lg-6" data-aos="fade-left">
-                        <img src="images/Our Goal.jpg" alt="About AMATETA" class="img-fluid rounded shadow-lg">
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <section class="py-5 bg-white">
+
+        <section id="websites" class="portfolio-section">
             <div class="container">
                 <div class="text-center mb-5">
-                    <h2 class="section-title text-primary-color">Our Core Services</h2>
-                    <p class="lead">We offer a comprehensive suite of technology solutions designed to power your business growth in the digital era.</p>
+                    <h2 class="section-title text-primary-color">Our Portfolio of Launched Websites</h2>
+                    <p class="lead">Browse through our collection of successfully launched websites across various industries</p>
                 </div>
+
                 <div class="row">
+                    <!-- Logos Medical Website -->
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-                        <div class="service-card">
-                            <div class="service-card-content text-center">
-                                <i class="fas fa-code"></i>
-                                <h4 class="fw-bold mb-3">Website Development</h4>
-                                <p>Custom, responsive websites built with the latest technologies to deliver exceptional user experiences and drive conversions.</p>
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Logos Medical Website">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Logos Medical</h3>
+                                <p class="website-description">A comprehensive medical website providing healthcare information, services, and patient resources for a medical practice.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                                    <li><i class="fas fa-check"></i> Medical Service Listings</li>
+                                    <li><i class="fas fa-check"></i> Patient Portal Integration</li>
+                                    <li><i class="fas fa-check"></i> Appointment Booking System</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/LOGOS-MEDICAL-WEBSITE/" class="website-link" target="_blank">Visit Website</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Lavital Graphics & Design -->
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card">
-                            <div class="service-card-content text-center">
-                                <i class="fas fa-server"></i>
-                                <h4 class="fw-bold mb-3">Hosting & Domains</h4>
-                                <p>Reliable web hosting, domain registration, and transfer services with 99.9% uptime guarantee and expert support.</p>
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Lavital Graphics & Design">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Lavital Graphics & Design</h3>
+                                <p class="website-description">A creative agency website showcasing graphic design services, portfolio, and client testimonials.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Portfolio Gallery</li>
+                                    <li><i class="fas fa-check"></i> Service Showcase</li>
+                                    <li><i class="fas fa-check"></i> Client Testimonials</li>
+                                    <li><i class="fas fa-check"></i> Contact Form Integration</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/Lavital.Graphics.Design/" class="website-link" target="_blank">Visit Website</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Astute Technologies -->
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card">
-                            <div class="service-card-content text-center">
-                                <i class="fas fa-tools"></i>
-                                <h4 class="fw-bold mb-3">Website Management</h4>
-                                <p>Comprehensive website maintenance, security updates, performance optimization, and content management services.</p>
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Astute Technologies">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Astute Technologies</h3>
+                                <p class="website-description">A technology company website offering IT solutions, software development, and tech consulting services.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Service Catalog</li>
+                                    <li><i class="fas fa-check"></i> Case Studies</li>
+                                    <li><i class="fas fa-check"></i> Team Showcase</li>
+                                    <li><i class="fas fa-check"></i> Blog Integration</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/astute-technologies-com/" class="website-link" target="_blank">Visit Website</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Astute Technology (Alternative) -->
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-                        <div class="service-card">
-                            <div class="service-card-content text-center">
-                                <i class="fas fa-headset"></i>
-                                <h4 class="fw-bold mb-3">24/7 IT Support</h4>
-                                <p>Round-the-clock technical support for all your IT infrastructure, software, and network needs.</p>
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Astute Technology">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Astute Technology</h3>
+                                <p class="website-description">An alternative technology solutions website with a focus on innovation and cutting-edge digital solutions.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Modern UI/UX Design</li>
+                                    <li><i class="fas fa-check"></i> Solution Showcase</li>
+                                    <li><i class="fas fa-check"></i> Client Portfolio</li>
+                                    <li><i class="fas fa-check"></i> Contact Integration</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/Astutetechnology/" class="website-link" target="_blank">Visit Website</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Galaxy Printing NAM -->
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="service-card">
-                            <div class="service-card-content text-center">
-                                <i class="fas fa-bullhorn"></i>
-                                <h4 class="fw-bold mb-3">Digital Marketing</h4>
-                                <p>Data-driven digital marketing strategies including SEO, social media, PPC, and content marketing to boost your online presence.</p>
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Galaxy Printing NAM">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Galaxy Printing NAM</h3>
+                                <p class="website-description">A printing services website offering various printing solutions, from business cards to large format prints.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Product Catalog</li>
+                                    <li><i class="fas fa-check"></i> Online Quoting System</li>
+                                    <li><i class="fas fa-check"></i> Portfolio Showcase</li>
+                                    <li><i class="fas fa-check"></i> Contact & Order Forms</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/GALAXY-PRINTING-NAM/" class="website-link" target="_blank">Visit Website</a>
                             </div>
                         </div>
                     </div>
+
+                    <!-- NAM ATS and Professional Resume Builder -->
                     <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="service-card">
-                            <div class="service-card-content text-center">
-                                <i class="fas fa-palette"></i>
-                                <h4 class="fw-bold mb-3">Graphic Design</h4>
-                                <p>Creative visual solutions including logos, branding, marketing materials, and corporate printing services.</p>
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="NAM ATS and Professional Resume Builder">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">NAM ATS & Resume Builder</h3>
+                                <p class="website-description">An Applicant Tracking System and professional resume building platform for job seekers and employers.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Resume Builder Tool</li>
+                                    <li><i class="fas fa-check"></i> ATS Integration</li>
+                                    <li><i class="fas fa-check"></i> Job Search Functionality</li>
+                                    <li><i class="fas fa-check"></i> User Dashboard</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/NAM-ATS-AND-PROFESSIONAL-RESUME-BUILDER/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- City Wing Shuttles -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="City Wing Shuttles">
+                                <span class="website-status status-development">Under Development</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">City Wing Shuttles</h3>
+                                <p class="website-description">A transportation service website offering shuttle services, booking system, and route information.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Online Booking System</li>
+                                    <li><i class="fas fa-check"></i> Route & Schedule Display</li>
+                                    <li><i class="fas fa-check"></i> Payment Integration</li>
+                                    <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
+                                </ul>
+                                <a href="http://www.citywingshuttles.com" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Project Placeholder 1 -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="E-commerce Website">
+                                <span class="website-status status-development">Under Development</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">E-commerce Platform</h3>
+                                <p class="website-description">A comprehensive e-commerce solution with product catalog, shopping cart, and secure payment processing.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Product Management</li>
+                                    <li><i class="fas fa-check"></i> Shopping Cart</li>
+                                    <li><i class="fas fa-check"></i> Payment Gateway</li>
+                                    <li><i class="fas fa-check"></i> Order Tracking</li>
+                                </ul>
+                                <a href="#" class="website-link disabled">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Project Placeholder 2 -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Business Consulting">
+                                <span class="website-status status-development">Under Development</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Business Consulting Portal</h3>
+                                <p class="website-description">A platform for business consulting services with client management, project tracking, and resource library.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Client Portal</li>
+                                    <li><i class="fas fa-check"></i> Project Management</li>
+                                    <li><i class="fas fa-check"></i> Resource Library</li>
+                                    <li><i class="fas fa-check"></i> Consultation Booking</li>
+                                </ul>
+                                <a href="#" class="website-link disabled">Coming Soon</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-4">
-                    <a href="services.html" class="btn cta-btn-primary btn-lg">View All Services</a>
+
+                <div class="text-center mt-5">
+                    <h3 class="mb-4">Ready to Launch Your Next Project?</h3>
+                    <p class="lead mb-4">Let's work together to create a stunning website that drives results for your business.</p>
+                    <a href="contact.html" class="btn cta-btn-primary btn-lg">Start Your Project Today</a>
                 </div>
             </div>
         </section>
 
         <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
             <div class="container" data-aos="zoom-in">
-                <h2 class="fw-bold mb-3">Ready to Transform Your Digital Presence?</h2>
-                <p class="lead mb-4">Let's discuss how our technology solutions can drive growth for your business. Contact us today for a free consultation.</p>
-                <a href="contact.html" class="btn cta-btn-primary btn-lg">
-                    <i class="far fa-calendar-check me-2"></i> GET IN TOUCH NOW
+                <h2 class="fw-bold mb-3">Impressed With Our Work?</h2>
+                <p class="lead mb-4">Let's discuss how we can create an exceptional website for your business too.</p>
+                <a href="contact.html" class="btn cta-btn-primary btn-lg me-3">
+                    <i class="far fa-calendar-check me-2"></i> GET FREE CONSULTATION
+                </a>
+                <a href="tel:+264853441248" class="btn cta-btn-secondary btn-lg">
+                    <i class="fas fa-phone me-2"></i> CALL US NOW
                 </a>
             </div>
         </section>
@@ -726,11 +845,10 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Our Services</h5>
                     <a href="services.html"><i class="fas fa-code"></i> Website Development</a>
-                    <a href="services.html"><i class="fas fa-server"></i> Web Hosting</a>
-                    <a href="services.html"><i class="fas fa-globe"></i> Domain Names</a>
-                    <a href="services.html"><i class="fas fa-exchange-alt"></i> Domain Transfer</a>
-                    <a href="services.html"><i class="fas fa-envelope"></i> Business Emails</a>
+                    <a href="services.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+                    <a href="services.html"><i class="fas fa-palette"></i> Graphic Design</a>
                     <a href="services.html"><i class="fas fa-headset"></i> IT Support</a>
+                    <a href="services.html"><i class="fas fa-print"></i> Printing Services</a>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <h5>Contact & Support</h5>

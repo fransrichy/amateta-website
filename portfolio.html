@@ -5,211 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMATETA Techs & Designs - Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" href="images/logo.jpg" type="image/x-icon">
     
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --primary-blue: #2563eb;
-            --light-blue: #3b82f6;
-            --dark-blue: #1d4ed8;
-            --text-blue: #1e40af;
+            --primary-blue: #0a2540;
+            --light-blue: #00b4d8;
+            --accent-blue: #0077b6;
+            --dark-blue: #03045e;
             --white: #ffffff;
             --light-gray: #f8fafc;
             --medium-gray: #e2e8f0;
             --dark-gray: #64748b;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-blue);
             background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        .header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            padding: 5px 0;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-blue);
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
             color: var(--primary-blue);
-            background-color: rgba(37, 99, 235, 0.1);
+            padding-top: 80px; /* Space for fixed navbar */
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar {
             background-color: var(--primary-blue);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            transition: background-color 0.3s;
+            box-shadow: var(--shadow);
+            z-index: 1030;
+            padding: 10px 0;
         }
 
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 80%;
+        .navbar.scrolled {
+            padding: 5px 0;
+            background-color: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-link.active {
-            color: var(--primary-blue);
+        .logo-mobile-safe {
+            max-height: 50px;
         }
 
-        .mobile-menu-toggle, .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-blue);
-            cursor: pointer;
-            display: none;
-            transition: all 0.3s ease;
-            margin-left: 1rem;
-        }
-
-        .mobile-menu-toggle:hover, .theme-toggle:hover {
-            color: var(--primary-blue);
-        }
-
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-nav-overlay.active {
-            transform: translateX(0);
-        }
-
-        .close-mobile-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--text-blue);
-            cursor: pointer;
-        }
-
-        .mobile-nav-menu ul {
-            list-style: none;
-            text-align: center;
-        }
-
-        .mobile-nav-menu li {
-            margin-bottom: 1.5rem;
-        }
-
-        .nav-link-mobile {
-            text-decoration: none;
-            color: var(--text-blue);
-            font-size: 1.5rem;
+        .navbar-brand, .nav-link {
+            color: var(--white) !important;
             font-weight: 600;
-            transition: color 0.3s ease;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .nav-link-mobile:hover {
-            color: var(--primary-blue);
+        .nav-link:hover, .nav-link.active {
+            color: var(--light-blue) !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--light-blue);
         }
 
-        /* Hero Section */
-        .page-hero-section {
-            position: relative;
-            padding: 100px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+        .navbar-toggler {
+            border: none;
             color: var(--white);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* ---------------------------------
+            Hero Section
+            --------------------------------- */
+        .page-hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+            color: var(--white);
+            padding: 120px 0;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-bg {
+        .page-hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
             background-size: cover;
         }
 
@@ -218,297 +111,368 @@
             z-index: 1;
         }
 
-        .text-5xl {
-            font-size: 3rem;
-            line-height: 1.2;
-        }
-
-        .font-bold {
-            font-weight: 700;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-        }
-
-        .mb-8 {
-            margin-bottom: 2rem;
-        }
-
-        .max-w-2xl {
-            max-width: 42rem;
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-primary, .btn-secondary {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-align: center;
+        /* ---------------------------------
+            Floating WhatsApp Button
+            --------------------------------- */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #06014b;
+            color: var(--white);
             border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
             box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--primary-blue);
-            border: 2px solid var(--primary-blue);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-        
-        /* Portfolio Gallery Section */
-        .portfolio-gallery-section {
-            padding: 80px 20px;
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-
-        .md\:grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .lg\:grid-cols-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-
-        .gap-8 {
-            gap: 2rem;
-        }
-
-        .portfolio-item {
-            background-color: var(--white);
-            padding: 0;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            height: 100%;
-            border-top: 5px solid var(--primary-blue);
-            overflow: hidden;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-            border-top-color: var(--light-blue);
-        }
-
-        .w-full {
-            width: 100%;
-        }
-
-        .h-64 {
-            height: 16rem;
-        }
-
-        .object-cover {
-            object-fit: cover;
-        }
-
-        .p-6 {
-            padding: 1.5rem;
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .font-semibold {
-            font-weight: 600;
-        }
-
-        .mb-2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .text-md {
-            font-size: 1rem;
-        }
-
-        .text-primary-color {
-            color: var(--primary-blue);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-
-        .text-primary-color:hover {
-            color: var(--dark-blue);
-            text-decoration: underline;
-        }
-
-        .ml-1 {
-            margin-left: 0.25rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
-            color: var(--white);
-        }
-        
-        /* CTA Button override for dark background */
-        .cta-section .btn-secondary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            border: 2px solid var(--white);
-        }
-
-        .cta-section .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border-color: var(--primary-blue);
-        }
-
-        /* Footer - ENHANCED STYLES */
-        .footer-enhanced {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 60px 0 20px;
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .footer-enhanced p, .footer-enhanced h4 {
-            color: var(--medium-gray);
-        }
-
-        .footer-enhanced h4 {
-            color: var(--white);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 2.5rem;
-            padding-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr;
-            }
-        }
-
-        .footer-logo {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .footer-link {
-            color: var(--medium-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-link:hover {
-            color: var(--light-blue);
-            transform: translateX(5px);
-        }
-
-        .footer-link i {
-            color: var(--primary-blue);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            animation: pulse 2.5s infinite;
+            transition: transform 0.2s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            text-decoration: none;
+        }
+        
+        #whatsapp-btn:hover {
+            transform: scale(1.05);
+            background-color: #00c3ff;
+        }
+        
+        #whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ---------------------------------
+            General Content & CTA Styles
+            --------------------------------- */
+        .text-primary-color { color: var(--primary-blue) !important; }
+        .text-light-blue { color: var(--light-blue) !important; }
+
+        .cta-btn-primary {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
             color: var(--white);
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary-blue);
-            transform: translateY(-3px) scale(1.05);
-        }
-
-        /* New Footer Components */
-        .newsletter-form input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            color: var(--text-blue);
-        }
-
-        .newsletter-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.1s;
             font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            color: var(--white);
         }
 
-        .newsletter-form button:hover {
+        .cta-btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
             background-color: var(--light-blue);
         }
 
-        .help-box {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 1rem;
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* ---------------------------------
+            Portfolio Styles
+            --------------------------------- */
+        .portfolio-section {
+            padding: 80px 0;
+        }
+        
+        .portfolio-filter {
+            margin-bottom: 3rem;
             text-align: center;
+        }
+        
+        .filter-btn {
+            background: transparent;
+            border: 2px solid var(--light-blue);
+            color: var(--primary-blue);
+            padding: 8px 20px;
+            margin: 0 5px 10px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--light-blue);
+            color: var(--white);
+        }
+        
+        .portfolio-category {
+            margin-bottom: 4rem;
+        }
+        
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+        
+        .category-description {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .portfolio-item {
+            margin-bottom: 30px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            background-color: var(--white);
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 37, 64, 0.8), rgba(0, 180, 216, 0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        
+        .portfolio-title {
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+        
+        .portfolio-category-tag {
+            color: var(--light-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .portfolio-link {
+            color: var(--white);
+            background-color: var(--light-blue);
+            padding: 8px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .portfolio-link:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+        }
+        
+        .portfolio-info {
+            padding: 1.5rem;
+        }
+        
+        .portfolio-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .portfolio-info p {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+        }
+        
+        .portfolio-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .tech-tag {
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        /* ---------------------------------
+            Stats Section
+            --------------------------------- */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ---------------------------------
+            Footer Style
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer h5 { 
+            color: var(--light-blue); 
+            margin-bottom: 20px; 
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .amateta-footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-blue);
+        }
+
+        .amateta-footer a { 
+            color: #ccc; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 8px; 
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .amateta-footer a:hover { 
+            color: var(--light-blue); 
+            transform: translateX(5px);
+        }
+
+        .amateta-footer a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer .social-icons a { 
+            display: inline-block; 
+            margin-right: 15px; 
+            font-size: 1.5rem; 
+            color: var(--white); 
+            transition: color 0.2s, transform 0.2s; 
+        }
+
+        .amateta-footer .social-icons a:hover { 
+            color: var(--light-blue); 
+            transform: translateY(-3px);
+        }
+
+        .credit-line { 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 20px; 
+            margin-top: 30px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+        }
+
+        .help-box {
+            background-color: rgba(0, 180, 216, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--light-blue);
         }
 
         .help-box h5 {
@@ -518,562 +482,590 @@
         }
 
         .help-box a {
-            color: var(--dark-blue);
+            color: var(--white);
             display: inline-block;
-            background-color: #f1c40f;
-            padding: 8px 15px;
+            background-color: var(--light-blue);
+            padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            margin-top: 0.5rem;
         }
 
         .help-box a:hover {
-            background-color: #e67e22;
+            background-color: var(--accent-blue);
             transform: scale(1.05);
         }
 
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: var(--medium-gray);
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            background-color: var(--white);
         }
-        /* End Enhanced Footer Styles */
 
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25d366;
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--light-blue);
             color: var(--white);
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: var(--shadow-lg);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        .newsletter-form button:hover {
+            background-color: var(--accent-blue);
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* Animations */
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-
-        .animate-slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .animate-slide-up-left {
-            animation: slideUpLeft 0.8s ease-out;
-        }
-
-        .animate-slide-up-right {
-            animation: slideUpRight 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUpLeft {
-            from { 
-                opacity: 0;
-                transform: translateX(-30px) translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0) translateY(0);
-            }
-        }
-
-        @keyframes slideUpRight {
-            from { 
-                opacity: 0;
-                transform: translateX(30px) translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0) translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .text-5xl {
-                font-size: 2.5rem;
+        /* ---------------------------------
+            Mobile Responsiveness
+            --------------------------------- */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 70px;
             }
             
-            .nav-menu {
-                display: none;
+            .logo-mobile-safe {
+                max-height: 40px !important;
             }
             
-            .mobile-menu-toggle, .theme-toggle {
-                display: block;
+            .page-hero-section {
+                padding: 80px 0;
+                min-height: 30vh;
+            }
+            
+            .page-hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero-section p.lead {
+                font-size: 1.1rem;
+            }
+            
+            #whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .portfolio-item {
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid .col-md-3 {
+                margin-bottom: 30px;
             }
         }
 
         @media (max-width: 768px) {
-            .text-5xl {
-                font-size: 2rem;
+            .page-hero-section h1 {
+                font-size: 1.8rem;
             }
             
-            .text-4xl {
-                font-size: 1.75rem;
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
-            
-            .page-hero-section {
-                padding: 80px 20px;
-            }
-            
-            .portfolio-gallery-section, .cta-section {
-                padding: 60px 20px;
-            }
-            
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-            
-            .lg\:grid-cols-3 {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .text-5xl {
-                font-size: 1.75rem;
-            }
-            
-            .text-xl {
-                font-size: 1rem;
-            }
-            
-            .btn-primary, .btn-secondary {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-
-        /* Dark Mode Styles (integrated for theme toggle) */
-        .dark-mode {
-            --primary-blue: #70a1ff;
-            --light-blue: #3b82f6;
-            --dark-blue: #141f4d;
-            --text-blue: #f8fafc;
-            --white: #2c2c4d;
-            --light-gray: #1a1a2e;
-            --medium-gray: #94a3b8;
-            --dark-gray: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
-        }
-
-        .dark-mode body {
-            background-color: var(--light-gray);
-            color: var(--text-blue);
-        }
-        .dark-mode .header {
-            background-color: var(--dark-blue);
-        }
-        .dark-mode .footer-enhanced {
-            background-color: var(--dark-blue);
-        }
-        .dark-mode .portfolio-item {
-            background-color: #1d2b4d;
-            border-top-color: var(--primary-blue);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        .dark-mode .nav-link, .dark-mode .mobile-menu-toggle, .dark-mode .theme-toggle, .dark-mode .close-mobile-menu, .dark-mode .nav-link-mobile {
-            color: var(--text-blue);
-        }
-        .dark-mode .nav-link:hover, .dark-mode .mobile-menu-toggle:hover, .dark-mode .theme-toggle:hover {
-            color: var(--primary-blue);
-        }
-        .dark-mode .page-hero-section {
-            background: linear-gradient(135deg, #141f4d 0%, #1d4ed8 100%);
-        }
-        .dark-mode .btn-primary {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-        .dark-mode .btn-secondary {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-        }
-        .dark-mode .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--dark-blue);
-        }
-        .dark-mode .footer-link {
-            color: var(--medium-gray);
-        }
-        .dark-mode .footer-link:hover {
-            color: var(--primary-blue);
-        }
-        .dark-mode .newsletter-form input[type="email"] {
-            background-color: #1a1a2e;
-            color: var(--text-blue);
-        }
-        .dark-mode .help-box a {
-            background-color: #e67e22;
         }
     </style>
 </head>
 <body>
-    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" id="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
     </a>
 
-    <header class="header">
-        <div class="container flex justify-between items-center py-4">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-12 w-auto rounded-md">
-                </a>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="logo-mobile-safe">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="launched-websites.html">Launched Sites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
             </div>
-
-            <nav class="nav-menu">
-                <ul class="flex space-x-8">
-                    <li><a href="index.html" class="nav-link"><i class="fas fa-home mr-1"></i> Home</a></li>
-                    <li><a href="about.html" class="nav-link"><i class="fas fa-info-circle mr-1"></i> About</a></li>
-                    <li><a href="team.html" class="nav-link"><i class="fas fa-users mr-1"></i> Our Team</a></li>
-                    <li><a href="services.html" class="nav-link"><i class="fas fa-cogs mr-1"></i> Services</a></li>
-                    <li><a href="portfolio.html" class="nav-link active"><i class="fas fa-briefcase mr-1"></i> Portfolio</a></li>
-                    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope mr-1"></i> Contact</a></li>
-                </ul>
-            </nav>
-
-            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <button id="theme-toggle" class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </button>
         </div>
-
-        <div id="mobile-nav-overlay" class="mobile-nav-overlay">
-            <button id="close-mobile-menu" class="close-mobile-menu">&times;</button>
-            <nav class="mobile-nav-menu">
-                <ul>
-                    <li><a href="index.html" class="nav-link-mobile"><i class="fas fa-home mr-2"></i> Home</a></li>
-                    <li><a href="about.html" class="nav-link-mobile"><i class="fas fa-info-circle mr-2"></i> About</a></li>
-                    <li><a href="team.html" class="nav-link-mobile"><i class="fas fa-users mr-2"></i> Our Team</a></li>
-                    <li><a href="services.html" class="nav-link-mobile"><i class="fas fa-cogs mr-2"></i> Services</a></li>
-                    <li><a href="portfolio.html" class="nav-link-mobile"><i class="fas fa-briefcase mr-2"></i> Portfolio</a></li>
-                    <li><a href="contact.html" class="nav-link-mobile"><i class="fas fa-envelope mr-2"></i> Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    </nav>
 
     <main>
-        <section class="page-hero-section text-center py-20 px-4">
-            <div class="hero-bg"></div>
-            <div class="container animate-fade-in hero-content">
-                <h1 class="text-5xl font-bold mb-4 text-white">Our Creative Portfolio</h1>
-                <p class="text-xl mb-8 max-w-2xl mx-auto text-white">
-                    Showcasing our best work in web development, graphic design, and marketing.
-                </p>
+        
+        <section class="page-hero-section">
+            <div class="container text-center hero-content">
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Our Creative Portfolio</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Showcasing our best work in web development, graphic design, and digital marketing solutions</p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#portfolio" class="btn cta-btn-primary btn-lg me-3">View Our Work</a>
+                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Start Your Project</a>
+                </div>
             </div>
         </section>
 
-        <section class="portfolio-gallery-section py-16 px-4 animate-slide-up">
+        <section id="portfolio" class="portfolio-section">
             <div class="container">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/ASTUTE.jpg" alt="Project ASTUTE" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">ASTUTE Technologies Website</h3>
-                            <p class="text-md mb-4">A modern and responsive website designed for ASTUTE Technologies.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                <div class="portfolio-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="graphic">Graphic Design</button>
+                    <button class="filter-btn" data-filter="branding">Branding</button>
+                    <button class="filter-btn" data-filter="marketing">Digital Marketing</button>
+                </div>
+                
+                <!-- Web Development Category -->
+                <div class="portfolio-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Web Development</h2>
+                        <p class="category-description">Custom websites and web applications built with modern technologies</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="web" data-aos="fade-up">
+                            <img src="images/ASTUTE.jpg" alt="ASTUTE Technologies Website" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">ASTUTE Technologies</h3>
+                                <p class="portfolio-category-tag">Web Development</p>
+                                <p class="text-white mb-3">A modern, responsive corporate website with integrated services showcase</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>ASTUTE Technologies Website</h3>
+                                <p>A comprehensive corporate website showcasing technology services with modern UI/UX design.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Bootstrap</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/Screenshot (63).png" alt="Responsive Website Development" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Responsive Business Website</h3>
+                                <p class="portfolio-category-tag">Web Development</p>
+                                <p class="text-white mb-3">Fully responsive business website with mobile-first approach</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Responsive Business Website</h3>
+                                <p>A mobile-first responsive website with optimized performance and SEO-friendly structure.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">HTML5</span>
+                                    <span class="tech-tag">CSS3</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Responsive Design</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="web" data-aos="fade-up" data-aos-delay="200">
+                            <img src="https://via.placeholder.com/400x250/0077b6/ffffff?text=E-commerce+Platform" alt="E-commerce Platform" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">E-commerce Platform</h3>
+                                <p class="portfolio-category-tag">Web Development</p>
+                                <p class="text-white mb-3">Complete online store with payment integration and inventory management</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>E-commerce Platform</h3>
+                                <p>A fully functional online store with product catalog, shopping cart, and secure payment processing.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">PHP</span>
+                                    <span class="tech-tag">MySQL</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Payment Gateway</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Lavital.jpg" alt="Project LAVITAL" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">LAVITAL Graphic Design</h3>
-                            <p class="text-md mb-4">Creative graphic design solutions for Lavital Investments CC.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Graphic Design Category -->
+                <div class="portfolio-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Graphic Design</h2>
+                        <p class="category-description">Creative visual solutions for branding, marketing, and communication</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="graphic" data-aos="fade-up">
+                            <img src="images/Lavital.jpg" alt="LAVITAL Graphic Design" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">LAVITAL Investments</h3>
+                                <p class="portfolio-category-tag">Graphic Design</p>
+                                <p class="text-white mb-3">Complete branding package for investment company</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>LAVITAL Investments Branding</h3>
+                                <p>Complete corporate identity including logo design, business cards, and marketing materials.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Adobe Illustrator</span>
+                                    <span class="tech-tag">Adobe Photoshop</span>
+                                    <span class="tech-tag">Brand Identity</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="graphic" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/Ads.jpg" alt="Graphic Design Ads" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Marketing Campaign Ads</h3>
+                                <p class="portfolio-category-tag">Graphic Design</p>
+                                <p class="text-white mb-3">Eye-catching advertising materials for various campaigns</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Marketing Campaign Ads</h3>
+                                <p>Series of promotional posters and digital ads designed for maximum engagement and conversion.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Adobe Photoshop</span>
+                                    <span class="tech-tag">Adobe InDesign</span>
+                                    <span class="tech-tag">Visual Communication</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="graphic" data-aos="fade-up" data-aos-delay="200">
+                            <img src="images/business-card-2.jpg" alt="Business Cards Design" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Business Card Collection</h3>
+                                <p class="portfolio-category-tag">Graphic Design</p>
+                                <p class="text-white mb-3">Professional business card designs for various industries</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Business Card Collection</h3>
+                                <p>A collection of professionally designed business cards with various styles and finishes.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Adobe Illustrator</span>
+                                    <span class="tech-tag">Print Design</span>
+                                    <span class="tech-tag">Typography</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Screenshot (63).png" alt="Project Responsive Website" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Responsive Website Development</h3>
-                            <p class="text-md mb-4">Showcasing our expertise in responsive web development.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                </div>
+                
+                <!-- Branding & Print Category -->
+                <div class="portfolio-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Branding & Print</h2>
+                        <p class="category-description">Physical branding solutions and print materials for business promotion</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="branding" data-aos="fade-up">
+                            <img src="images/Display Stands.jpg" alt="Outdoor Display" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Outdoor Display Solutions</h3>
+                                <p class="portfolio-category-tag">Branding</p>
+                                <p class="text-white mb-3">A-Frames and pop-up banners for outdoor advertising</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Outdoor Display Solutions</h3>
+                                <p>Portable display stands and banners designed for trade shows, events, and retail environments.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Large Format Printing</span>
+                                    <span class="tech-tag">Display Design</span>
+                                    <span class="tech-tag">Brand Visibility</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="branding" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/Wall-Banner.jpg" alt="Wall Banner" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Custom Wall Banners</h3>
+                                <p class="portfolio-category-tag">Branding</p>
+                                <p class="text-white mb-3">Large format wall banners for impactful corporate branding</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Custom Wall Banners</h3>
+                                <p>Large-scale wall banners designed for maximum visual impact in corporate and retail spaces.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Large Format Printing</span>
+                                    <span class="tech-tag">Visual Impact</span>
+                                    <span class="tech-tag">Brand Messaging</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="branding" data-aos="fade-up" data-aos-delay="200">
+                            <img src="images/Banner-sample1.webp" alt="Pull Up Banner" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">X-Frame & Pull-Up Banners</h3>
+                                <p class="portfolio-category-tag">Branding</p>
+                                <p class="text-white mb-3">Portable display solutions for events and promotions</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>X-Frame & Pull-Up Banners</h3>
+                                <p>Professional portable display systems designed for easy setup and high visual impact at events.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Portable Displays</span>
+                                    <span class="tech-tag">Event Marketing</span>
+                                    <span class="tech-tag">Brand Promotion</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Ads.jpg" alt="Project Graphic Design Ads" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Graphic Design Ads Campaign</h3>
-                            <p class="text-md mb-4">Effective advertising posters and designs for various clients.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
+                </div>
+                
+                <!-- Digital Marketing Category -->
+                <div class="portfolio-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Digital Marketing</h2>
+                        <p class="category-description">Strategic marketing campaigns and promotional materials</p>
                     </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Display Stands.jpg" alt="Project Outdoor Display" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Outdoor Display Branding</h3>
-                            <p class="text-md mb-4">A-Frames and Pop-up banners for outdoor advertising.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="marketing" data-aos="fade-up">
+                            <img src="images/Bealboard.jpg" alt="Billboards" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Billboard Advertising</h3>
+                                <p class="portfolio-category-tag">Digital Marketing</p>
+                                <p class="text-white mb-3">Large-scale billboard designs for maximum exposure</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Billboard Advertising Campaign</h3>
+                                <p>Strategic outdoor advertising designs created for high visibility and brand recognition.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Outdoor Advertising</span>
+                                    <span class="tech-tag">Brand Awareness</span>
+                                    <span class="tech-tag">Visual Impact</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Wall-Banner.jpg" alt="Project Wall Banner" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Custom Wall Banners</h3>
-                            <p class="text-md mb-4">Large format wall banners for impactful corporate branding.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="marketing" data-aos="fade-up" data-aos-delay="100">
+                            <img src="images/Profile 2.jpg" alt="Company Profiles" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Company Profile Design</h3>
+                                <p class="portfolio-category-tag">Digital Marketing</p>
+                                <p class="text-white mb-3">Comprehensive and professional company profiles</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Company Profile Design</h3>
+                                <p>Professional company profiles designed to showcase business capabilities and build credibility.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Corporate Branding</span>
+                                    <span class="tech-tag">Document Design</span>
+                                    <span class="tech-tag">Business Communication</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Banner-sample1.webp" alt="Project Pull Up Banner" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">X-Frame & Pull-Up Banners</h3>
-                            <p class="text-md mb-4">Portable display solutions for events and promotions.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/business-card-2.jpg" alt="Business Cards Design" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Business Card Designs</h3>
-                            <p class="text-md mb-4">Professional and eye-catching business card designs.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/correx_estate_agent_sign_3_1.jpg" alt="Estate Boards" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Estate Board Signage</h3>
-                            <p class="text-md mb-4">Custom estate boards for property advertising.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Bealboard.jpg" alt="Billboards" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Billboard Advertisements</h3>
-                            <p class="text-md mb-4">Large-scale billboard designs for maximum exposure.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Profile 2.jpg" alt="Company Profiles" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Company Profile Creation</h3>
-                            <p class="text-md mb-4">Designing comprehensive and professional company profiles.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Softwares.png" alt="Graphic Design Training" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Graphic Design Training Materials</h3>
-                            <p class="text-md mb-4">Training course materials for aspiring graphic designers.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Unti.jpg" alt="Kaspersky Antivirus" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Kaspersky Antivirus Promotion</h3>
-                            <p class="text-md mb-4">Marketing materials for IT software supply.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
-                        </div>
-                    </div>
-                    <div class="portfolio-item rounded-lg shadow-lg overflow-hidden animate-slide-up">
-                        <img src="images/Microsoft.jpg" alt="Microsoft Packages" class="w-full h-64 object-cover">
-                        <div class="p-6">
-                            <h3 class="text-2xl font-semibold mb-2">Microsoft Software Packages</h3>
-                            <p class="text-md mb-4">Promotional designs for various Microsoft software products.</p>
-                            <a href="#" class="text-primary-color hover:underline">View Project <i class="fas fa-arrow-right ml-1"></i></a>
+                        
+                        <div class="col-lg-4 col-md-6 portfolio-item" data-category="marketing" data-aos="fade-up" data-aos-delay="200">
+                            <img src="images/correx_estate_agent_sign_3_1.jpg" alt="Estate Boards" class="portfolio-img">
+                            <div class="portfolio-overlay">
+                                <h3 class="portfolio-title">Estate Agent Signage</h3>
+                                <p class="portfolio-category-tag">Digital Marketing</p>
+                                <p class="text-white mb-3">Custom estate boards for property advertising</p>
+                                <a href="#" class="portfolio-link">View Details</a>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Estate Agent Signage</h3>
+                                <p>Professional real estate signage designed to attract potential buyers and promote properties effectively.</p>
+                                <div class="portfolio-tech">
+                                    <span class="tech-tag">Real Estate Marketing</span>
+                                    <span class="tech-tag">Signage Design</span>
+                                    <span class="tech-tag">Property Promotion</span>
+                                </div>
+                                <a href="#" class="text-primary-color fw-bold">View Project <i class="fas fa-arrow-right ms-1"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="cta-section text-center py-16 px-4 animate-slide-up">
+        <section class="stats-section">
             <div class="container">
-                <h2 class="text-4xl font-bold mb-4 text-white">Ready to Start Your Project?</h2>
-                <p class="text-xl mb-8 max-w-2xl mx-auto text-white">
-                    Let's work together to bring your vision to life with our creative solutions.
-                </p>
-                <a href="contact.html" class="btn-secondary inline-block">Get In Touch</a>
+                <div class="row text-center">
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Client Satisfaction</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="fw-bold mb-3">Ready to Start Your Project?</h2>
+                <p class="lead mb-4">Let's work together to bring your vision to life with our creative solutions.</p>
+                <a href="contact.html" class="btn cta-btn-primary btn-lg">
+                    <i class="far fa-calendar-check me-2"></i> GET STARTED TODAY
+                </a>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="footer-enhanced">
+    <footer class="amateta-footer">
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <img src="images/OUR LOGO WHITE.png" alt="AMATETA Techs & Designs Logo" class="footer-logo">
-                    <p>AMATETA Techs & Designs is a leading provider of innovative technology solutions and creative design services. We help businesses grow through cutting-edge web development, graphic design, and digital marketing.</p>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-logo mb-3">
+                        <img src="images/OUR LOGO WHITE.png" alt="AMATETA Footer Logo" style="height: 50px;">
+                    </div>
+                    <p class="mb-3">AMATETA Techs & Designs is a premier technology company offering cutting-edge solutions in Web Development, Digital Marketing, IT Support, and more.</p>
                     <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/264853441248" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-                
-                <div class="footer-links">
-                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
-                    <a href="index.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Home</a>
-                    <a href="about.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>About Us</a>
-                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Services</a>
-                    <a href="portfolio.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Portfolio</a>
-                    <a href="contact.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Contact</a>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a>
+                    <a href="launched-websites.html"><i class="fas fa-chevron-right"></i> Launched Websites</a>
+                    <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
                 </div>
-                
-                <div class="footer-services">
-                    <h4 class="text-lg font-semibold mb-4">Our Services</h4>
-                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Web Development</a>
-                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Graphic Design</a>
-                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Digital Marketing</a>
-                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>IT Support</a>
-                    <a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i>Software Supply</a>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <a href="web-development.html"><i class="fas fa-code"></i> Website Development</a>
+                    <a href="digital-marketing.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+                    <a href="graphic-design.html"><i class="fas fa-palette"></i> Graphic Design</a>
+                    <a href="it-support.html"><i class="fas fa-headset"></i> IT Support</a>
+                    <a href="printing-services.html"><i class="fas fa-print"></i> Printing Services</a>
                 </div>
-                
-                <div class="footer-contact">
-                    <h4 class="text-lg font-semibold mb-4">Contact Us</h4>
-                    <p class="mb-4"><i class="fas fa-map-marker-alt mr-2"></i> Windhoek, Namibia</p>
-                    <p class="mb-4"><i class="fas fa-phone-alt mr-2"></i> +264 85 344 1248</p>
-                    <p class="mb-4"><i class="fas fa-envelope mr-2"></i> info@amatetatech.com</p>
-                    
-                    <div class="newsletter-form">
-                        <h5 class="mb-2">Subscribe to our newsletter</h5>
-                        <form action="#" method="post">
-                            <input type="email" name="email" placeholder="Your email address" required>
-                            <button type="submit">Subscribe</button>
-                        </form>
-                    </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact & Support</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Windhoek, Namibia</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> <a href="tel:+264853441248">+264 85 344 1248</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@amateta.com">info@amateta.com</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:support@amateta.com">support@amateta.com</a></p>
+                    <p class="mb-3"><i class="fas fa-envelope me-2"></i> <a href="mailto:order@amateta.com">order@amateta.com</a></p>
                     
                     <div class="help-box">
-                        <h5>Need Help?</h5>
-                        <a href="contact.html">Get Support</a>
+                        <h5>Need Immediate Help?</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">Our support team is available 24/7</p>
+                        <a href="contact.html"><i class="fas fa-headset me-2"></i> Contact Support</a>
                     </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2023 AMATETA Techs & Designs. All rights reserved.</p>
+            <div class="credit-line">
+                <div class="footer-bottom-links mb-2">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <p>&copy; <span id="year"></span> AMATETA Techs & Designs. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const closeMobileMenu = document.getElementById('close-mobile-menu');
-        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-        
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNavOverlay.classList.add('active');
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
         });
-        
-        closeMobileMenu.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('active');
-        });
-        
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            } else {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
-        });
-        
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('.header');
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+                navbar.classList.add('scrolled');
             } else {
-                header.classList.remove('scrolled');
+                navbar.classList.remove('scrolled');
             }
         });
-        
-        // Portfolio item animation on scroll
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
+
+        // Portfolio filtering functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    const filterValue = this.getAttribute('data-filter');
+                    
+                    portfolioItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            item.style.opacity = '0';
+                            item.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                item.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
             });
-        }, observerOptions);
-        
-        portfolioItems.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(20px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(item);
         });
     </script>
+
 </body>
 </html>

@@ -5,210 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMATETA Techs & Designs - About Us</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" href="images/logo.jpg" type="image/x-icon">
     
     <style>
-        /* Reset and Base Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         :root {
-            --primary-blue: #2563eb;
-            --light-blue: #3b82f6;
-            --dark-blue: #1d4ed8;
-            --text-blue: #1e40af;
+            --primary-blue: #0a2540;
+            --light-blue: #00b4d8;
+            --accent-blue: #0077b6;
+            --dark-blue: #03045e;
             --white: #ffffff;
             --light-gray: #f8fafc;
             --medium-gray: #e2e8f0;
             --dark-gray: #64748b;
             --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-blue);
             background-color: var(--white);
-            overflow-x: hidden;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header Styles */
-        .header {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            transition: all 0.3s ease;
-        }
-
-        .header.scrolled {
-            padding: 5px 0;
-        }
-
-        .flex {
-            display: flex;
-        }
-
-        .justify-between {
-            justify-content: space-between;
-        }
-
-        .items-center {
-            align-items: center;
-        }
-
-        .py-4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-
-        .logo img {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .logo img:hover {
-            transform: scale(1.05);
-        }
-
-        .nav-menu ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-blue);
-            font-weight: 600;
-            padding: 8px 12px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .nav-link:hover {
             color: var(--primary-blue);
-            background-color: rgba(37, 99, 235, 0.1);
+            padding-top: 80px; /* Space for fixed navbar */
         }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            width: 0;
-            height: 2px;
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar {
             background-color: var(--primary-blue);
-            transition: all 0.3s ease;
-            transform: translateX(-50%);
+            transition: background-color 0.3s;
+            box-shadow: var(--shadow);
+            z-index: 1030;
+            padding: 10px 0;
         }
 
-        .nav-link:hover::after, .nav-link.active::after {
-            width: 80%;
+        .navbar.scrolled {
+            padding: 5px 0;
+            background-color: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-link.active {
-            color: var(--primary-blue);
+        .logo-mobile-safe {
+            max-height: 50px;
         }
 
-        .mobile-menu-toggle, .theme-toggle {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--text-blue);
-            cursor: pointer;
-            display: none;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-menu-toggle:hover, .theme-toggle:hover {
-            color: var(--primary-blue);
-        }
-
-        .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.95);
-            z-index: 999;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-        .mobile-nav-overlay.active {
-            transform: translateX(0);
-        }
-
-        .close-mobile-menu {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
-            font-size: 2rem;
-            color: var(--text-blue);
-            cursor: pointer;
-        }
-
-        .mobile-nav-menu ul {
-            list-style: none;
-            text-align: center;
-        }
-
-        .mobile-nav-menu li {
-            margin-bottom: 1.5rem;
-        }
-
-        .nav-link-mobile {
-            text-decoration: none;
-            color: var(--text-blue);
-            font-size: 1.5rem;
+        .navbar-brand, .nav-link {
+            color: var(--white) !important;
             font-weight: 600;
-            transition: color 0.3s ease;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
-        .nav-link-mobile:hover {
-            color: var(--primary-blue);
+        .nav-link:hover, .nav-link.active {
+            color: var(--light-blue) !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--light-blue);
         }
 
-        /* Hero Section */
-        .hero-section {
-            position: relative;
-            padding: 100px 20px;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--light-blue) 100%);
+        .navbar-toggler {
+            border: none;
             color: var(--white);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* ---------------------------------
+            Hero Section
+            --------------------------------- */
+        .page-hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+            color: var(--white);
+            padding: 120px 0;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
             overflow: hidden;
         }
 
-        .hero-bg {
+        .page-hero-section::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
             background-size: cover;
         }
 
@@ -217,328 +111,409 @@
             z-index: 1;
         }
 
-        .text-5xl {
-            font-size: 3rem;
-            line-height: 1.2;
-        }
-
-        .font-bold {
-            font-weight: 700;
-        }
-
-        .mb-4 {
-            margin-bottom: 1rem;
-        }
-
-        .text-xl {
-            font-size: 1.25rem;
-        }
-
-        .mb-8 {
-            margin-bottom: 2rem;
-        }
-
-        .max-w-2xl {
-            max-width: 42rem;
-        }
-
-        .mx-auto {
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn-primary, .btn-secondary {
-            display: inline-block;
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            text-align: center;
+        /* ---------------------------------
+            Floating WhatsApp Button
+            --------------------------------- */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #06014b;
+            color: var(--white);
             border: none;
-            font-size: 1rem;
-        }
-
-        .btn-primary {
-            background-color: var(--white);
-            color: var(--primary-blue);
-            box-shadow: var(--shadow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
             box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--white);
-            border: 2px solid var(--white);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--white);
-            color: var(--primary-blue);
-        }
-
-        /* About Section (Used as .about-content-section) */
-        .about-content-section {
-            padding: 80px 20px;
-            background-color: var(--white); /* White background for this page */
-        }
-        
-        /* New Differentiator Card Style */
-        .differentiator-card {
-            background-color: var(--light-gray);
-            padding: 2rem;
-            border-radius: 12px;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            text-align: left;
-            border-left: 4px solid var(--primary-blue);
-            height: 100%; /* Important for equal height in grid */
-        }
-
-        .differentiator-card:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: var(--shadow-lg);
-            border-left-color: var(--light-blue);
-        }
-
-
-        .flex-col {
-            flex-direction: column;
-        }
-
-        .lg\:flex-row {
-            flex-direction: row;
-        }
-
-        .lg\:flex-row-reverse {
-            flex-direction: row-reverse;
-        }
-
-        .gap-12 {
-            gap: 3rem;
-        }
-
-        .lg\:w-1\/2 {
-            width: 50%;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        .text-4xl {
-            font-size: 2.25rem;
-        }
-
-        .text-lg {
-            font-size: 1.125rem;
-        }
-
-        .mb-6 {
-            margin-bottom: 1.5rem;
-        }
-
-        .rounded-lg {
-            border-radius: 12px;
-        }
-
-        .shadow-lg {
-            box-shadow: var(--shadow-lg);
-        }
-
-        .w-full {
-            width: 100%;
-        }
-
-        .h-auto {
-            height: auto;
-        }
-
-        /* Services Section (For the Differentiator Grid) */
-        .differentiator-grid {
-            padding: 0 20px; /* Adjust padding for grid container */
-        }
-
-        .grid {
-            display: grid;
-        }
-
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-
-        .md\:grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-
-        .lg\:grid-cols-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-        
-        /* New Differentiator Icon/Text Styles */
-        .differentiator-card i {
-            font-size: 2rem;
-            color: var(--primary-blue);
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .text-primary-color {
-            color: var(--primary-blue);
-        }
-        
-        .text-primary-blue {
-            color: var(--primary-blue);
-        }
-
-        .text-2xl {
-            font-size: 1.5rem;
-        }
-
-        .font-semibold {
-            font-weight: 600;
-        }
-
-        .mb-2 {
-            margin-bottom: 0.5rem;
-        }
-
-        .text-md {
-            font-size: 1rem;
-        }
-
-        .mt-12 {
-            margin-top: 3rem;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 80px 20px;
-            background: linear-gradient(135deg, var(--light-blue) 0%, var(--primary-blue) 100%);
-            color: var(--white);
-        }
-
-        /* Footer - ENHANCED STYLES */
-        .footer-enhanced {
-            background-color: var(--dark-blue);
-            color: var(--white);
-            padding: 60px 0 20px;
-            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-            position: relative;
-        }
-
-        .footer-enhanced p, .footer-enhanced h4 {
-            color: var(--medium-gray);
-        }
-
-        .footer-enhanced h4 {
-            color: var(--white);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(1, 1fr);
-            gap: 2.5rem;
-            padding-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1.2fr 1.2fr 1.6fr;
-            }
-        }
-
-        .footer-logo {
-            height: 50px;
-            width: auto;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .footer-link {
-            color: var(--medium-gray);
-            text-decoration: none;
-            transition: color 0.3s ease;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-link:hover {
-            color: var(--light-blue);
-            transform: translateX(5px);
-        }
-
-        .footer-link i {
-            color: var(--primary-blue);
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .social-icon {
-            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            animation: pulse 2.5s infinite;
+            transition: transform 0.2s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+            text-decoration: none;
+        }
+        
+        #whatsapp-btn:hover {
+            transform: scale(1.05);
+            background-color: #00c3ff;
+        }
+        
+        #whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ---------------------------------
+            General Content & CTA Styles
+            --------------------------------- */
+        .text-primary-color { color: var(--primary-blue) !important; }
+        .text-light-blue { color: var(--light-blue) !important; }
+
+        .cta-btn-primary {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
             color: var(--white);
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-icon:hover {
-            background-color: var(--primary-blue);
-            transform: translateY(-3px) scale(1.05);
-        }
-
-        /* New Footer Components */
-        .newsletter-form input[type="email"] {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            color: var(--text-blue);
-        }
-
-        .newsletter-form button {
-            width: 100%;
-            padding: 10px;
-            background-color: var(--primary-blue);
-            color: var(--white);
-            border: none;
-            border-radius: 6px;
+            transition: background-color 0.3s, transform 0.1s;
             font-weight: 600;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            color: var(--white);
         }
 
-        .newsletter-form button:hover {
+        .cta-btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
             background-color: var(--light-blue);
         }
 
-        .help-box {
-            background-color: rgba(0, 0, 0, 0.2);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 1rem;
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* ---------------------------------
+            About Section Styles
+            --------------------------------- */
+        .about-section {
+            padding: 80px 0;
+        }
+        
+        .story-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+        
+        .values-section {
+            padding: 80px 0;
+        }
+        
+        .mission-vision-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+        }
+        
+        .story-card {
+            background-color: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 5px solid var(--light-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .story-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to bottom, var(--light-blue), transparent);
+            transition: height 0.3s ease;
+            z-index: 0;
+        }
+        
+        .story-card:hover::before {
+            height: 100%;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .story-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .story-icon {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 1.5rem;
+        }
+        
+        .story-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .story-description {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .value-card {
             text-align: center;
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .value-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            color: var(--white);
+            font-size: 2rem;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+        
+        .value-description {
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        .mission-card, .vision-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .mission-icon, .vision-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .mission-title, .vision-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+        
+        .mission-text, .vision-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--light-blue);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--white);
+            border: 4px solid var(--light-blue);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: var(--white);
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: var(--light-blue);
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-description {
+            color: var(--dark-gray);
+        }
+
+        /* ---------------------------------
+            Footer Style
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer h5 { 
+            color: var(--light-blue); 
+            margin-bottom: 20px; 
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .amateta-footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-blue);
+        }
+
+        .amateta-footer a { 
+            color: #ccc; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 8px; 
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .amateta-footer a:hover { 
+            color: var(--light-blue); 
+            transform: translateX(5px);
+        }
+
+        .amateta-footer a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer .social-icons a { 
+            display: inline-block; 
+            margin-right: 15px; 
+            font-size: 1.5rem; 
+            color: var(--white); 
+            transition: color 0.2s, transform 0.2s; 
+        }
+
+        .amateta-footer .social-icons a:hover { 
+            color: var(--light-blue); 
+            transform: translateY(-3px);
+        }
+
+        .credit-line { 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 20px; 
+            margin-top: 30px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+        }
+
+        .help-box {
+            background-color: rgba(0, 180, 216, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--light-blue);
         }
 
         .help-box h5 {
@@ -548,545 +523,418 @@
         }
 
         .help-box a {
-            color: var(--dark-blue);
+            color: var(--white);
             display: inline-block;
-            background-color: #f1c40f;
-            padding: 8px 15px;
+            background-color: var(--light-blue);
+            padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s;
+            margin-top: 0.5rem;
         }
 
         .help-box a:hover {
-            background-color: #e67e22;
+            background-color: var(--accent-blue);
             transform: scale(1.05);
         }
 
-        .footer-bottom {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            color: var(--medium-gray);
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            background-color: var(--white);
         }
-        /* End Enhanced Footer Styles */
 
-        /* WhatsApp Floating Button */
-        .whatsapp-float {
-            position: fixed;
-            width: 60px;
-            height: 60px;
-            bottom: 25px;
-            right: 25px;
-            background-color: #25d366;
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--light-blue);
             color: var(--white);
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: var(--shadow-lg);
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            animation: pulse 2s infinite;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
         }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
+        .newsletter-form button:hover {
+            background-color: var(--accent-blue);
         }
 
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
-            }
-        }
-
-        /* Animations */
-        .animate-fade-in {
-            animation: fadeIn 1s ease-out;
-        }
-
-        .animate-slide-up {
-            animation: slideUp 0.8s ease-out;
-        }
-
-        .animate-slide-up-left {
-            animation: slideUpLeft 0.8s ease-out;
-        }
-
-        .animate-slide-up-right {
-            animation: slideUpRight 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideUp {
-            from { 
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideUpLeft {
-            from { 
-                opacity: 0;
-                transform: translateX(-30px) translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0) translateY(0);
-            }
-        }
-
-        @keyframes slideUpRight {
-            from { 
-                opacity: 0;
-                transform: translateX(30px) translateY(30px);
-            }
-            to { 
-                opacity: 1;
-                transform: translateX(0) translateY(0);
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .text-5xl {
-                font-size: 2.5rem;
+        /* ---------------------------------
+            Mobile Responsiveness
+            --------------------------------- */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 70px;
             }
             
-            .nav-menu {
-                display: none;
+            .logo-mobile-safe {
+                max-height: 40px !important;
             }
             
-            .mobile-menu-toggle, .theme-toggle {
-                display: block;
+            .page-hero-section {
+                padding: 80px 0;
+                min-height: 30vh;
             }
             
-            .lg\:w-1\/2 {
+            .page-hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero-section p.lead {
+                font-size: 1.1rem;
+            }
+            
+            #whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .story-card {
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid .col-md-3 {
+                margin-bottom: 30px;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
                 width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left, .right {
+                left: 0;
             }
         }
 
         @media (max-width: 768px) {
-            .text-5xl {
-                font-size: 2rem;
+            .page-hero-section h1 {
+                font-size: 1.8rem;
             }
             
-            .text-4xl {
-                font-size: 1.75rem;
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
             }
-            
-            .hero-section {
-                padding: 80px 20px;
-            }
-            
-            .about-content-section, .cta-section {
-                padding: 60px 20px;
-            }
-            
-            .flex-col-mobile {
-                flex-direction: column;
-            }
-            
-            .md\:grid-cols-2 {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-            
-            .lg\:grid-cols-3 {
-                grid-template-columns: repeat(1, minmax(0, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            .text-5xl {
-                font-size: 1.75rem;
-            }
-            
-            .text-xl {
-                font-size: 1rem;
-            }
-            
-            .btn-primary, .btn-secondary {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-            
-            .whatsapp-float {
-                width: 50px;
-                height: 50px;
-                font-size: 25px;
-                bottom: 20px;
-                right: 20px;
-            }
-        }
-
-        /* Dark Mode Styles (integrated for theme toggle) */
-        .dark-mode {
-            --primary-blue: #70a1ff;
-            --light-blue: #3b82f6;
-            --dark-blue: #141f4d;
-            --text-blue: #f8fafc;
-            --white: #2c2c4d;
-            --light-gray: #1a1a2e;
-            --medium-gray: #94a3b8;
-            --dark-gray: #e2e8f0;
-            --shadow: 0 4px 6px -1px rgba(255, 255, 255, 0.1), 0 2px 4px -1px rgba(255, 255, 255, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(255, 255, 255, 0.1), 0 4px 6px -2px rgba(255, 255, 255, 0.05);
-        }
-
-        .dark-mode body {
-            background-color: var(--light-gray);
-            color: var(--text-blue);
-        }
-        .dark-mode .header {
-            background-color: var(--dark-blue);
-        }
-        .dark-mode .footer-enhanced {
-            background-color: var(--dark-blue);
-        }
-        .dark-mode .about-content-section {
-            background-color: var(--light-gray);
-        }
-        .dark-mode .differentiator-card {
-            background-color: #1d2b4d;
-            border-left-color: var(--primary-blue);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        }
-        .dark-mode .nav-link, .dark-mode .mobile-menu-toggle, .dark-mode .theme-toggle, .dark-mode .close-mobile-menu, .dark-mode .nav-link-mobile {
-            color: var(--text-blue);
-        }
-        .dark-mode .nav-link:hover, .dark-mode .mobile-menu-toggle:hover, .dark-mode .theme-toggle:hover {
-            color: var(--primary-blue);
-        }
-        .dark-mode .hero-section {
-            background: linear-gradient(135deg, #141f4d 0%, #1d4ed8 100%);
-        }
-        .dark-mode .btn-primary {
-            background-color: var(--primary-blue);
-            color: var(--white);
-        }
-        .dark-mode .btn-secondary {
-            border-color: var(--primary-blue);
-            color: var(--primary-blue);
-        }
-        .dark-mode .btn-secondary:hover {
-            background-color: var(--primary-blue);
-            color: var(--dark-blue);
-        }
-        .dark-mode .footer-link {
-            color: var(--medium-gray);
-        }
-        .dark-mode .footer-link:hover {
-            color: var(--primary-blue);
-        }
-        .dark-mode .newsletter-form input[type="email"] {
-            background-color: #1a1a2e;
-            color: var(--text-blue);
-        }
-        .dark-mode .help-box a {
-            background-color: #e67e22;
         }
     </style>
 </head>
 <body>
-    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
+
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" id="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
     </a>
 
-    <header class="header">
-        <div class="container flex justify-between items-center py-4">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="h-12 w-auto rounded-md">
-                </a>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="logo-mobile-safe">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="launched-websites.html">Launched Sites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
             </div>
-
-            <nav class="nav-menu">
-                <ul class="flex space-x-8">
-                    <li><a href="index.html" class="nav-link"><i class="fas fa-home mr-1"></i> Home</a></li>
-                    <li><a href="about.html" class="nav-link active"><i class="fas fa-info-circle mr-1"></i> About</a></li>
-                    <li><a href="team.html" class="nav-link"><i class="fas fa-users mr-1"></i> Our Team</a></li>
-                    <li><a href="services.html" class="nav-link"><i class="fas fa-cogs mr-1"></i> Services</a></li>
-                    <li><a href="portfolio.html" class="nav-link"><i class="fas fa-briefcase mr-1"></i> Portfolio</a></li>
-                    <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope mr-1"></i> Contact</a></li>
-                </ul>
-            </nav>
-
-            <button id="mobile-menu-toggle" class="mobile-menu-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-
-            <button id="theme-toggle" class="theme-toggle">
-                <i class="fas fa-moon"></i>
-            </button>
         </div>
-
-        <div id="mobile-nav-overlay" class="mobile-nav-overlay">
-            <button id="close-mobile-menu" class="close-mobile-menu">&times;</button>
-            <nav class="mobile-nav-menu">
-                <ul>
-                    <li><a href="index.html" class="nav-link-mobile"><i class="fas fa-home mr-2"></i> Home</a></li>
-                    <li><a href="about.html" class="nav-link-mobile"><i class="fas fa-info-circle mr-2"></i> About</a></li>
-                    <li><a href="team.html" class="nav-link-mobile"><i class="fas fa-users mr-2"></i> Our Team</a></li>
-                    <li><a href="services.html" class="nav-link-mobile"><i class="fas fa-cogs mr-2"></i> Services</a></li>
-                    <li><a href="portfolio.html" class="nav-link-mobile"><i class="fas fa-briefcase mr-2"></i> Portfolio</a></li>
-                    <li><a href="contact.html" class="nav-link-mobile"><i class="fas fa-envelope mr-2"></i> Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+    </nav>
 
     <main>
-        <section class="hero-section text-center py-20 px-4">
-            <div class="hero-bg"></div>
-            <div class="container animate-fade-in hero-content">
-                <h1 class="text-5xl font-bold mb-4 text-white">Our Story & Our Commitment</h1>
-                <p class="text-xl max-w-2xl mx-auto text-white">
-                    Discover the values, experience, and innovative approach that make us your perfect partner.
-                </p>
-            </div>
-        </section>
-
-        <section class="about-content-section py-16 px-4">
-            <div class="container flex flex-col lg:flex-row gap-12 items-center mb-20 animate-slide-up">
-                <div class="lg:w-1/2 animate-slide-up-left">
-                    <h2 class="text-4xl font-bold mb-6 text-primary-color">Our Journey & Mission</h2>
-                    <p class="text-lg mb-4">
-                        Founded with a vision to bridge the gap between technology and business needs, AMATETA Techs & Designs has grown
-                        from a small startup to a comprehensive solution provider. We started by offering essential IT support
-                        and quickly expanded our expertise to encompass digital marketing, web development, and creative design services,
-                        driven by the evolving demands of our clients.
-                    </p>
-                    <p class="text-lg mb-4">
-                        Our journey has been marked by continuous learning, adaptation, and a relentless pursuit of excellence.
-                        We pride ourselves on building lasting relationships with our clients, understanding their unique challenges,
-                        and delivering tailored solutions that foster growth and efficiency.
-                    </p>
-                </div>
-                <div class="lg:w-1/2 animate-slide-up-right">
-                    <img src="images/BEGINNING.jpg" alt="Our Journey" class="rounded-lg shadow-lg w-full h-auto">
-                </div>
-            </div>
-
-            <div class="container text-center py-8">
-                <h2 class="text-4xl font-bold mb-12 text-primary-color animate-slide-up">Why Choose AMATETA?</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="differentiator-card animate-slide-up-left">
-                        <i class="fas fa-lightbulb"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Innovative Solutions</h3>
-                        <p class="text-md">We specialize in modern technology and creative graphic design services that help brands stand out.</p>
-                    </div>
-
-                    <div class="differentiator-card animate-slide-up">
-                        <i class="fas fa-cubes"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">All-in-One Services</h3>
-                        <p class="text-md">From IT support and website design to branding and digital marketing — we handle it all in one place.</p>
-                    </div>
-
-                    <div class="differentiator-card animate-slide-up-right">
-                        <i class="fas fa-award"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Quality & Reliability</h3>
-                        <p class="text-md">Every project is delivered with precision, ensuring professional results that meet client expectations.</p>
-                    </div>
-
-                    <div class="differentiator-card animate-slide-up-left">
-                        <i class="fas fa-handshake"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Client-Focused Approach</h3>
-                        <p class="text-md">We listen, create, and deliver solutions tailored to each client’s needs.</p>
-                    </div>
-
-                    <div class="differentiator-card animate-slide-up">
-                        <i class="fas fa-chart-line"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Experience You Can Trust</h3>
-                        <p class="text-md">With 3+ years of experience in marketing, tech, and design, we bring proven expertise to every project.</p>
-                    </div>
-
-                    <div class="differentiator-card animate-slide-up-right">
-                        <i class="fas fa-sync-alt"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Continuous Improvement</h3>
-                        <p class="text-md">We stay up to date with trends and technologies to keep your brand ahead.</p>
-                    </div>
-                    
-                    <div class="differentiator-card animate-slide-up-left">
-                        <i class="fas fa-paint-brush"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Creative Excellence</h3>
-                        <p class="text-md">Our designs and digital products reflect originality, clarity, and impact.</p>
-                    </div>
-                    
-                    <div class="differentiator-card animate-slide-up">
-                        <i class="fas fa-globe-africa"></i>
-                        <h3 class="text-xl font-bold mb-2 text-primary-color">Local & Global Reach</h3>
-                        <p class="text-md">Proudly based in Namibia, serving clients locally and across Africa.</p>
-                    </div>
-                </div>
-            </div>
-            
-        </section>
         
-        <section class="cta-section text-center py-20 px-4 animate-fade-in">
-            <div class="container">
-                <h2 class="text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
-                <p class="text-xl mb-8 max-w-2xl mx-auto">
-                    Contact us today for a free consultation and let's discuss how we can help you achieve your goals.
-                </p>
-                <a href="contact.html" class="btn-secondary">Get in Touch</a>
+        <section class="page-hero-section">
+            <div class="container text-center hero-content">
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Our Story & Vision</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Discover the journey, values, and mission that drive AMATETA Techs & Designs</p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#story" class="btn cta-btn-primary btn-lg me-3">Our Journey</a>
+                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Get In Touch</a>
+                </div>
             </div>
         </section>
+
+        <!-- Company Story Section -->
+        <section id="story" class="story-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title" data-aos="fade-up">Our Humble Beginnings</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">From a small startup to a comprehensive technology solutions provider</p>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="story-card">
+                            <div class="story-content text-center">
+                                <i class="fas fa-seedling story-icon"></i>
+                                <h3 class="story-title">The Foundation</h3>
+                                <p class="story-description">AMATETA Techs & Designs was founded with a vision to bridge the gap between technology and business needs in Namibia. We started by offering essential IT support services to local businesses.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="story-card">
+                            <div class="story-content text-center">
+                                <i class="fas fa-rocket story-icon"></i>
+                                <h3 class="story-title">Rapid Growth</h3>
+                                <p class="story-description">As client needs evolved, we expanded our expertise to encompass digital marketing, web development, and creative design services. Our team grew to include specialists across multiple domains.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="story-card">
+                            <div class="story-content text-center">
+                                <i class="fas fa-chart-line story-icon"></i>
+                                <h3 class="story-title">Today & Beyond</h3>
+                                <p class="story-description">Today, we're a trusted partner for businesses across Namibia, delivering comprehensive technology solutions that drive growth, efficiency, and digital transformation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission & Vision Section -->
+        <section class="mission-vision-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-4" data-aos="fade-right">
+                        <div class="mission-card">
+                            <i class="fas fa-bullseye mission-icon"></i>
+                            <h3 class="mission-title">Our Mission</h3>
+                            <p class="mission-text">To empower businesses with innovative technology solutions that drive growth, enhance efficiency, and create meaningful digital experiences. We strive to be the trusted partner that helps our clients navigate the digital landscape with confidence.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 mb-4" data-aos="fade-left">
+                        <div class="vision-card">
+                            <i class="fas fa-eye vision-icon"></i>
+                            <h3 class="vision-title">Our Vision</h3>
+                            <p class="vision-text">To be Namibia's leading technology partner, recognized for excellence in delivering comprehensive digital solutions that transform businesses and contribute to the growth of the local economy through innovation and expertise.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="values-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title" data-aos="fade-up">Our Core Values</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">The principles that guide everything we do</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <h3 class="value-title">Innovation</h3>
+                            <p class="value-description">We constantly explore new technologies and creative approaches to deliver cutting-edge solutions that keep our clients ahead of the curve.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                            <h3 class="value-title">Integrity</h3>
+                            <p class="value-description">We build trust through transparency, honesty, and ethical business practices in all our client relationships and project deliveries.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="value-title">Collaboration</h3>
+                            <p class="value-description">We believe in the power of teamwork and partnership, working closely with our clients to understand their unique needs and goals.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <h3 class="value-title">Excellence</h3>
+                            <p class="value-description">We are committed to delivering the highest quality work, paying attention to every detail and exceeding client expectations.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h3 class="value-title">Passion</h3>
+                            <p class="value-description">We are genuinely passionate about technology and design, and this enthusiasm translates into exceptional results for our clients.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value-card">
+                            <div class="value-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <h3 class="value-title">Growth</h3>
+                            <p class="value-description">We are committed to continuous learning and improvement, both for our team and for the businesses we serve.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up">
+                        <div class="stat-item">
+                            <div class="stat-number">150+</div>
+                            <div class="stat-label">Projects Completed</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Team Members</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="fw-bold mb-3">Ready to Start Your Project?</h2>
+                <p class="lead mb-4">Let's work together to bring your vision to life with our creative solutions.</p>
+                <a href="contact.html" class="btn cta-btn-primary btn-lg">
+                    <i class="far fa-calendar-check me-2"></i> GET STARTED TODAY
+                </a>
+            </div>
+        </section>
+
     </main>
 
-    <footer class="footer-enhanced animate-slide-up">
-        <div class="container py-12">
-            <div class="footer-grid">
-                <div class="footer-about">
-                    <img src="images/OUR LOGO WHITE.png" alt="AMATETA Logo" class="footer-logo">
-                    <p style="margin-bottom: 1.5rem;">We are a technology company offering cutting-edge solutions in Digital Marketing, IT Support, Web Development, and more. Partner with us for innovation, reliability, and growth.</p>
+    <footer class="amateta-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-logo mb-3">
+                        <img src="images/OUR LOGO WHITE.png" alt="AMATETA Footer Logo" style="height: 50px;">
+                    </div>
+                    <p class="mb-3">AMATETA Techs & Designs is a premier technology company offering cutting-edge solutions in Web Development, Digital Marketing, IT Support, and more.</p>
                     <div class="social-icons">
-                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank" class="social-icon" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="https://wa.me/264853441248" target="_blank" class="social-icon" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/264853441248" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
-
-                <div class="footer-contact">
-                    <h4 class="font-bold mb-4">Quick Links</h4>
-                    <ul>
-                        <li><a href="services.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Services</a></li>
-                        <li><a href="about.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> About Us</a></li>
-                        <li><a href="portfolio.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Portfolio</a></li>
-                        <li><a href="contact.html" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Contact</a></li>
-                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Privacy Policy</a></li>
-                        <li><a href="#" class="footer-link"><i class="fas fa-chevron-right mr-2"></i> Terms of Service</a></li>
-                    </ul>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a>
+                    <a href="launched-websites.html"><i class="fas fa-chevron-right"></i> Launched Websites</a>
+                    <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
                 </div>
-
-                <div class="footer-links">
-                    <h4 class="font-bold mb-4">Contact Info</h4>
-                    <p style="margin-bottom: 1.5rem;"><i class="fas fa-map-marker-alt mr-2" style="color: var(--primary-blue);"></i> Windhoek, Namibia</p>
-                    <p style="margin-bottom: 0.5rem;"><i class="fas fa-phone mr-2" style="color: var(--primary-blue);"></i> Call Us: <a href="tel:+264853441248" class="footer-link" style="display: inline;">+264 85 344 1248</a></p>
-                    <p style="margin-bottom: 1.5rem;"><i class="fas fa-envelope mr-2" style="color: var(--primary-blue);"></i> Email: <a href="mailto:info@amateta.com" class="footer-link" style="display: inline;">info@amateta.com</a></p>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <a href="web-development.html"><i class="fas fa-code"></i> Website Development</a>
+                    <a href="digital-marketing.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+                    <a href="graphic-design.html"><i class="fas fa-palette"></i> Graphic Design</a>
+                    <a href="it-support.html"><i class="fas fa-headset"></i> IT Support</a>
+                    <a href="printing-services.html"><i class="fas fa-print"></i> Printing Services</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact & Support</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Windhoek, Namibia</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> <a href="tel:+264853441248">+264 85 344 1248</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@amateta.com">info@amateta.com</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:support@amateta.com">support@amateta.com</a></p>
+                    <p class="mb-3"><i class="fas fa-envelope me-2"></i> <a href="mailto:order@amateta.com">order@amateta.com</a></p>
                     
                     <div class="help-box">
                         <h5>Need Immediate Help?</h5>
-                        <a href="contact.html" title="Start a Live Chat or Support Ticket"><i class="fas fa-headset mr-2"></i> Support Center</a>
+                        <p class="mb-2" style="font-size: 0.9rem;">Our support team is available 24/7</p>
+                        <a href="contact.html"><i class="fas fa-headset me-2"></i> Contact Support</a>
                     </div>
                 </div>
-
-                <div class="footer-social">
-                    <h4 class="font-bold mb-4">Newsletter & Updates</h4>
-                    <p style="margin-bottom: 1.5rem;">Subscribe to our newsletter to receive the latest news, updates, and exclusive offers.</p>
-                    <form class="newsletter-form" onsubmit="alert('Thank you for subscribing!'); return false;">
-                        <input type="email" placeholder="Enter your email address" required>
-                        <button type="submit"><i class="fas fa-paper-plane mr-2"></i> Subscribe</button>
-                    </form>
-                </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2024 AMATETA Techs & Designs. All Rights Reserved.</p>
+            <div class="credit-line">
+                <div class="footer-bottom-links mb-2">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <p>&copy; <span id="year"></span> AMATETA Techs & Designs. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
-        // Mobile Menu Toggle
-        const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
-        const closeMobileMenu = document.getElementById('close-mobile-menu');
-        const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
-
-        mobileMenuToggle.addEventListener('click', () => {
-            mobileNavOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
         });
 
-        closeMobileMenu.addEventListener('click', () => {
-            mobileNavOverlay.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Close mobile menu when clicking on a link
-        const mobileNavLinks = document.querySelectorAll('.nav-link-mobile');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNavOverlay.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Header scroll effect
-        const header = document.querySelector('.header');
-        window.addEventListener('scroll', () => {
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
             if (window.scrollY > 50) {
-                header.classList.add('scrolled');
+                navbar.classList.add('scrolled');
             } else {
-                header.classList.remove('scrolled');
+                navbar.classList.remove('scrolled');
             }
-        });
-
-        // Theme toggle functionality
-        const themeToggle = document.getElementById('theme-toggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = themeToggle.querySelector('i');
-            if (document.body.classList.contains('dark-mode')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
-        });
-
-        // Animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0) translateX(0)'; /* Reset transform for all variants */
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements with animation classes
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.animate-slide-up, .animate-slide-up-left, .animate-slide-up-right');
-            
-            animatedElements.forEach(el => {
-                el.style.opacity = '0';
-                if (el.classList.contains('animate-slide-up')) {
-                    el.style.transform = 'translateY(30px)';
-                } else if (el.classList.contains('animate-slide-up-left')) {
-                    el.style.transform = 'translateX(-30px) translateY(30px)';
-                } else if (el.classList.contains('animate-slide-up-right')) {
-                    el.style.transform = 'translateX(30px) translateY(30px)';
-                }
-                
-                observer.observe(el);
-            });
         });
     </script>
+
 </body>
 </html>
