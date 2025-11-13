@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AMATETA Techs & Designs - Graphic Design Services</title>
+    <title>AMATETA Techs & Designs - IT Support Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -208,7 +208,7 @@
         }
         
         /* ---------------------------------
-            Graphic Design Service Styles
+            IT Support Service Styles
             --------------------------------- */
         .service-detail-section {
             padding: 80px 0;
@@ -294,6 +294,44 @@
             margin-bottom: 1.5rem;
         }
         
+        .emergency-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+        }
+        
+        .emergency-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .emergency-card:hover {
+            transform: translateY(-5px);
+            background-color: rgba(255, 255, 255, 0.15);
+        }
+        
+        .emergency-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+        
+        .emergency-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .emergency-description {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
         .process-section {
             padding: 80px 0;
             background-color: var(--light-gray);
@@ -330,103 +368,11 @@
             line-height: 1.6;
         }
         
-        .portfolio-showcase {
+        .support-packages-section {
             padding: 80px 0;
         }
         
-        .portfolio-item {
-            margin-bottom: 30px;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            position: relative;
-            background-color: var(--white);
-        }
-        
-        .portfolio-item:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-xl);
-        }
-        
-        .portfolio-img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-        }
-        
-        .portfolio-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(10, 37, 64, 0.8), rgba(0, 180, 216, 0.8));
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            padding: 20px;
-            text-align: center;
-        }
-        
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
-        }
-        
-        .portfolio-title {
-            color: var(--white);
-            font-weight: 700;
-            margin-bottom: 10px;
-            font-size: 1.5rem;
-        }
-        
-        .portfolio-category-tag {
-            color: var(--light-blue);
-            font-weight: 600;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-        }
-        
-        .portfolio-link {
-            color: var(--white);
-            background-color: var(--light-blue);
-            padding: 8px 20px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .portfolio-link:hover {
-            background-color: var(--white);
-            color: var(--primary-blue);
-        }
-        
-        .portfolio-info {
-            padding: 1.5rem;
-        }
-        
-        .portfolio-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .portfolio-info p {
-            color: var(--dark-gray);
-            margin-bottom: 1rem;
-        }
-        
-        .pricing-section {
-            padding: 80px 0;
-            background-color: var(--light-gray);
-        }
-        
-        .pricing-card {
+        .package-card {
             background-color: var(--white);
             padding: 2.5rem 2rem;
             border-radius: 12px;
@@ -438,55 +384,55 @@
             overflow: hidden;
         }
         
-        .pricing-card.featured {
+        .package-card.featured {
             border: 2px solid var(--light-blue);
             transform: scale(1.05);
         }
         
-        .pricing-card:hover {
+        .package-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-xl);
         }
         
-        .pricing-card.featured:hover {
+        .package-card.featured:hover {
             transform: translateY(-8px) scale(1.05);
         }
         
-        .pricing-header {
+        .package-header {
             margin-bottom: 2rem;
         }
         
-        .pricing-title {
+        .package-title {
             font-size: 1.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
             color: var(--primary-blue);
         }
         
-        .pricing-price {
+        .package-price {
             font-size: 2.5rem;
             font-weight: 700;
             color: var(--light-blue);
             margin-bottom: 0.5rem;
         }
         
-        .pricing-period {
+        .package-period {
             color: var(--dark-gray);
             font-size: 0.9rem;
         }
         
-        .pricing-features {
+        .package-features {
             margin-bottom: 2rem;
         }
         
-        .pricing-feature {
+        .package-feature {
             margin-bottom: 0.8rem;
             display: flex;
             align-items: center;
             justify-content: center;
         }
         
-        .pricing-feature i {
+        .package-feature i {
             color: var(--light-blue);
             margin-right: 0.5rem;
         }
@@ -502,13 +448,24 @@
             font-weight: 700;
             border-bottom-left-radius: 12px;
         }
+        
+        .response-time {
+            display: inline-block;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
 
         /* ---------------------------------
             Stats Section
             --------------------------------- */
         .stats-section {
             padding: 80px 0;
-            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
             color: var(--white);
         }
 
@@ -685,15 +642,15 @@
                 font-size: 1rem;
             }
             
-            .service-card, .portfolio-item {
+            .service-card {
                 margin-bottom: 20px;
             }
             
-            .pricing-card.featured {
+            .package-card.featured {
                 transform: scale(1);
             }
             
-            .pricing-card.featured:hover {
+            .package-card.featured:hover {
                 transform: translateY(-8px);
             }
             
@@ -716,8 +673,8 @@
 </head>
 <body>
 
-    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20graphic%20design%20services" id="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp Us
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20need%20IT%20support%20assistance" id="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> Emergency IT Support
     </a>
 
     <nav class="navbar navbar-expand-lg fixed-top">
@@ -746,35 +703,95 @@
         
         <section class="page-hero-section">
             <div class="container text-center hero-content">
-                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Graphic Design Services</h1>
-                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Creative visual solutions that transform your brand identity and captivate your audience</p>
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Professional IT Support Services</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Reliable technical assistance and robust IT infrastructure solutions to keep your business running smoothly</p>
                 <div data-aos="fade-up" data-aos-delay="200">
                     <a href="#services" class="btn cta-btn-primary btn-lg me-3">View Our Services</a>
-                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Get Free Consultation</a>
+                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Emergency Support</a>
                 </div>
             </div>
         </section>
 
         <section id="services" class="service-detail-section">
             <div class="container">
-                <!-- Brand Identity Design Category -->
+                <!-- Technical Support Category -->
                 <div class="service-category">
                     <div class="category-header">
-                        <h2 class="category-title">Brand Identity Design</h2>
-                        <p class="category-description">Comprehensive branding solutions that establish your unique identity in the market</p>
+                        <h2 class="category-title">Technical Support Services</h2>
+                        <p class="category-description">Comprehensive IT assistance to resolve technical issues and optimize system performance</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
                             <div class="service-card">
                                 <div class="service-card-content text-center">
-                                    <i class="fas fa-palette"></i>
-                                    <h4 class="fw-bold mb-3">Logo Design</h4>
-                                    <p class="mb-4">Unique, memorable logos that capture your brand essence and make a lasting impression.</p>
+                                    <i class="fas fa-headset"></i>
+                                    <h4 class="fw-bold mb-3">Help Desk Support</h4>
+                                    <p class="mb-4">24/7 technical assistance for your employees with quick response times and effective solutions.</p>
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Custom Logo Concepts</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Multiple Design Options</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Brand Color Palette</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Final Logo Files</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Phone, Email & Chat Support</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Remote Desktop Assistance</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Software Installation & Updates</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> User Account Management</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary">Get Support</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="service-card">
+                                <div class="service-card-content text-center">
+                                    <i class="fas fa-tools"></i>
+                                    <h4 class="fw-bold mb-3">Hardware Maintenance</h4>
+                                    <p class="mb-4">Expert diagnostics, repair, and maintenance services for all your computer hardware.</p>
+                                    <ul class="list-unstyled text-start mb-4">
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Computer Diagnostics & Repair</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Component Replacement</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Preventive Maintenance</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Hardware Upgrades</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary">Get Support</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="service-card">
+                                <div class="service-card-content text-center">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <h4 class="fw-bold mb-3">Virus & Malware Removal</h4>
+                                    <p class="mb-4">Comprehensive security solutions to protect your systems from threats and malware.</p>
+                                    <ul class="list-unstyled text-start mb-4">
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Virus & Malware Scanning</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Threat Removal & System Cleaning</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Security Software Installation</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Security Best Practices</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary">Get Support</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Network Infrastructure Category -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Network Infrastructure</h2>
+                        <p class="category-description">Robust network solutions to ensure reliable connectivity and secure data transmission</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="service-card">
+                                <div class="service-card-content text-center">
+                                    <i class="fas fa-network-wired"></i>
+                                    <h4 class="fw-bold mb-3">Network Setup & Configuration</h4>
+                                    <p class="mb-4">Professional installation and configuration of wired and wireless networks for optimal performance.</p>
+                                    <ul class="list-unstyled text-start mb-4">
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Router & Switch Configuration</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Wireless Network Setup</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Network Security Configuration</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> VPN Setup</li>
                                     </ul>
                                     <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
                                 </div>
@@ -784,14 +801,14 @@
                         <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="service-card">
                                 <div class="service-card-content text-center">
-                                    <i class="fas fa-id-card"></i>
-                                    <h4 class="fw-bold mb-3">Business Stationery</h4>
-                                    <p class="mb-4">Professional business cards, letterheads, and envelopes that reflect your brand identity.</p>
+                                    <i class="fas fa-wifi"></i>
+                                    <h4 class="fw-bold mb-3">Wireless Network Solutions</h4>
+                                    <p class="mb-4">Secure and reliable wireless networking solutions for offices and business environments.</p>
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Business Card Design</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Letterhead Design</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Envelope Design</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Email Signature</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Wi-Fi Network Design</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Access Point Installation</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Wireless Security</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Network Performance Optimization</li>
                                     </ul>
                                     <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
                                 </div>
@@ -801,14 +818,14 @@
                         <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="service-card">
                                 <div class="service-card-content text-center">
-                                    <i class="fas fa-book"></i>
-                                    <h4 class="fw-bold mb-3">Brand Guidelines</h4>
-                                    <p class="mb-4">Comprehensive brand manuals that ensure consistent application of your visual identity.</p>
+                                    <i class="fas fa-server"></i>
+                                    <h4 class="fw-bold mb-3">Server Management</h4>
+                                    <p class="mb-4">Comprehensive server setup, maintenance, and monitoring services for business continuity.</p>
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Logo Usage Rules</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Color Specifications</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Typography Guidelines</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Brand Voice & Tone</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Server Installation & Configuration</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> User & Permission Management</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Backup & Disaster Recovery</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Performance Monitoring</li>
                                     </ul>
                                     <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
                                 </div>
@@ -817,26 +834,26 @@
                     </div>
                 </div>
 
-                <!-- Marketing Materials Category -->
+                <!-- Data Management Category -->
                 <div class="service-category">
                     <div class="category-header">
-                        <h2 class="category-title">Marketing & Advertising Design</h2>
-                        <p class="category-description">Eye-catching designs that drive engagement and convert viewers into customers</p>
+                        <h2 class="category-title">Data Management & Security</h2>
+                        <p class="category-description">Secure data handling solutions to protect your valuable business information</p>
                     </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
                             <div class="service-card">
                                 <div class="service-card-content text-center">
-                                    <i class="fas fa-bullhorn"></i>
-                                    <h4 class="fw-bold mb-3">Social Media Graphics</h4>
-                                    <p class="mb-4">Engaging visuals optimized for social platforms that boost your online presence.</p>
+                                    <i class="fas fa-database"></i>
+                                    <h4 class="fw-bold mb-3">Data Backup Solutions</h4>
+                                    <p class="mb-4">Reliable backup systems to protect your critical business data from loss or corruption.</p>
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Facebook & Instagram Posts</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Twitter Headers</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> LinkedIn Banners</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Story & Reel Graphics</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Automated Backup Systems</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Cloud & Local Backup Solutions</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Backup Verification & Testing</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Disaster Recovery Planning</li>
                                     </ul>
-                                    <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
+                                    <a href="contact.html" class="btn cta-btn-primary">Secure Your Data</a>
                                 </div>
                             </div>
                         </div>
@@ -844,16 +861,16 @@
                         <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                             <div class="service-card">
                                 <div class="service-card-content text-center">
-                                    <i class="fas fa-newspaper"></i>
-                                    <h4 class="fw-bold mb-3">Brochures & Flyers</h4>
-                                    <p class="mb-4">Informative and visually appealing print materials that effectively communicate your message.</p>
+                                    <i class="fas fa-key"></i>
+                                    <h4 class="fw-bold mb-3">Cybersecurity Services</h4>
+                                    <p class="mb-4">Comprehensive security measures to protect your systems from cyber threats and attacks.</p>
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Tri-Fold Brochures</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Product Flyers</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Event Posters</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Sales Sheets</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Firewall Configuration</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Security Audits & Assessments</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Employee Security Training</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Security Policy Development</li>
                                     </ul>
-                                    <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
+                                    <a href="contact.html" class="btn cta-btn-primary">Secure Your Data</a>
                                 </div>
                             </div>
                         </div>
@@ -861,76 +878,16 @@
                         <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                             <div class="service-card">
                                 <div class="service-card-content text-center">
-                                    <i class="fas fa-ad"></i>
-                                    <h4 class="fw-bold mb-3">Digital Ads & Banners</h4>
-                                    <p class="mb-4">High-converting digital advertisements designed for various platforms and screen sizes.</p>
+                                    <i class="fas fa-hdd"></i>
+                                    <h4 class="fw-bold mb-3">Data Recovery Services</h4>
+                                    <p class="mb-4">Expert data recovery solutions for accidentally deleted or corrupted files and systems.</p>
                                     <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Google Display Ads</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Social Media Ads</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Website Banners</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Email Marketing Graphics</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Hard Drive Data Recovery</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> RAID Array Recovery</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Corrupted File Repair</li>
+                                        <li><i class="fas fa-check text-light-blue me-2"></i> Emergency Data Recovery</li>
                                     </ul>
-                                    <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Print & Packaging Category -->
-                <div class="service-category">
-                    <div class="category-header">
-                        <h2 class="category-title">Print & Packaging Design</h2>
-                        <p class="category-description">Professional designs that enhance your physical products and marketing materials</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-                            <div class="service-card">
-                                <div class="service-card-content text-center">
-                                    <i class="fas fa-box-open"></i>
-                                    <h4 class="fw-bold mb-3">Product Packaging</h4>
-                                    <p class="mb-4">Eye-catching packaging designs that stand out on shelves and protect your products.</p>
-                                    <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Box & Container Design</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Label Design</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Die-Cut Templates</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Print-Ready Files</li>
-                                    </ul>
-                                    <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                            <div class="service-card">
-                                <div class="service-card-content text-center">
-                                    <i class="fas fa-file-alt"></i>
-                                    <h4 class="fw-bold mb-3">Corporate Documents</h4>
-                                    <p class="mb-4">Professionally designed business documents that reflect your company's credibility.</p>
-                                    <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Company Profiles</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Annual Reports</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Presentation Decks</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Proposal Templates</li>
-                                    </ul>
-                                    <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                            <div class="service-card">
-                                <div class="service-card-content text-center">
-                                    <i class="fas fa-tshirt"></i>
-                                    <h4 class="fw-bold mb-3">Merchandise Design</h4>
-                                    <p class="mb-4">Creative designs for promotional products that increase brand visibility and loyalty.</p>
-                                    <ul class="list-unstyled text-start mb-4">
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> T-Shirt & Apparel</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Mug & Drinkware</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Tote Bags & Accessories</li>
-                                        <li><i class="fas fa-check text-light-blue me-2"></i> Promotional Items</li>
-                                    </ul>
-                                    <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
+                                    <a href="contact.html" class="btn cta-btn-primary">Secure Your Data</a>
                                 </div>
                             </div>
                         </div>
@@ -939,179 +896,159 @@
             </div>
         </section>
 
-        <!-- Design Process Section -->
+        <!-- Emergency Support Section -->
+        <section class="emergency-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title text-white" data-aos="fade-up">24/7 Emergency IT Support</h2>
+                        <p class="lead text-white" data-aos="fade-up" data-aos-delay="100">Immediate assistance when you need it most</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4" data-aos="fade-up">
+                        <div class="emergency-card">
+                            <i class="fas fa-phone-alt emergency-icon"></i>
+                            <h3 class="emergency-title">Emergency Hotline</h3>
+                            <p class="emergency-description">Direct phone support for critical IT emergencies with priority response.</p>
+                            <div class="response-time">Response: < 30 minutes</div>
+                            <a href="tel:+264853441248" class="btn cta-btn-primary">Call Now</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="emergency-card">
+                            <i class="fas fa-desktop emergency-icon"></i>
+                            <h3 class="emergency-title">Remote Support</h3>
+                            <p class="emergency-description">Immediate remote assistance to resolve issues without on-site visits.</p>
+                            <div class="response-time">Response: < 15 minutes</div>
+                            <a href="contact.html" class="btn cta-btn-primary">Request Support</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="emergency-card">
+                            <i class="fas fa-truck emergency-icon"></i>
+                            <h3 class="emergency-title">On-Site Emergency</h3>
+                            <p class="emergency-description">Rapid on-site response for critical hardware failures and network outages.</p>
+                            <div class="response-time">Response: < 2 hours</div>
+                            <a href="contact.html" class="btn cta-btn-primary">Schedule Visit</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Process Section -->
         <section class="process-section">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-12 text-center">
-                        <h2 class="section-title" data-aos="fade-up">Our Design Process</h2>
-                        <p class="lead" data-aos="fade-up" data-aos-delay="100">A structured approach that ensures your vision becomes reality</p>
+                        <h2 class="section-title" data-aos="fade-up">Our IT Support Process</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">A structured approach to resolving your IT issues efficiently</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
                         <div class="process-step">
                             <div class="step-number">1</div>
-                            <h3 class="step-title">Discovery & Research</h3>
-                            <p class="step-description">We begin by understanding your business, target audience, and design requirements through detailed consultation.</p>
+                            <h3 class="step-title">Issue Reporting</h3>
+                            <p class="step-description">Contact us via phone, email, or our support portal to report your IT issue with detailed information.</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="process-step">
                             <div class="step-number">2</div>
-                            <h3 class="step-title">Concept Development</h3>
-                            <p class="step-description">Our designers create multiple concepts and present initial design directions for your feedback and approval.</p>
+                            <h3 class="step-title">Initial Diagnosis</h3>
+                            <p class="step-description">Our technicians perform initial assessment and triage to understand the scope and urgency of the issue.</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="process-step">
                             <div class="step-number">3</div>
-                            <h3 class="step-title">Design & Refinement</h3>
-                            <p class="step-description">We refine the selected concept based on your feedback, ensuring every detail aligns with your vision.</p>
+                            <h3 class="step-title">Solution Implementation</h3>
+                            <p class="step-description">We implement the appropriate solution, whether through remote support or on-site visit if required.</p>
                         </div>
                     </div>
                     <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="process-step">
                             <div class="step-number">4</div>
-                            <h3 class="step-title">Final Delivery</h3>
-                            <p class="step-description">We deliver the final design files in all required formats, along with guidelines for implementation.</p>
+                            <h3 class="step-title">Follow-up & Prevention</h3>
+                            <p class="step-description">We follow up to ensure resolution and provide recommendations to prevent future occurrences.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Portfolio Showcase Section -->
-        <section class="portfolio-showcase">
+        <!-- Support Packages Section -->
+        <section class="support-packages-section">
             <div class="container">
                 <div class="row mb-5">
                     <div class="col-12 text-center">
-                        <h2 class="section-title" data-aos="fade-up">Our Graphic Design Portfolio</h2>
-                        <p class="lead" data-aos="fade-up" data-aos-delay="100">Showcasing our creative work across various industries and design categories</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
-                        <div class="portfolio-item">
-                            <img src="images/Lavital.jpg" alt="LAVITAL Brand Identity" class="portfolio-img">
-                            <div class="portfolio-overlay">
-                                <h3 class="portfolio-title">LAVITAL Investments</h3>
-                                <p class="portfolio-category-tag">Brand Identity</p>
-                                <p class="text-white mb-3">Complete corporate branding including logo, stationery, and marketing materials</p>
-                                <a href="portfolio.html" class="portfolio-link">View Project</a>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>LAVITAL Investments Branding</h3>
-                                <p>Complete corporate identity package including logo design, business cards, and marketing collateral.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="portfolio-item">
-                            <img src="images/Ads.jpg" alt="Marketing Campaign Ads" class="portfolio-img">
-                            <div class="portfolio-overlay">
-                                <h3 class="portfolio-title">Marketing Campaign</h3>
-                                <p class="portfolio-category-tag">Advertising Design</p>
-                                <p class="text-white mb-3">Series of promotional posters and digital ads for various marketing campaigns</p>
-                                <a href="portfolio.html" class="portfolio-link">View Project</a>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Marketing Campaign Ads</h3>
-                                <p>Series of promotional posters and digital ads designed for maximum engagement and conversion.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="portfolio-item">
-                            <img src="images/business-card-2.jpg" alt="Business Card Designs" class="portfolio-img">
-                            <div class="portfolio-overlay">
-                                <h3 class="portfolio-title">Business Card Collection</h3>
-                                <p class="portfolio-category-tag">Print Design</p>
-                                <p class="text-white mb-3">Professional business card designs for various industries and professions</p>
-                                <a href="portfolio.html" class="portfolio-link">View Project</a>
-                            </div>
-                            <div class="portfolio-info">
-                                <h3>Business Card Collection</h3>
-                                <p>A collection of professionally designed business cards with various styles and finishes.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-4" data-aos="fade-up">
-                    <a href="portfolio.html" class="btn cta-btn-primary btn-lg">View Full Portfolio</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Pricing Section -->
-        <section class="pricing-section">
-            <div class="container">
-                <div class="row mb-5">
-                    <div class="col-12 text-center">
-                        <h2 class="section-title" data-aos="fade-up">Graphic Design Packages</h2>
-                        <p class="lead" data-aos="fade-up" data-aos-delay="100">Flexible pricing options to suit your design needs and budget</p>
+                        <h2 class="section-title" data-aos="fade-up">IT Support Packages</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">Flexible support options tailored to your business needs</p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-4 mb-4" data-aos="fade-up">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3 class="pricing-title">Starter Package</h3>
-                                <div class="pricing-price">N$ 1,500</div>
-                                <div class="pricing-period">One-time project</div>
+                        <div class="package-card">
+                            <div class="package-header">
+                                <h3 class="package-title">Basic Support</h3>
+                                <div class="package-price">N$ 1,200</div>
+                                <div class="package-period">Per month</div>
                             </div>
-                            <div class="pricing-features">
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Single Design Concept</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> 2 Revisions</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Source Files</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> 5-7 Day Turnaround</div>
-                                <div class="pricing-feature"><i class="fas fa-times"></i> Brand Guidelines</div>
+                            <div class="package-features">
+                                <div class="package-feature"><i class="fas fa-check"></i> 8x5 Remote Support</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Basic Troubleshooting</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Software Installation</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Email & Phone Support</div>
+                                <div class="package-feature"><i class="fas fa-times"></i> On-Site Support</div>
+                                <div class="package-feature"><i class="fas fa-times"></i> Emergency Response</div>
                             </div>
                             <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
                         </div>
                     </div>
                     
                     <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
-                        <div class="pricing-card featured">
+                        <div class="package-card featured">
                             <div class="featured-badge">Most Popular</div>
-                            <div class="pricing-header">
-                                <h3 class="pricing-title">Professional Package</h3>
-                                <div class="pricing-price">N$ 3,500</div>
-                                <div class="pricing-period">One-time project</div>
+                            <div class="package-header">
+                                <h3 class="package-title">Professional Support</h3>
+                                <div class="package-price">N$ 2,500</div>
+                                <div class="package-period">Per month</div>
                             </div>
-                            <div class="pricing-features">
-                                <div class="pricing-feature"><i class="fas fa-check"></i> 3 Design Concepts</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Unlimited Revisions</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Source Files</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> 7-10 Day Turnaround</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Basic Brand Guidelines</div>
+                            <div class="package-features">
+                                <div class="package-feature"><i class="fas fa-check"></i> 24/7 Remote Support</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Advanced Troubleshooting</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Network Monitoring</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> 4 Hours On-Site Monthly</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Emergency Response</div>
+                                <div class="package-feature"><i class="fas fa-times"></i> Server Management</div>
                             </div>
                             <a href="contact.html" class="btn cta-btn-primary">Get Started</a>
                         </div>
                     </div>
                     
                     <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
-                        <div class="pricing-card">
-                            <div class="pricing-header">
-                                <h3 class="pricing-title">Enterprise Package</h3>
-                                <div class="pricing-price">N$ 7,000+</div>
-                                <div class="pricing-period">Custom project</div>
+                        <div class="package-card">
+                            <div class="package-header">
+                                <h3 class="package-title">Enterprise Support</h3>
+                                <div class="package-price">N$ 5,000+</div>
+                                <div class="package-period">Per month</div>
                             </div>
-                            <div class="pricing-features">
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Complete Brand Identity</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Unlimited Revisions</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> All Source Files</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> 14-21 Day Turnaround</div>
-                                <div class="pricing-feature"><i class="fas fa-check"></i> Comprehensive Brand Guidelines</div>
+                            <div class="package-features">
+                                <div class="package-feature"><i class="fas fa-check"></i> 24/7 Comprehensive Support</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Dedicated Support Technician</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Server & Network Management</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Unlimited On-Site Support</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Priority Emergency Response</div>
+                                <div class="package-feature"><i class="fas fa-check"></i> Strategic IT Consulting</div>
                             </div>
                             <a href="contact.html" class="btn cta-btn-primary">Get Quote</a>
                         </div>
                     </div>
                 </div>
                 <div class="text-center mt-4" data-aos="fade-up">
-                    <p class="text-muted">All packages include consultation, design process, and final delivery. Contact us for custom requirements.</p>
+                    <p class="text-muted">All packages include remote support, basic troubleshooting, and software assistance. Contact us for custom requirements.</p>
                 </div>
             </div>
         </section>
@@ -1121,26 +1058,26 @@
                 <div class="row text-center">
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up">
                         <div class="stat-item">
-                            <div class="stat-number">200+</div>
-                            <div class="stat-label">Design Projects</div>
+                            <div class="stat-number">99.9%</div>
+                            <div class="stat-label">Uptime Guarantee</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                         <div class="stat-item">
-                            <div class="stat-number">98%</div>
-                            <div class="stat-label">Client Satisfaction</div>
+                            <div class="stat-number">15 min</div>
+                            <div class="stat-label">Average Response Time</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                         <div class="stat-item">
-                            <div class="stat-number">5+</div>
-                            <div class="stat-label">Years Experience</div>
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Clients Supported</div>
                         </div>
                     </div>
                     <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                         <div class="stat-item">
                             <div class="stat-number">24/7</div>
-                            <div class="stat-label">Design Support</div>
+                            <div class="stat-label">Support Availability</div>
                         </div>
                     </div>
                 </div>
@@ -1149,10 +1086,10 @@
 
         <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
             <div class="container" data-aos="zoom-in">
-                <h2 class="fw-bold mb-3">Ready to Transform Your Visual Identity?</h2>
-                <p class="lead mb-4">Let's create stunning designs that elevate your brand and captivate your audience.</p>
+                <h2 class="fw-bold mb-3">Need Reliable IT Support?</h2>
+                <p class="lead mb-4">Let us handle your technology challenges so you can focus on growing your business.</p>
                 <a href="contact.html" class="btn cta-btn-primary btn-lg">
-                    <i class="far fa-calendar-check me-2"></i> START YOUR DESIGN PROJECT
+                    <i class="far fa-calendar-check me-2"></i> GET IT SUPPORT NOW
                 </a>
             </div>
         </section>

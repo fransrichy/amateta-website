@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - IT Equipment & Software Supply</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        :root {
+            --primary-blue: #0a2540;
+            --light-blue: #00b4d8;
+            --accent-blue: #0077b6;
+            --dark-blue: #03045e;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding-top: 80px; /* Space for fixed navbar */
+        }
+
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar {
+            background-color: var(--primary-blue);
+            transition: background-color 0.3s;
+            box-shadow: var(--shadow);
+            z-index: 1030;
+            padding: 10px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            background-color: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-mobile-safe {
+            max-height: 50px;
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--white) !important;
+            font-weight: 600;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--light-blue) !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--white);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* ---------------------------------
+            Hero Section
+            --------------------------------- */
+        .page-hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+            color: var(--white);
+            padding: 120px 0;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------------------------------
+            Floating WhatsApp Button
+            --------------------------------- */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #06014b;
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2.5s infinite;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        #whatsapp-btn:hover {
+            transform: scale(1.05);
+            background-color: #00c3ff;
+        }
+        
+        #whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ---------------------------------
+            General Content & CTA Styles
+            --------------------------------- */
+        .text-primary-color { color: var(--primary-blue) !important; }
+        .text-light-blue { color: var(--light-blue) !important; }
+
+        .cta-btn-primary {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            color: var(--white);
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        .cta-btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* ---------------------------------
+            Service Cards
+            --------------------------------- */
+        .service-card {
+            background-color: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 5px solid var(--light-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to bottom, var(--light-blue), transparent);
+            transition: height 0.3s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card i {
+            color: var(--light-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ---------------------------------
+            Stats Section
+            --------------------------------- */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ---------------------------------
+            Footer Style
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer h5 { 
+            color: var(--light-blue); 
+            margin-bottom: 20px; 
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .amateta-footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-blue);
+        }
+
+        .amateta-footer a { 
+            color: #ccc; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 8px; 
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .amateta-footer a:hover { 
+            color: var(--light-blue); 
+            transform: translateX(5px);
+        }
+
+        .amateta-footer a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer .social-icons a { 
+            display: inline-block; 
+            margin-right: 15px; 
+            font-size: 1.5rem; 
+            color: var(--white); 
+            transition: color 0.2s, transform 0.2s; 
+        }
+
+        .amateta-footer .social-icons a:hover { 
+            color: var(--light-blue); 
+            transform: translateY(-3px);
+        }
+
+        .credit-line { 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 20px; 
+            margin-top: 30px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+        }
+
+        .help-box {
+            background-color: rgba(0, 180, 216, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--light-blue);
+        }
+
+        .help-box h5 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-box a {
+            color: var(--white);
+            display: inline-block;
+            background-color: var(--light-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .help-box a:hover {
+            background-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            background-color: var(--white);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--light-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent-blue);
+        }
+
+        /* ---------------------------------
+            Service Categories
+            --------------------------------- */
+        .service-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+
+        .category-description {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ---------------------------------
+            Company Stamps Section
+            --------------------------------- */
+        .stamps-section {
+            padding: 80px 20px;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .stamps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stamp-item {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stamp-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stamp-icon {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* ---------------------------------
+            Equipment & Software Styles
+            --------------------------------- */
+        .equipment-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .equipment-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .equipment-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .equipment-content {
+            padding: 1.5rem;
+        }
+
+        .equipment-category {
+            font-size: 0.9rem;
+            color: var(--light-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .equipment-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .equipment-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .equipment-features li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .equipment-features li i {
+            color: var(--light-blue);
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .pricing-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--light-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: rotate(45deg) translate(30%, -50%);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--light-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--dark-gray);
+            font-size: 1rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .brands-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .brand-logo {
+            height: 80px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .brand-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+
+        /* ---------------------------------
+            Mobile Responsiveness
+            --------------------------------- */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .logo-mobile-safe {
+                max-height: 40px !important;
+            }
+            
+            .page-hero-section {
+                padding: 80px 0;
+                min-height: 30vh;
+            }
+            
+            .page-hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero-section p.lead {
+                font-size: 1.1rem;
+            }
+            
+            #whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .service-card {
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid .col-md-3 {
+                margin-bottom: 30px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20IT%20equipment%20and%20software" id="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+    </a>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="logo-mobile-safe">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="it-equipment.html">IT Equipment</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="launched-websites.html">Launched Sites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section class="page-hero-section">
+            <div class="container text-center hero-content">
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">IT Equipment & Software Supply</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Your trusted partner for quality IT hardware, software, and accessories to power your business.</p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#equipment" class="btn cta-btn-primary btn-lg me-3">Browse Equipment</a>
+                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Request Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="equipment" class="py-5 bg-light">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title" data-aos="fade-up">Comprehensive IT Solutions</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">We provide a wide range of IT equipment and software solutions to meet all your business technology needs, from desktop computers to enterprise software licensing.</p>
+                    </div>
+                </div>
+
+                <!-- Computer Hardware Section -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Computer Hardware</h2>
+                        <p class="category-description">High-performance computers and components for every business need</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Desktop Computers" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">COMPUTERS</div>
+                                    <h3 class="equipment-name">Desktop Computers</h3>
+                                    <p>Powerful desktop computers for office productivity, creative work, and gaming.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Intel Core i3/i5/i7/i9 Processors</li>
+                                        <li><i class="fas fa-check"></i> 8GB - 32GB RAM Options</li>
+                                        <li><i class="fas fa-check"></i> SSD & HDD Storage Solutions</li>
+                                        <li><i class="fas fa-check"></i> Dedicated & Integrated Graphics</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Laptops" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">COMPUTERS</div>
+                                    <h3 class="equipment-name">Laptops & Notebooks</h3>
+                                    <p>Portable computing solutions for professionals on the go.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Business & Gaming Laptops</li>
+                                        <li><i class="fas fa-check"></i> Ultrabooks for Mobility</li>
+                                        <li><i class="fas fa-check"></i> Long Battery Life Options</li>
+                                        <li><i class="fas fa-check"></i> Various Screen Sizes</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Servers" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">ENTERPRISE</div>
+                                    <h3 class="equipment-name">Servers & Storage</h3>
+                                    <p>Reliable server solutions for businesses of all sizes.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Tower & Rack Servers</li>
+                                        <li><i class="fas fa-check"></i> Network Attached Storage (NAS)</li>
+                                        <li><i class="fas fa-check"></i> RAID Configurations</li>
+                                        <li><i class="fas fa-check"></i> Backup Solutions</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Peripherals & Accessories Section -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Peripherals & Accessories</h2>
+                        <p class="category-description">Essential accessories to complete your workstation setup</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Monitors" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">DISPLAYS</div>
+                                    <h3 class="equipment-name">Monitors & Displays</h3>
+                                    <p>High-quality monitors for enhanced productivity and visual experience.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Full HD, 2K & 4K Resolutions</li>
+                                        <li><i class="fas fa-check"></i> IPS, VA & TN Panel Technologies</li>
+                                        <li><i class="fas fa-check"></i> Curved & Ultrawide Options</li>
+                                        <li><i class="fas fa-check"></i> Multiple Connectivity Options</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1615663245857-ac93bb7c39e7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Printers" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">OFFICE EQUIPMENT</div>
+                                    <h3 class="equipment-name">Printers & Scanners</h3>
+                                    <p>Efficient printing and scanning solutions for office and home use.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Inkjet & Laser Printers</li>
+                                        <li><i class="fas fa-check"></i> All-in-One Multifunction Devices</li>
+                                        <li><i class="fas fa-check"></i> Wireless Connectivity</li>
+                                        <li><i class="fas fa-check"></i> High-Speed Scanning</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1590650516494-0c8e4a4dd61b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Networking" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">NETWORKING</div>
+                                    <h3 class="equipment-name">Networking Equipment</h3>
+                                    <p>Reliable networking solutions to keep your business connected.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Routers & Switches</li>
+                                        <li><i class="fas fa-check"></i> Wireless Access Points</li>
+                                        <li><i class="fas fa-check"></i> Network Cables & Connectors</li>
+                                        <li><i class="fas fa-check"></i> Firewalls & Security Appliances</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Software Solutions Section -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Software Solutions</h2>
+                        <p class="category-description">Licensed software to power your business operations</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Operating Systems" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">SYSTEM SOFTWARE</div>
+                                    <h3 class="equipment-name">Operating Systems</h3>
+                                    <p>Genuine operating systems for stable and secure computing.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Windows 10/11 Professional</li>
+                                        <li><i class="fas fa-check"></i> Windows Server Editions</li>
+                                        <li><i class="fas fa-check"></i> Linux Distributions</li>
+                                        <li><i class="fas fa-check"></i> Volume Licensing Available</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1611224923853-80b023f02d71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Productivity Software" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">PRODUCTIVITY</div>
+                                    <h3 class="equipment-name">Productivity Suites</h3>
+                                    <p>Comprehensive office software for document creation and collaboration.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> Microsoft Office 365</li>
+                                        <li><i class="fas fa-check"></i> Adobe Creative Cloud</li>
+                                        <li><i class="fas fa-check"></i> Antivirus & Security Software</li>
+                                        <li><i class="fas fa-check"></i> Accounting & Business Software</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="equipment-card">
+                                <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Business Software" class="equipment-img">
+                                <div class="equipment-content">
+                                    <div class="equipment-category">BUSINESS</div>
+                                    <h3 class="equipment-name">Business Applications</h3>
+                                    <p>Specialized software solutions for various business needs.</p>
+                                    <ul class="equipment-features">
+                                        <li><i class="fas fa-check"></i> CRM & ERP Solutions</li>
+                                        <li><i class="fas fa-check"></i> Accounting Software</li>
+                                        <li><i class="fas fa-check"></i> Project Management Tools</li>
+                                        <li><i class="fas fa-check"></i> Industry-Specific Applications</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Request Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Brands Section -->
+        <section class="brands-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title" data-aos="fade-up">Trusted Brands We Supply</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">We partner with leading technology brands to provide you with reliable and high-performance equipment</p>
+                    </div>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-lg-2 col-md-4 col-6 text-center mb-4" data-aos="zoom-in">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/HP-Logo.svg/1024px-HP-Logo.svg.png" alt="HP" class="brand-logo">
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="100">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/1024px-Dell_Logo.svg.png" alt="Dell" class="brand-logo">
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="200">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Lenovo_logo_2015.svg/1024px-Lenovo_logo_2015.svg.png" alt="Lenovo" class="brand-logo">
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="300">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Apple_logo_black.svg/488px-Apple_logo_black.svg.png" alt="Apple" class="brand-logo">
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="400">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Microsoft_logo.svg/1024px-Microsoft_logo.svg.png" alt="Microsoft" class="brand-logo">
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6 text-center mb-4" data-aos="zoom-in" data-aos-delay="500">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Cisco_logo.svg/1024px-Cisco_logo.svg.png" alt="Cisco" class="brand-logo">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title" data-aos="fade-up">Flexible Procurement Options</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">We offer various purchasing options to suit your budget and business requirements</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4" data-aos="fade-up">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3 class="pricing-name">One-Time Purchase</h3>
+                                <div class="pricing-price">Custom</div>
+                                <div class="pricing-period">Pay Once, Own Forever</div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>Full ownership of equipment/software</li>
+                                <li>No recurring fees</li>
+                                <li>Best for established businesses</li>
+                                <li>Custom configurations available</li>
+                                <li>Warranty included</li>
+                            </ul>
+                            <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pricing-card featured">
+                            <div class="pricing-header">
+                                <h3 class="pricing-name">Lease to Own</h3>
+                                <div class="pricing-price">Flexible</div>
+                                <div class="pricing-period">Monthly Payments</div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>Low upfront costs</li>
+                                <li>Fixed monthly payments</li>
+                                <li>Ownership after term completion</li>
+                                <li>Upgrade options available</li>
+                                <li>Maintenance included</li>
+                            </ul>
+                            <a href="contact.html" class="btn cta-btn-primary w-100">Learn More</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3 class="pricing-name">Rental Service</h3>
+                                <div class="pricing-price">From $50/mo</div>
+                                <div class="pricing-period">Short-term Solution</div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>Ideal for temporary needs</li>
+                                <li>Flexible rental periods</li>
+                                <li>Includes setup & support</li>
+                                <li>No long-term commitment</li>
+                                <li>Latest equipment available</li>
+                            </ul>
+                            <a href="contact.html" class="btn cta-btn-primary w-100">Browse Options</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Stamps Section -->
+        <section class="stamps-section">
+            <div class="container">
+                <h2 class="text-4xl font-bold mb-4 text-primary-color">Why Choose AMATETA for IT Equipment?</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8">Our commitment to quality and service makes us the preferred IT equipment supplier for businesses across Namibia.</p>
+                
+                <div class="stamps-grid">
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Genuine Products</h3>
+                        <p>All our equipment comes with official warranties and certifications</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Technical Support</h3>
+                        <p>Comprehensive setup, installation, and ongoing technical assistance</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Fast Delivery</h3>
+                        <p>Quick delivery and installation services across Windhoek and beyond</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-hand-holding-usd"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Competitive Pricing</h3>
+                        <p>Best value for money with flexible payment options</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Custom Solutions</h3>
+                        <p>Tailored IT equipment packages to match your specific requirements</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">After-Sales Service</h3>
+                        <p>Dedicated support team for maintenance and troubleshooting</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="fw-bold mb-3">Ready to Equip Your Business?</h2>
+                <p class="lead mb-4">Contact us today for a free consultation and customized quote for your IT equipment needs.</p>
+                <a href="contact.html" class="btn cta-btn-primary btn-lg me-3">
+                    <i class="fas fa-laptop me-2"></i> GET EQUIPMENT QUOTE
+                </a>
+                <a href="tel:+264853441248" class="btn cta-btn-secondary btn-lg">
+                    <i class="fas fa-phone me-2"></i> CALL NOW
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="amateta-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-logo mb-3">
+                        <img src="images/OUR LOGO WHITE.png" alt="AMATETA Footer Logo" style="height: 50px;">
+                    </div>
+                    <p class="mb-3">AMATETA Techs & Designs is a premier technology company offering cutting-edge solutions in Web Development, Digital Marketing, IT Support, and more.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/264853441248" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="it-equipment.html"><i class="fas fa-chevron-right"></i> IT Equipment</a>
+                    <a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a>
+                    <a href="launched-websites.html"><i class="fas fa-chevron-right"></i> Launched Websites</a>
+                    <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <a href="web-development.html"><i class="fas fa-code"></i> Website Development</a>
+                    <a href="digital-marketing.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+                    <a href="graphic-design.html"><i class="fas fa-palette"></i> Graphic Design</a>
+                    <a href="it-support.html"><i class="fas fa-headset"></i> IT Support</a>
+                    <a href="it-equipment.html"><i class="fas fa-laptop"></i> IT Equipment Supply</a>
+                    <a href="printing-services.html"><i class="fas fa-print"></i> Printing Services</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact & Support</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Windhoek, Namibia</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> <a href="tel:+264853441248">+264 85 344 1248</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@amateta.com">info@amateta.com</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:support@amateta.com">support@amateta.com</a></p>
+                    <p class="mb-3"><i class="fas fa-envelope me-2"></i> <a href="mailto:order@amateta.com">order@amateta.com</a></p>
+                    
+                    <div class="help-box">
+                        <h5>Need IT Equipment?</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">Get a customized quote for your business</p>
+                        <a href="contact.html"><i class="fas fa-laptop me-2"></i> Request Quote</a>
+                    </div>
+                </div>
+            </div>
+            <div class="credit-line">
+                <div class="footer-bottom-links mb-2">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <p>&copy; <span id="year"></span> AMATETA Techs & Designs. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Cookie consent functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.getElementById('cookieConsent');
+            const acceptCookies = document.getElementById('acceptCookies');
+            const declineCookies = document.getElementById('declineCookies');
+            
+            // Check if user has already made a choice
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieConsent.classList.add('show');
+                }, 1000);
+            }
+            
+            acceptCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieConsent.classList.remove('show');
+            });
+            
+            declineCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'false');
+                cookieConsent.classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+</html>
