@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - POS Systems</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        :root {
+            --primary-blue: #0a2540;
+            --light-blue: #00b4d8;
+            --accent-blue: #0077b6;
+            --dark-blue: #03045e;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding-top: 80px; /* Space for fixed navbar */
+        }
+
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar {
+            background-color: var(--primary-blue);
+            transition: background-color 0.3s;
+            box-shadow: var(--shadow);
+            z-index: 1030;
+            padding: 10px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            background-color: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-mobile-safe {
+            max-height: 50px;
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--white) !important;
+            font-weight: 600;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--light-blue) !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--white);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* ---------------------------------
+            Hero Section
+            --------------------------------- */
+        .page-hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+            color: var(--white);
+            padding: 120px 0;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------------------------------
+            Floating WhatsApp Button
+            --------------------------------- */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #06014b;
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2.5s infinite;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        #whatsapp-btn:hover {
+            transform: scale(1.05);
+            background-color: #00c3ff;
+        }
+        
+        #whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ---------------------------------
+            General Content & CTA Styles
+            --------------------------------- */
+        .text-primary-color { color: var(--primary-blue) !important; }
+        .text-light-blue { color: var(--light-blue) !important; }
+
+        .cta-btn-primary {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            color: var(--white);
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        .cta-btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* ---------------------------------
+            Service Cards
+            --------------------------------- */
+        .service-card {
+            background-color: var(--white);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            border-top: 5px solid var(--light-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to bottom, var(--light-blue), transparent);
+            transition: height 0.3s ease;
+            z-index: 0;
+        }
+
+        .service-card:hover::before {
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .service-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .service-card i {
+            color: var(--light-blue);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ---------------------------------
+            Stats Section
+            --------------------------------- */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ---------------------------------
+            Footer Style
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer h5 { 
+            color: var(--light-blue); 
+            margin-bottom: 20px; 
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .amateta-footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-blue);
+        }
+
+        .amateta-footer a { 
+            color: #ccc; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 8px; 
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .amateta-footer a:hover { 
+            color: var(--light-blue); 
+            transform: translateX(5px);
+        }
+
+        .amateta-footer a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer .social-icons a { 
+            display: inline-block; 
+            margin-right: 15px; 
+            font-size: 1.5rem; 
+            color: var(--white); 
+            transition: color 0.2s, transform 0.2s; 
+        }
+
+        .amateta-footer .social-icons a:hover { 
+            color: var(--light-blue); 
+            transform: translateY(-3px);
+        }
+
+        .credit-line { 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 20px; 
+            margin-top: 30px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+        }
+
+        .help-box {
+            background-color: rgba(0, 180, 216, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--light-blue);
+        }
+
+        .help-box h5 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-box a {
+            color: var(--white);
+            display: inline-block;
+            background-color: var(--light-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .help-box a:hover {
+            background-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            background-color: var(--white);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--light-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent-blue);
+        }
+
+        /* ---------------------------------
+            Service Categories
+            --------------------------------- */
+        .service-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+
+        .category-description {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* ---------------------------------
+            Company Stamps Section
+            --------------------------------- */
+        .stamps-section {
+            padding: 80px 20px;
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .stamps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stamp-item {
+            background-color: var(--light-gray);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .stamp-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stamp-icon {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 1rem;
+        }
+
+        /* ---------------------------------
+            POS Systems Styles
+            --------------------------------- */
+        .pos-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .pos-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pos-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+
+        .pos-content {
+            padding: 1.5rem;
+        }
+
+        .pos-category {
+            font-size: 0.9rem;
+            color: var(--light-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .pos-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .pos-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .pos-features li {
+            padding: 0.25rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .pos-features li i {
+            color: var(--light-blue);
+            margin-right: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .pricing-section {
+            background-color: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--light-blue);
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: 'Most Popular';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 0.5rem 1.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: rotate(45deg) translate(30%, -50%);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .pricing-card.featured:hover {
+            transform: scale(1.05) translateY(-8px);
+        }
+
+        .pricing-header {
+            margin-bottom: 2rem;
+        }
+
+        .pricing-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--light-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .pricing-period {
+            color: var(--dark-gray);
+            font-size: 1rem;
+        }
+
+        .pricing-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+        }
+
+        .pricing-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--medium-gray);
+        }
+
+        .pricing-features li:last-child {
+            border-bottom: none;
+        }
+
+        .process-section {
+            padding: 80px 0;
+            background-color: var(--white);
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: var(--light-blue);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 auto 1.5rem;
+        }
+
+        .step-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        .industries-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .industry-card {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            text-align: center;
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .industry-icon {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        .features-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);
+            color: var(--white);
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--light-blue);
+            margin-bottom: 1.5rem;
+        }
+
+        /* ---------------------------------
+            Mobile Responsiveness
+            --------------------------------- */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .logo-mobile-safe {
+                max-height: 40px !important;
+            }
+            
+            .page-hero-section {
+                padding: 80px 0;
+                min-height: 30vh;
+            }
+            
+            .page-hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero-section p.lead {
+                font-size: 1.1rem;
+            }
+            
+            #whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .service-card {
+                margin-bottom: 20px;
+            }
+            
+            .stats-grid .col-md-3 {
+                margin-bottom: 30px;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .pricing-card.featured:hover {
+                transform: translateY(-8px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20POS%20systems" id="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+    </a>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/OUR LOGO REVISED.png" alt="AMATETA Techs & Designs Logo" class="logo-mobile-safe">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="pos-systems.html">POS Systems</a></li>
+                    <li class="nav-item"><a class="nav-link" href="portfolio.html">Portfolio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="launched-websites.html">Launched Sites</a></li>
+                    <li class="nav-item"><a class="nav-link" href="team.html">Our Team</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section class="page-hero-section">
+            <div class="container text-center hero-content">
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Point of Sale (POS) Systems</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Streamline your retail operations with our comprehensive POS solutions designed for businesses of all sizes.</p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#systems" class="btn cta-btn-primary btn-lg me-3">View Systems</a>
+                    <a href="contact.html" class="btn cta-btn-secondary btn-lg">Free Consultation</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="systems" class="py-5 bg-light">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title" data-aos="fade-up">Complete POS Solutions</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">We provide end-to-end POS systems that streamline your operations, improve customer experience, and boost your bottom line.</p>
+                    </div>
+                </div>
+
+                <!-- Retail POS Systems Section -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Retail POS Systems</h2>
+                        <p class="category-description">Comprehensive solutions for retail stores, boutiques, and shops</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Retail POS System" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">RETAIL</div>
+                                    <h3 class="pos-name">Standard Retail POS</h3>
+                                    <p>Complete POS solution for small to medium retail businesses with inventory management.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Inventory Management</li>
+                                        <li><i class="fas fa-check"></i> Sales Reporting & Analytics</li>
+                                        <li><i class="fas fa-check"></i> Customer Management</li>
+                                        <li><i class="fas fa-check"></i> Barcode Scanning</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1607082350899-7e105aa886ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Fashion Retail POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">RETAIL</div>
+                                    <h3 class="pos-name">Fashion & Apparel POS</h3>
+                                    <p>Specialized POS for clothing stores with size and color variants management.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Size & Color Variants</li>
+                                        <li><i class="fas fa-check"></i> Layaway & Hold Items</li>
+                                        <li><i class="fas fa-check"></i> Purchase Order Management</li>
+                                        <li><i class="fas fa-check"></i> Vendor Management</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Multi-Store POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">RETAIL</div>
+                                    <h3 class="pos-name">Multi-Store POS</h3>
+                                    <p>Centralized system for managing multiple store locations with real-time synchronization.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Centralized Inventory</li>
+                                        <li><i class="fas fa-check"></i> Inter-store Transfers</li>
+                                        <li><i class="fas fa-check"></i> Consolidated Reporting</li>
+                                        <li><i class="fas fa-check"></i> User Permissions</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hospitality POS Systems Section -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Hospitality POS Systems</h2>
+                        <p class="category-description">Specialized solutions for restaurants, cafes, and food service businesses</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Restaurant POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">HOSPITALITY</div>
+                                    <h3 class="pos-name">Restaurant POS</h3>
+                                    <p>Complete restaurant management with table management and kitchen order printing.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Table Management</li>
+                                        <li><i class="fas fa-check"></i> Kitchen Order Printing</li>
+                                        <li><i class="fas fa-check"></i> Menu Management</li>
+                                        <li><i class="fas fa-check"></i> Split Bills & Modifiers</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Quick Service POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">HOSPITALITY</div>
+                                    <h3 class="pos-name">Quick Service POS</h3>
+                                    <p>Fast and efficient POS for cafes, food trucks, and quick service restaurants.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Fast Order Processing</li>
+                                        <li><i class="fas fa-check"></i> Customizable Menu Boards</li>
+                                        <li><i class="fas fa-check"></i> Loyalty Program Integration</li>
+                                        <li><i class="fas fa-check"></i> Mobile Ordering</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Bar POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">HOSPITALITY</div>
+                                    <h3 class="pos-name">Bar & Lounge POS</h3>
+                                    <p>Specialized system for bars and lounges with inventory tracking and age verification.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Alcohol Inventory Tracking</li>
+                                        <li><i class="fas fa-check"></i> Age Verification</li>
+                                        <li><i class="fas fa-check"></i> Tab Management</li>
+                                        <li><i class="fas fa-check"></i> Recipe Costing</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service Business POS Systems Section -->
+                <div class="service-category">
+                    <div class="category-header">
+                        <h2 class="category-title">Service Business POS</h2>
+                        <p class="category-description">Tailored solutions for service-based businesses and appointment scheduling</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Salon POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">SERVICE</div>
+                                    <h3 class="pos-name">Salon & Spa POS</h3>
+                                    <p>Comprehensive system for beauty and wellness businesses with appointment scheduling.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Appointment Scheduling</li>
+                                        <li><i class="fas fa-check"></i> Staff Commission Tracking</li>
+                                        <li><i class="fas fa-check"></i> Client History & Preferences</li>
+                                        <li><i class="fas fa-check"></i> Product & Service Sales</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1581093458791-8a6bc22e32e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Repair Service POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">SERVICE</div>
+                                    <h3 class="pos-name">Repair Service POS</h3>
+                                    <p>Specialized system for repair shops with job tracking and customer communication.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Job Tracking & Status</li>
+                                        <li><i class="fas fa-check"></i> Parts Inventory Management</li>
+                                        <li><i class="fas fa-check"></i> Customer Communication</li>
+                                        <li><i class="fas fa-check"></i> Warranty Tracking</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                            <div class="pos-card">
+                                <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Professional Services POS" class="pos-img">
+                                <div class="pos-content">
+                                    <div class="pos-category">SERVICE</div>
+                                    <h3 class="pos-name">Professional Services POS</h3>
+                                    <p>System for consultants, trainers, and professional service providers.</p>
+                                    <ul class="pos-features">
+                                        <li><i class="fas fa-check"></i> Time-based Billing</li>
+                                        <li><i class="fas fa-check"></i> Client Management</li>
+                                        <li><i class="fas fa-check"></i> Project Tracking</li>
+                                        <li><i class="fas fa-check"></i> Recurring Billing</li>
+                                    </ul>
+                                    <a href="contact.html" class="btn cta-btn-primary w-100">Get Quote</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title text-white" data-aos="fade-up">Powerful POS Features</h2>
+                        <p class="lead text-white" data-aos="fade-up" data-aos-delay="100">Our POS systems come packed with features designed to streamline your business operations</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="step-title">Sales Analytics</h3>
+                            <p>Comprehensive reporting and analytics to track performance and identify trends.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-boxes"></i>
+                            </div>
+                            <h3 class="step-title">Inventory Management</h3>
+                            <p>Real-time inventory tracking with low stock alerts and purchase order management.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="step-title">Customer Management</h3>
+                            <p>Complete customer profiles with purchase history and loyalty program integration.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="feature-item">
+                            <div class="feature-icon">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                            <h3 class="step-title">Payment Processing</h3>
+                            <p>Secure payment processing with multiple payment options and integration.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Industries Section -->
+        <section class="industries-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title" data-aos="fade-up">Industries We Serve</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">We provide specialized POS solutions for various business types</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <i class="fas fa-shopping-bag"></i>
+                            </div>
+                            <h3 class="step-title">Retail Stores</h3>
+                            <p>Boutiques, clothing stores, electronics, and general merchandise retailers.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <h3 class="step-title">Restaurants & Food</h3>
+                            <p>Restaurants, cafes, food trucks, bakeries, and quick service establishments.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h3 class="step-title">Beauty & Wellness</h3>
+                            <p>Salons, spas, barbershops, and beauty service providers.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <h3 class="step-title">Repair Services</h3>
+                            <p>Electronics repair, automotive services, and equipment maintenance.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <i class="fas fa-gem"></i>
+                            </div>
+                            <h3 class="step-title">Specialty Retail</h3>
+                            <p>Jewelry stores, gift shops, art galleries, and specialty product retailers.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                        <div class="industry-card">
+                            <div class="industry-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3 class="step-title">Professional Services</h3>
+                            <p>Consultants, trainers, and service-based businesses.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Implementation Process Section -->
+        <section class="process-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-12 text-center">
+                        <h2 class="section-title" data-aos="fade-up">Our POS Implementation Process</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">We ensure a smooth transition to your new POS system with our proven implementation process</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="process-step">
+                            <div class="step-number">1</div>
+                            <h3 class="step-title">Consultation & Analysis</h3>
+                            <p>We analyze your business needs and recommend the perfect POS solution.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="process-step">
+                            <div class="step-number">2</div>
+                            <h3 class="step-title">System Setup</h3>
+                            <p>We configure your POS system, set up hardware, and customize to your requirements.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="process-step">
+                            <div class="step-number">3</div>
+                            <h3 class="step-title">Staff Training</h3>
+                            <p>Comprehensive training for your team to ensure they're comfortable with the system.</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="process-step">
+                            <div class="step-number">4</div>
+                            <h3 class="step-title">Ongoing Support</h3>
+                            <p>Continuous support and maintenance to keep your system running smoothly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="pricing-section">
+            <div class="container">
+                <div class="row mb-5">
+                    <div class="col-lg-8 mx-auto text-center">
+                        <h2 class="section-title" data-aos="fade-up">POS System Packages</h2>
+                        <p class="lead" data-aos="fade-up" data-aos-delay="100">Flexible pricing options to suit businesses of all sizes</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4 mb-4" data-aos="fade-up">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3 class="pricing-name">Starter Package</h3>
+                                <div class="pricing-price">$99/mo</div>
+                                <div class="pricing-period">Small Business</div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>Basic POS Software</li>
+                                <li>Inventory Management</li>
+                                <li>Sales Reporting</li>
+                                <li>Email Support</li>
+                                <li>1 Register Included</li>
+                            </ul>
+                            <a href="contact.html" class="btn cta-btn-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="pricing-card featured">
+                            <div class="pricing-header">
+                                <h3 class="pricing-name">Professional Package</h3>
+                                <div class="pricing-price">$199/mo</div>
+                                <div class="pricing-period">Most Popular</div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>Advanced POS Features</li>
+                                <li>Customer Management</li>
+                                <li>Employee Management</li>
+                                <li>Priority Support</li>
+                                <li>Up to 3 Registers</li>
+                            </ul>
+                            <a href="contact.html" class="btn cta-btn-primary w-100">Get Started</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="pricing-card">
+                            <div class="pricing-header">
+                                <h3 class="pricing-name">Enterprise Package</h3>
+                                <div class="pricing-price">Custom</div>
+                                <div class="pricing-period">Multi-Location</div>
+                            </div>
+                            <ul class="pricing-features">
+                                <li>Multi-Store Management</li>
+                                <li>Advanced Analytics</li>
+                                <li>Custom Integrations</li>
+                                <li>24/7 Support</li>
+                                <li>Unlimited Registers</li>
+                            </ul>
+                            <a href="contact.html" class="btn cta-btn-primary w-100">Contact Sales</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-12 text-center">
+                        <p class="text-muted">*Hardware costs additional. All packages include setup and initial training.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Stamps Section -->
+        <section class="stamps-section">
+            <div class="container">
+                <h2 class="text-4xl font-bold mb-4 text-primary-color">Why Choose AMATETA for POS Systems?</h2>
+                <p class="text-xl max-w-2xl mx-auto mb-8">We provide reliable, user-friendly POS solutions backed by exceptional support and service.</p>
+                
+                <div class="stamps-grid">
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Custom Solutions</h3>
+                        <p>Tailored POS systems designed for your specific business needs</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Reliable Hardware</h3>
+                        <p>High-quality, durable hardware built for busy retail environments</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                        <p>Round-the-clock technical support to keep your business running</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Comprehensive Training</h3>
+                        <p>Thorough training for your staff to ensure smooth operation</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Regular Updates</h3>
+                        <p>Continuous software updates with new features and improvements</p>
+                    </div>
+                    
+                    <div class="stamp-item">
+                        <div class="stamp-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Local Expertise</h3>
+                        <p>Understanding of local business requirements and regulations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="fw-bold mb-3">Ready to Transform Your Business Operations?</h2>
+                <p class="lead mb-4">Contact us today for a free consultation and discover how our POS systems can streamline your business.</p>
+                <a href="contact.html" class="btn cta-btn-primary btn-lg me-3">
+                    <i class="fas fa-cash-register me-2"></i> GET FREE CONSULTATION
+                </a>
+                <a href="tel:+264853441248" class="btn cta-btn-secondary btn-lg">
+                    <i class="fas fa-phone me-2"></i> CALL OUR EXPERTS
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="amateta-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-logo mb-3">
+                        <img src="images/OUR LOGO WHITE.png" alt="AMATETA Footer Logo" style="height: 50px;">
+                    </div>
+                    <p class="mb-3">AMATETA Techs & Designs is a premier technology company offering cutting-edge solutions in Web Development, Digital Marketing, IT Support, and more.</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/profile.php?id=61565523041653" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/frans-haufiku-91587a241?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/a.techs.designs?igsh=MXZ1ZXc3MXlzbGwwNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/264853441248" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <a href="services.html"><i class="fas fa-chevron-right"></i> Services</a>
+                    <a href="pos-systems.html"><i class="fas fa-chevron-right"></i> POS Systems</a>
+                    <a href="portfolio.html"><i class="fas fa-chevron-right"></i> Portfolio</a>
+                    <a href="launched-websites.html"><i class="fas fa-chevron-right"></i> Launched Websites</a>
+                    <a href="about.html"><i class="fas fa-chevron-right"></i> About Us</a>
+                    <a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Our Services</h5>
+                    <a href="web-development.html"><i class="fas fa-code"></i> Website Development</a>
+                    <a href="digital-marketing.html"><i class="fas fa-bullhorn"></i> Digital Marketing</a>
+                    <a href="graphic-design.html"><i class="fas fa-palette"></i> Graphic Design</a>
+                    <a href="it-support.html"><i class="fas fa-headset"></i> IT Support</a>
+                    <a href="it-equipment.html"><i class="fas fa-laptop"></i> IT Equipment Supply</a>
+                    <a href="printing-services.html"><i class="fas fa-print"></i> Printing Services</a>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact & Support</h5>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Windhoek, Namibia</p>
+                    <p class="mb-2"><i class="fas fa-phone me-2"></i> <a href="tel:+264853441248">+264 85 344 1248</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:info@amateta.com">info@amateta.com</a></p>
+                    <p class="mb-2"><i class="fas fa-envelope me-2"></i> <a href="mailto:support@amateta.com">support@amateta.com</a></p>
+                    <p class="mb-3"><i class="fas fa-envelope me-2"></i> <a href="mailto:order@amateta.com">order@amateta.com</a></p>
+                    
+                    <div class="help-box">
+                        <h5>Need a POS System?</h5>
+                        <p class="mb-2" style="font-size: 0.9rem;">Get a free consultation for your business</p>
+                        <a href="contact.html"><i class="fas fa-cash-register me-2"></i> Free POS Consultation</a>
+                    </div>
+                </div>
+            </div>
+            <div class="credit-line">
+                <div class="footer-bottom-links mb-2">
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="terms-of-service.html">Terms of Service</a>
+                    <a href="cookie-policy.html">Cookie Policy</a>
+                    <a href="sitemap.html">Sitemap</a>
+                </div>
+                <p>&copy; <span id="year"></span> AMATETA Techs & Designs. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Cookie consent functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.getElementById('cookieConsent');
+            const acceptCookies = document.getElementById('acceptCookies');
+            const declineCookies = document.getElementById('declineCookies');
+            
+            // Check if user has already made a choice
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieConsent.classList.add('show');
+                }, 1000);
+            }
+            
+            acceptCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieConsent.classList.remove('show');
+            });
+            
+            declineCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'false');
+                cookieConsent.classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+</html>
