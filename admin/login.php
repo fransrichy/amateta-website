@@ -26,7 +26,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="icon" href="../images/fav.png">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="assets/admin.css">
+<link rel="stylesheet" href="assets/admin.css?v=<?= e((string) (@filemtime(__DIR__ . '/assets/admin.css') ?: '1')) ?>">
+<style>
+/* Critical containment prevents an oversized logo or raw two-column layout while CSS loads. */
+html,body{margin:0;min-height:100%;background:#eef4f8}img{max-width:100%;height:auto}.login-wrap{min-height:100vh}.login-brand>img{width:190px;height:auto}.login-mobile-logo{display:none}.login-mobile-logo img{width:150px;height:auto}
+@media(max-width:720px){body{background:#fff}.login-brand{display:none!important}.login-mobile-logo{display:block}.login-shell{min-height:100vh}.login-card{box-sizing:border-box;min-height:100vh}}
+</style>
 </head>
 <body>
 <div class="login-wrap">

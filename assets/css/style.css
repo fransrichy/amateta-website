@@ -771,7 +771,7 @@
         }
         @media (max-width: 480px) {
             .app-launch-section { padding:56px 0; }
-            .app-launch-visual{min-height:290px;padding:52px 18px 25px 106px}.app-phone{left:18px;width:96px;height:200px}.app-ui-grid{grid-template-columns:1fr}.app-ui-chart{display:none}
+            .app-launch-visual{min-height:290px;padding:52px 18px 25px 124px;color:#fff;text-decoration:none}.app-phone{left:18px;width:96px;height:200px}.app-ui-grid{grid-template-columns:1fr;min-width:0}.app-ui-grid>div{min-width:0;padding:14px}.app-ui-stat small,.app-ui-stat strong,.app-ui-stat i{display:block}.app-ui-chart{display:none}.app-ui-list{overflow:hidden}.app-ui-list span{max-width:100%}
             .section-pad { padding: 60px 0; }
             .stats-grid { grid-template-columns: repeat(2, 1fr); }
             .stamps-types-grid { grid-template-columns: 1fr; }
