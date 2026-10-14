@@ -1,0 +1,62 @@
+# AMATETA Techs & Designs
+Options -Indexes -MultiViews
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # ---- Clean URLs: strip the extension on direct browser visits ----
+    # Old .html links -> extensionless (301)
+    RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.html[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # .php -> extensionless (GET only, so form POSTs keep working)
+    RewriteCond %{REQUEST_METHOD} GET
+    RewriteCond %{THE_REQUEST} \s/+([^?\s]+)\.php[\s?] [NC]
+    RewriteRule ^ /%1 [R=301,L,NE]
+
+    # ---- Serve extensionless URLs from the matching .php file ----
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME}\.php -f
+    RewriteRule ^(.+?)/?$ $1.php [L]
+</IfModule>
+
+# Protect sensitive files (database dumps, docs, configs, logs, lock files)
+<FilesMatch "\.(sql|md|json|lock|ini|log|yml|yaml|sh|bak|old|dist)$">
+    Require all denied
+</FilesMatch>
+
+# Never expose version control or editor metadata
+RedirectMatch 404 /\.git
+RedirectMatch 404 /\.vscode
+RedirectMatch 404 /\.claude
+
+# Uploaded files are data, never code — refuse to execute anything in /uploads
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^uploads/.*\.(php|phtml|php[0-9]|pl|py|cgi|asp|aspx|jsp|sh|exe)$ - [F,L,NC]
+</IfModule>
+
+# Security headers
+<IfModule mod_headers.c>
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+    Header always unset X-Powered-By
+    Header unset Server
+</IfModule>
+
+# Cache versioned/static assets aggressively and compress text responses.
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>

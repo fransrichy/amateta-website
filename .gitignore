@@ -1,0 +1,9 @@
+/storage/*.log
+/config/secrets.php
+/config/installed.lock
+/.claude/
+/.vscode/
+/CLAUDE.md
+/.env
+/.env.*
+!/storage/.gitkeep

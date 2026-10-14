@@ -1,0 +1,886 @@
+<?php require_once __DIR__ . "/config/config.php"; track_visitor($_SERVER["REQUEST_URI"] ?? "/launched-websites.php"); ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMATETA Techs & Designs - Launched Websites</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="images/logo.jpg" type="image/x-icon">
+    
+    <style>
+        :root {
+            --primary-blue: #0a2540;
+            --light-blue: #00b4d8;
+            --accent-blue: #0077b6;
+            --dark-blue: #03045e;
+            --white: #ffffff;
+            --light-gray: #f8fafc;
+            --medium-gray: #e2e8f0;
+            --dark-gray: #64748b;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--white);
+            color: var(--primary-blue);
+            padding-top: 80px; /* Space for fixed navbar */
+        }
+
+        /* ---------------------------------
+            Navigation & Header Styles
+            --------------------------------- */
+        .navbar {
+            background-color: var(--primary-blue);
+            transition: background-color 0.3s;
+            box-shadow: var(--shadow);
+            z-index: 1030;
+            padding: 10px 0;
+        }
+
+        .navbar.scrolled {
+            padding: 5px 0;
+            background-color: rgba(10, 37, 64, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-mobile-safe {
+            max-height: 50px;
+        }
+
+        .navbar-brand, .nav-link {
+            color: var(--white) !important;
+            font-weight: 600;
+            padding: 10px 15px !important;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--light-blue) !important;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .nav-link.active {
+            font-weight: 700;
+            border-bottom: 2px solid var(--light-blue);
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: var(--white);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: none;
+        }
+
+        /* ---------------------------------
+            Hero Section
+            --------------------------------- */
+        .page-hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.1" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+            color: var(--white);
+            padding: 120px 0;
+            min-height: 40vh;
+            display: flex;
+            align-items: center;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%2300b4d8" fill-opacity="0.05" d="M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat bottom center;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ---------------------------------
+            Floating WhatsApp Button
+            --------------------------------- */
+        #whatsapp-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #06014b;
+            color: var(--white);
+            border: none;
+            border-radius: 50px;
+            padding: 15px 25px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-lg);
+            z-index: 1000;
+            animation: pulse 2.5s infinite;
+            transition: transform 0.2s;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+        
+        #whatsapp-btn:hover {
+            transform: scale(1.05);
+            background-color: #00c3ff;
+        }
+        
+        #whatsapp-btn i {
+            margin-right: 8px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        
+        /* ---------------------------------
+            General Content & CTA Styles
+            --------------------------------- */
+        .text-primary-color { color: var(--primary-blue) !important; }
+        .text-light-blue { color: var(--light-blue) !important; }
+
+        .cta-btn-primary {
+            background-color: var(--light-blue);
+            border-color: var(--light-blue);
+            color: var(--white);
+            transition: background-color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-primary:hover {
+            background-color: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+            color: var(--white);
+        }
+
+        .cta-btn-secondary {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s, transform 0.1s;
+            font-weight: 600;
+            padding: 12px 30px;
+        }
+        
+        .cta-btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--light-blue);
+        }
+
+        .text-center .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* ---------------------------------
+            Portfolio/Website Cards
+            --------------------------------- */
+        .portfolio-section {
+            padding: 80px 0;
+            background-color: var(--light-gray);
+        }
+
+        .website-card {
+            background-color: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            height: 100%;
+        }
+
+        .website-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .website-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .website-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .website-card:hover .website-image img {
+            transform: scale(1.05);
+        }
+
+        .website-status {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status-live {
+            background-color: #10b981;
+            color: white;
+        }
+
+        .status-development {
+            background-color: #f59e0b;
+            color: white;
+        }
+
+        .website-content {
+            padding: 1.5rem;
+        }
+
+        .website-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary-blue);
+        }
+
+        .website-description {
+            color: var(--dark-gray);
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .website-features {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .website-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .website-features li i {
+            color: var(--light-blue);
+            margin-right: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .website-link {
+            display: block;
+            text-align: center;
+            background-color: var(--light-blue);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+
+        .website-link:hover {
+            background-color: var(--accent-blue);
+            color: var(--white);
+        }
+
+        .website-link.disabled {
+            background-color: var(--medium-gray);
+            cursor: not-allowed;
+        }
+
+        .website-link.disabled:hover {
+            background-color: var(--medium-gray);
+        }
+
+        /* ---------------------------------
+            Stats Section
+            --------------------------------- */
+        .stats-section {
+            padding: 80px 0;
+            background: linear-gradient(135deg, var(--light-blue) 0%, var(--accent-blue) 100%);
+            color: var(--white);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* ---------------------------------
+            Footer Style
+            --------------------------------- */
+        .amateta-footer {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 60px 0 20px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer h5 { 
+            color: var(--light-blue); 
+            margin-bottom: 20px; 
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .amateta-footer h5::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--light-blue);
+        }
+
+        .amateta-footer a { 
+            color: #ccc; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 8px; 
+            transition: color 0.2s, transform 0.2s;
+            display: flex;
+            align-items: center;
+        }
+
+        .amateta-footer a:hover { 
+            color: var(--light-blue); 
+            transform: translateX(5px);
+        }
+
+        .amateta-footer a i {
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .amateta-footer .social-icons a { 
+            display: inline-block; 
+            margin-right: 15px; 
+            font-size: 1.5rem; 
+            color: var(--white); 
+            transition: color 0.2s, transform 0.2s; 
+        }
+
+        .amateta-footer .social-icons a:hover { 
+            color: var(--light-blue); 
+            transform: translateY(-3px);
+        }
+
+        .credit-line { 
+            border-top: 1px solid rgba(255, 255, 255, 0.1); 
+            padding-top: 20px; 
+            margin-top: 30px; 
+            text-align: center; 
+            font-size: 0.8rem; 
+        }
+
+        .help-box {
+            background-color: rgba(0, 180, 216, 0.2);
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 1.5rem;
+            text-align: center;
+            border-left: 4px solid var(--light-blue);
+        }
+
+        .help-box h5 {
+            color: var(--white);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .help-box a {
+            color: var(--white);
+            display: inline-block;
+            background-color: var(--light-blue);
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-top: 0.5rem;
+        }
+
+        .help-box a:hover {
+            background-color: var(--accent-blue);
+            transform: scale(1.05);
+        }
+
+        .newsletter-form input[type="email"] {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            color: var(--primary-blue);
+            background-color: var(--white);
+        }
+
+        .newsletter-form button {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--light-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: var(--accent-blue);
+        }
+
+        /* ---------------------------------
+            Mobile Responsiveness
+            --------------------------------- */
+        @media (max-width: 992px) {
+            body {
+                padding-top: 70px;
+            }
+            
+            .logo-mobile-safe {
+                max-height: 40px !important;
+            }
+            
+            .page-hero-section {
+                padding: 80px 0;
+                min-height: 30vh;
+            }
+            
+            .page-hero-section h1 {
+                font-size: 2.2rem;
+            }
+            
+            .page-hero-section p.lead {
+                font-size: 1.1rem;
+            }
+            
+            #whatsapp-btn {
+                bottom: 15px;
+                right: 15px;
+                padding: 12px 20px;
+                font-size: 1rem;
+            }
+            
+            .stats-grid .col-md-3 {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-hero-section h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="https://wa.me/264853441248?text=Hello%20AMATETA%20Techs%20%26%20Designs,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services" id="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i> WhatsApp Us
+    </a>
+
+    <?php render_nav('portfolio'); ?>
+
+    <main>
+        
+        <section class="page-hero-section">
+            <div class="container text-center hero-content">
+                <h1 class="display-4 fw-bold mb-4" data-aos="fade-up">Our Launched Websites</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Explore the digital solutions we've created for our clients. Each project showcases our expertise in web development, design, and digital strategy.</p>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <a href="#websites" class="btn cta-btn-primary btn-lg me-3">View Our Work</a>
+                    <a href="contact.php" class="btn cta-btn-secondary btn-lg">Start Your Project</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="container">
+                <div class="row stats-grid text-center">
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="15">0</div>
+                            <div class="stat-label">Websites Launched</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="12">0</div>
+                            <div class="stat-label">Happy Clients</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="6">0</div>
+                            <div class="stat-label">Ongoing Projects</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <div class="stat-item">
+                            <div class="stat-number" data-count="100">0</div>
+                            <div class="stat-label">Satisfaction Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="websites" class="portfolio-section">
+            <div class="container">
+                <div class="text-center mb-5">
+                    <h2 class="section-title text-primary-color">Our Portfolio of Launched Websites</h2>
+                    <p class="lead">Browse through our collection of successfully launched websites across various industries</p>
+                </div>
+
+                <div class="row">
+                    <!-- Logos Medical Website -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Logos Medical Website">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Logos Medical</h3>
+                                <p class="website-description">A comprehensive medical website providing healthcare information, services, and patient resources for a medical practice.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Responsive Design</li>
+                                    <li><i class="fas fa-check"></i> Medical Service Listings</li>
+                                    <li><i class="fas fa-check"></i> Patient Portal Integration</li>
+                                    <li><i class="fas fa-check"></i> Appointment Booking System</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/LOGOS-MEDICAL-WEBSITE/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Lavital Graphics & Design -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Lavital Graphics & Design">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Lavital Graphics & Design</h3>
+                                <p class="website-description">A creative agency website showcasing graphic design services, portfolio, and client testimonials.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Portfolio Gallery</li>
+                                    <li><i class="fas fa-check"></i> Service Showcase</li>
+                                    <li><i class="fas fa-check"></i> Client Testimonials</li>
+                                    <li><i class="fas fa-check"></i> Contact Form Integration</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/Lavital.Graphics.Design/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Astute Technologies -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Astute Technologies">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Astute Technologies</h3>
+                                <p class="website-description">A technology company website offering IT solutions, software development, and tech consulting services.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Service Catalog</li>
+                                    <li><i class="fas fa-check"></i> Case Studies</li>
+                                    <li><i class="fas fa-check"></i> Team Showcase</li>
+                                    <li><i class="fas fa-check"></i> Blog Integration</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/astute-technologies-com/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Astute Technology (Alternative) -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Astute Technology">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Astute Technology</h3>
+                                <p class="website-description">An alternative technology solutions website with a focus on innovation and cutting-edge digital solutions.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Modern UI/UX Design</li>
+                                    <li><i class="fas fa-check"></i> Solution Showcase</li>
+                                    <li><i class="fas fa-check"></i> Client Portfolio</li>
+                                    <li><i class="fas fa-check"></i> Contact Integration</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/Astutetechnology/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Galaxy Printing NAM -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1603712725038-e9334ae8f39f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Galaxy Printing NAM">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Galaxy Printing NAM</h3>
+                                <p class="website-description">A printing services website offering various printing solutions, from business cards to large format prints.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Product Catalog</li>
+                                    <li><i class="fas fa-check"></i> Online Quoting System</li>
+                                    <li><i class="fas fa-check"></i> Portfolio Showcase</li>
+                                    <li><i class="fas fa-check"></i> Contact & Order Forms</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/GALAXY-PRINTING-NAM/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- NAM ATS and Professional Resume Builder -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="NAM ATS and Professional Resume Builder">
+                                <span class="website-status status-live">Live</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">NAM ATS & Resume Builder</h3>
+                                <p class="website-description">An Applicant Tracking System and professional resume building platform for job seekers and employers.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Resume Builder Tool</li>
+                                    <li><i class="fas fa-check"></i> ATS Integration</li>
+                                    <li><i class="fas fa-check"></i> Job Search Functionality</li>
+                                    <li><i class="fas fa-check"></i> User Dashboard</li>
+                                </ul>
+                                <a href="https://fransrichy.github.io/NAM-ATS-AND-PROFESSIONAL-RESUME-BUILDER/" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- City Wing Shuttles -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="City Wing Shuttles">
+                                <span class="website-status status-development">Under Development</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">City Wing Shuttles</h3>
+                                <p class="website-description">A transportation service website offering shuttle services, booking system, and route information.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Online Booking System</li>
+                                    <li><i class="fas fa-check"></i> Route & Schedule Display</li>
+                                    <li><i class="fas fa-check"></i> Payment Integration</li>
+                                    <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
+                                </ul>
+                                <a href="http://www.citywingshuttles.com" class="website-link" target="_blank">Visit Website</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Project Placeholder 1 -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="E-commerce Website">
+                                <span class="website-status status-development">Under Development</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">E-commerce Platform</h3>
+                                <p class="website-description">A comprehensive e-commerce solution with product catalog, shopping cart, and secure payment processing.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Product Management</li>
+                                    <li><i class="fas fa-check"></i> Shopping Cart</li>
+                                    <li><i class="fas fa-check"></i> Payment Gateway</li>
+                                    <li><i class="fas fa-check"></i> Order Tracking</li>
+                                </ul>
+                                <a href="#" class="website-link disabled">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Project Placeholder 2 -->
+                    <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="website-card">
+                            <div class="website-image">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Business Consulting">
+                                <span class="website-status status-development">Under Development</span>
+                            </div>
+                            <div class="website-content">
+                                <h3 class="website-title">Business Consulting Portal</h3>
+                                <p class="website-description">A platform for business consulting services with client management, project tracking, and resource library.</p>
+                                <ul class="website-features">
+                                    <li><i class="fas fa-check"></i> Client Portal</li>
+                                    <li><i class="fas fa-check"></i> Project Management</li>
+                                    <li><i class="fas fa-check"></i> Resource Library</li>
+                                    <li><i class="fas fa-check"></i> Consultation Booking</li>
+                                </ul>
+                                <a href="#" class="website-link disabled">Coming Soon</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-5">
+                    <h3 class="mb-4">Ready to Launch Your Next Project?</h3>
+                    <p class="lead mb-4">Let's work together to create a stunning website that drives results for your business.</p>
+                    <a href="contact.php" class="btn cta-btn-primary btn-lg">Start Your Project Today</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="py-5 text-center text-white" style="background: linear-gradient(135deg, var(--primary-blue) 0%, var(--dark-blue) 100%);">
+            <div class="container" data-aos="zoom-in">
+                <h2 class="fw-bold mb-3">Impressed With Our Work?</h2>
+                <p class="lead mb-4">Let's discuss how we can create an exceptional website for your business too.</p>
+                <a href="contact.php" class="btn cta-btn-primary btn-lg me-3">
+                    <i class="far fa-calendar-check me-2"></i> GET FREE CONSULTATION
+                </a>
+                <a href="tel:+264853441248" class="btn cta-btn-secondary btn-lg">
+                    <i class="fas fa-phone me-2"></i> CALL US NOW
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <?php render_footer(); ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+        });
+
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Stats counter animation
+        function animateStats() {
+            const statNumbers = document.querySelectorAll('.stat-number');
+            statNumbers.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-count'));
+                const duration = 2000;
+                const step = target / (duration / 16);
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    stat.textContent = Math.floor(current);
+                }, 16);
+            });
+        }
+
+        // Animate stats when they come into view
+        const statsSection = document.querySelector('.stats-section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(statsSection);
+
+        // Cookie consent functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const cookieConsent = document.getElementById('cookieConsent');
+            const acceptCookies = document.getElementById('acceptCookies');
+            const declineCookies = document.getElementById('declineCookies');
+            
+            // Check if user has already made a choice
+            if (!localStorage.getItem('cookiesAccepted')) {
+                setTimeout(() => {
+                    cookieConsent.classList.add('show');
+                }, 1000);
+            }
+            
+            acceptCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'true');
+                cookieConsent.classList.remove('show');
+            });
+            
+            declineCookies.addEventListener('click', function() {
+                localStorage.setItem('cookiesAccepted', 'false');
+                cookieConsent.classList.remove('show');
+            });
+        });
+    </script>
+
+</body>
+</html>

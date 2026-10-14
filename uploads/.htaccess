@@ -1,0 +1,9 @@
+# Uploaded files are data, never executable code.
+Options -Indexes -ExecCGI
+
+<FilesMatch "\.(php|phtml|php[0-9]|pl|py|cgi|asp|aspx|jsp|sh|exe)$">
+    Require all denied
+</FilesMatch>
+
+# Belt and braces: even if a script slipped through, serve it as plain text.
+AddType text/plain .php .phtml .pl .py .cgi
