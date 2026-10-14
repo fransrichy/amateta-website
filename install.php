@@ -312,7 +312,7 @@ try {
     /* 6. Seed services */
     if ((int) $pdo->query('SELECT COUNT(*) FROM services')->fetchColumn() === 0) {
         $services = [
-            ['Mobile & Web App Development', 'Custom Android, iOS and web applications, customer portals and business systems—from product planning and UX design to launch and ongoing support.', 'fas fa-mobile-screen-button', 'linear-gradient(135deg,#00b4d8,#0077b6)', 'images/app-development-studio.webp', 'Android · iOS · Web Apps', 'I would like a quote for App Development', 1],
+            ['Mobile & Web App Development', 'Custom Android, iOS and web applications, customer portals and business systems—from product planning and UX design to launch and ongoing support.', 'fas fa-mobile-screen-button', 'linear-gradient(135deg,#00b4d8,#0077b6)', '', 'Android · iOS · Web Apps', 'I would like a quote for App Development', 1],
             ['Website Development', 'Custom, responsive websites, e-commerce stores and web applications built with modern technology for exceptional performance.', 'fas fa-code', 'linear-gradient(135deg,#00b4d8,#0077b6)', 'images/astuteness.png', 'HTML · PHP · React · WordPress', 'I would like a quote for Website Development', 1],
             ['Hosting & Domain Registration', 'Reliable web hosting, domain registration, SSL certificates and domain transfers with 99.9% uptime guarantee and expert support.', 'fas fa-server', 'linear-gradient(135deg,#f77f00,#e36200)', 'images/web-development-hero.jpg', '.com · .na · .co.na · SSL', 'I would like Hosting / Domain registration', 1],
             ['Website Management', 'Ongoing maintenance, security updates, content updates, performance optimization and backups to keep your website running perfectly.', 'fas fa-tools', 'linear-gradient(135deg,#3949ab,#283593)', 'images/web management.avif', 'Security · Updates · Backups', 'I need Website Management / Maintenance', 0],
@@ -335,7 +335,7 @@ try {
     // Existing installations receive the new app-development service once.
     if (!(int) $pdo->query("SELECT COUNT(*) FROM services WHERE title='Mobile & Web App Development'")->fetchColumn()) {
         $pdo->prepare('INSERT INTO services (title,description,icon,color,image,tag,wa_text,featured,sort_order,active) VALUES (?,?,?,?,?,?,?,?,?,1)')
-            ->execute(['Mobile & Web App Development', 'Custom Android, iOS and web applications, customer portals and business systems—from product planning and UX design to launch and ongoing support.', 'fas fa-mobile-screen-button', 'linear-gradient(135deg,#00b4d8,#0077b6)', 'images/app-development-studio.webp', 'Android · iOS · Web Apps', 'I would like a quote for App Development', 1, 0]);
+            ->execute(['Mobile & Web App Development', 'Custom Android, iOS and web applications, customer portals and business systems—from product planning and UX design to launch and ongoing support.', 'fas fa-mobile-screen-button', 'linear-gradient(135deg,#00b4d8,#0077b6)', '', 'Android · iOS · Web Apps', 'I would like a quote for App Development', 1, 0]);
         $log[] = 'App development service added.';
     }
 

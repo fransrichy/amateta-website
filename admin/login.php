@@ -30,23 +30,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 <div class="login-wrap">
-  <form class="login-card" method="post" autocomplete="off">
-    <div class="lg"><img src="../images/OUR LOGO REVISED.png" alt="AMATETA"></div>
-    <h1>Admin Panel</h1>
-    <p class="sub">Sign in to manage your website</p>
-    <?php if ($error): ?><div class="alert alert-err"><i class="fas fa-circle-exclamation"></i> <?= e($error) ?></div><?php endif; ?>
-    <?= csrf_field() ?>
-    <div class="fg">
-      <label>Email Address</label>
-      <input type="email" name="email" placeholder="admin@amateta.com" value="<?= e($_POST['email'] ?? '') ?>" required autofocus>
-    </div>
-    <div class="fg">
-      <label>Password</label>
-      <input type="password" name="password" placeholder="••••••••" required>
-    </div>
-    <button type="submit" class="btn btn-primary"><i class="fas fa-right-to-bracket"></i> Sign In</button>
-    <p style="text-align:center;margin-top:18px;font-size:12.5px;"><a href="../index.php" style="color:var(--muted);text-decoration:none;"><i class="fas fa-arrow-left"></i> Back to website</a></p>
-  </form>
+  <div class="login-shell">
+    <aside class="login-brand">
+      <img src="../images/OUR LOGO WHITE.png" alt="AMATETA Techs & Designs">
+      <span class="login-eyebrow"><i class="fas fa-shield-halved"></i> Secure management</span>
+      <h2>Your business, managed in one place.</h2>
+      <p>Update services, promotions, subscribers, enquiries and website content from your private workspace.</p>
+      <div class="login-trust"><span><i class="fas fa-lock"></i> Encrypted session</span><span><i class="fas fa-user-shield"></i> Login protection</span></div>
+    </aside>
+    <form class="login-card" method="post">
+      <a class="login-back" href="../index.php"><i class="fas fa-arrow-left"></i> Website</a>
+      <div class="login-mobile-logo"><img src="../images/OUR LOGO REVISED.png" alt="AMATETA"></div>
+      <span class="login-label">Administrator access</span>
+      <h1>Welcome back</h1>
+      <p class="sub">Enter your authorised account details.</p>
+      <?php if ($error): ?><div class="alert alert-err"><i class="fas fa-circle-exclamation"></i> <?= e($error) ?></div><?php endif; ?>
+      <?= csrf_field() ?>
+      <div class="fg">
+        <label for="admin-email">Email address</label>
+        <div class="login-input"><i class="fas fa-envelope"></i><input id="admin-email" type="email" name="email" autocomplete="username" placeholder="name@yourdomain.com" value="<?= e($_POST['email'] ?? '') ?>" required autofocus></div>
+      </div>
+      <div class="fg">
+        <label for="admin-password">Password</label>
+        <div class="login-input"><i class="fas fa-key"></i><input id="admin-password" type="password" name="password" autocomplete="current-password" placeholder="Enter your password" required><button type="button" class="password-toggle" aria-label="Show password" aria-pressed="false"><i class="fas fa-eye"></i></button></div>
+      </div>
+      <button type="submit" class="btn btn-primary"><span>Sign in securely</span><i class="fas fa-arrow-right"></i></button>
+      <p class="login-help"><i class="fas fa-circle-info"></i> Access is monitored and repeated failed attempts are temporarily blocked.</p>
+    </form>
+  </div>
 </div>
+<script>
+const toggle=document.querySelector('.password-toggle'),password=document.getElementById('admin-password');
+toggle?.addEventListener('click',()=>{const show=password.type==='password';password.type=show?'text':'password';toggle.setAttribute('aria-pressed',String(show));toggle.setAttribute('aria-label',show?'Hide password':'Show password');toggle.querySelector('i').className=show?'fas fa-eye-slash':'fas fa-eye';});
+</script>
 </body>
 </html>

@@ -169,7 +169,11 @@ page_head(get_setting('company_name', COMPANY_NAME) . ' | Web Development, Hosti
       <div class="app-launch-points"><span><i class="fas fa-check"></i>Android & iOS</span><span><i class="fas fa-check"></i>Business systems</span><span><i class="fas fa-check"></i>Customer portals</span></div>
       <a href="app-development.php" class="btn btn-primary btn-lg"><i class="fas fa-arrow-right"></i> Explore App Development</a>
     </div>
-    <a href="app-development.php" class="app-launch-visual" aria-label="Explore our app development service"><img src="images/app-development-studio.webp" alt="Modern mobile app and business dashboard developed by AMATETA" loading="lazy" width="1776" height="887"></a>
+    <a href="app-development.php" class="app-launch-visual" aria-label="Explore our app development service">
+      <div class="app-browser"><span></span><span></span><span></span><em></em></div>
+      <div class="app-ui-grid"><div class="app-ui-stat"><small>ACTIVE USERS</small><strong>1,248</strong><i class="fas fa-arrow-trend-up"></i></div><div class="app-ui-chart"><b></b><b></b><b></b><b></b><b></b><b></b></div><div class="app-ui-list"><span></span><span></span><span></span></div></div>
+      <div class="app-phone"><div class="app-phone-top"></div><i class="fas fa-layer-group"></i><strong>Your App</strong><span></span><span></span><span></span></div>
+    </a>
   </div>
 </section>
 
@@ -258,7 +262,7 @@ page_head(get_setting('company_name', COMPANY_NAME) . ' | Web Development, Hosti
           <div class="stamp-type"><i class="fas fa-user-tie"></i><strong>Signature Stamps</strong><span>Personalised for officials</span></div>
         </div>
         <div class="stamp-section-cta">
-          <div class="stamp-cta-img"><img src="images/float stamp.png" alt="Stamp" onerror="this.parentElement.innerHTML='🔖'"></div>
+          <div class="stamp-cta-img"><img src="images/float-stamp.webp" alt="Stamp" loading="lazy" width="1120" height="1411" onerror="this.parentElement.innerHTML='🔖'"></div>
           <div class="stamp-cta-text" style="flex:1;"><strong>🖊️ Order Your Company Stamp Today</strong><span>Same-day service · All types · Custom designs</span></div>
           <div style="display:flex;gap:10px;flex-wrap:wrap;">
             <a href="stamps.php" class="btn btn-stamps"><i class="fas fa-stamp"></i>View All Stamps</a>
